@@ -1,0 +1,50 @@
+#   FORMAT 32
++N0 'root' &
+'XTAL/ABM11/16MHz/DFN4' &
+'XTAL/ABS06/32k768/0805' &
+'XTAL/ABM8/12MHz/DFN4'
+
+
+.XTAL/ABM11/16MHz/DFN4 (D-535-12628-1-ND) :4 ;Crystal 16.0000MHz 15ppm 10pF 150 Ohm -20°C - 70°C COTS
+XTALDFN200X160X60-4
+*VALUE 16MHz
+*STM XTAL
+*PLB 1="GND"
+*MXP 4
+*DFN XTAL/ABM11/16MHz/DFN4
+*PAC (XTAL/ABM11/16MHz/DFN4) New Part - not verified!
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/XTAL/ABM11.pdf)
+%MfgPartnr (ABM11-16.000MHZ-B7G-T)
+%ONYX Parttype (XTALDFN200X160X60-4)
+xtal with GND
+2.0 4.0 1.0 3.0
+
+
+
+.XTAL/ABS06/32k768/0805 (D-535-10104-1-ND) :6 ;Crystal 32.7680kHz 20ppm 12.5pF 90 kOhm -40°C - 85°C
+XTALDFN200X120X60-2
+*VALUE 32k768
+*STM XTAL
+*MXP 2
+*DFN XTAL/ABS06/32k768/0805
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/XTAL/ABS06.pdf)
+%MfgPartnr (ABS06-32.768KHZ-T)
+%ONYX Parttype (XTALDFN200X120X60-2)
+xtal
+1.0 2.0
+
+.XTAL/ABM8/12MHz/DFN4 (D-535-9826-1-ND) :1 ;Crystal 12.0000MHz 50ppm 18pF 120 Ohm -10°C - 60°C 4-SMD
+XTALDFN320X250X80-4
+*VALUE 12MHz
+*STM XTAL
+*PLB 1="GND"
+*MXP 4
+*DFN XTAL/ABM8/12MHz/DFN4
+*PAC (XTAL/ABM8/12MHz/DFN4) New Part - not verified!
+%ONYX Parttype (XTALDFN320X250X80-4)
+%MfgPartnr (ABM8-12.000MHZ-B2-T)
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/XTAL/ABM8.pdf)
+xtal with GND
+2.0 4.0 1.0 3.0
+
+.END

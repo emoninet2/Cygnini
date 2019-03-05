@@ -1,0 +1,161 @@
+# FORMAT 32
+
++N0 'root' &
+'CHARGER/bq24074/QFN16' &
+'BUCKINV/TPS65131/QFN-24' &
+'LDO/TPS73633/SOT23-5' &
+'BOOST/TPS61080/SON10' &
+'LDO/TPS7990/SOT23-5' &
+'BUCK-BOOST/TPS63000/SON10' &
+'LDO/LM317MDT/DPAK3' &
+'LDO/LP2985/SOT23-5' 
+
+
+.CHARGER/bq24074/QFN16 (D-296-38873-1-ND) :6 ;1.5-A USB-Friendly Li-Ion Battery Charger and Power-Path Management IC
+QFN50P300X300X100-17T170X170
+*VALUE bq24074
+*STM U
+*PLB 1="TS" 2="BAT" 3="BAT" 4="nCE" 5="EN2" 6="EN1" 7="nPGOOD" 8="VSS" &
+9="nCHG" 10="OUT" 11="OUT" 12="ILIM" 13="IN" 14="TMR" 15="ITERM" 16="ISET" &
+17="EP"
+*MXP 17
+*DFN CHARGER/bq24074/SQFN16
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Power/bq2407x.pdf)
+%MfgPartnr (BQ24074RGTR)
+%ONYX Parttype (SON40P200X200X80-11T90X150)
+bq2407x
+13.0 1.0 2.0 3.0 14.0 15.0 16.0 12.0 8.0 17.0 4.0 5.0 6.0 9.0 7.0 10.0 11.0
+
+.LDO/TPS73633/SOT23-5 (D-296-27064-1-ND) :4 ;Cap-Free, NMOS, 400-mA Low-Dropout Regulator with Reverse Current Protection
+SOT95P280X145-5L30
+*VALUE TPS73633
+*STM P
+*PLB 1="IN" 2="GND" 3="EN" 4="NR" 5="OUT"
+*MXP 5
+*DFN LDO/TPS73633/SOT23-5
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Power/tps736.pdf)
+%MfgPartnr (TLV70233DBVR)
+%ONYX Parttype (SOT95P280X145-5L30)
+VREG
+1.0 3.0 2.0 4.0 5.0
+
+
+
+
+
+.LDO/LM317MDT/DPAK3 (D-LM317AMDTX/NOPBCT-ND) :4 ;Three-Terminal Adjustable LDO 500mA 1.2-37V
+TO450P972X240-3
+*VALUE LM317MDT
+*STM P
+*PLB 1="ADJ" 2="Vin" 3="Vout"
+*MXP 3
+*DFN LDO/LM317MDT/DPAK
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Power/LM317MDT.pdf)
+%MfgPartnr (LM317MDT)
+%ONYX Parttype (TO450P972X240-3)
+IC03P
+2.0 1.0 3.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.LDO/LP2985/SOT23-5 (D-296-18476-1-ND) :7 ;Linear Voltage Regulator IC Positive Fixed 1 Output 3.3V 150mA
+SOT95P280X145-5L30
+*VALUE LP2985
+*STM P
+*PLB 1="IN" 2="GND" 3="EN" 4="BYPASS" 5="OUT"
+*MXP 5
+*DFN LDO/LP2985/SOT23-5
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Power/lp2985.pdf)
+%MfgPartnr (LP2985-33DBVR)
+%ONYX Parttype (SOT95P280X145-5L30)
+VREG
+1.0 3.0 2.0 4.0 5.0
+
+
+
+.BUCKINV/TPS65131/QFN-24 (D-296-17080-1-ND) :10 ;Boost, Inverting Switching Regulator Pos and Neg (Dual Rail) In 3.2V-5V, 24-VFQFN Exposed Pad
+QFN50P400X400X100-25T245
+*VALUE TPS65131
+*STM P
+*PLB 1="INP" 2="PGND" 3="PGND" 4="VIN" 5="INN" 6="INN" 7="BSW" 8="ENP" 9="PSP" &
+10="ENN" 11="PSN" 12="NC" 13="OUTN" 14="OUTN" 15="VNEG" 16="FBN" 17="VREF" &
+18="CN" 19="AGND" 20="NC" 21="CP" 22="FBP" 23="VPOS" 24="INP" 25="EXP"
+*MXP 25
+*DFN BUCKINV/TPS65131/QFN-24
+*PAC (BUCKINV/TPS65131/QFN-24) New Part, not verified
+%MfgPartnr (TPS65131TRGERQ1)
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Power/tps65131.pdf)
+%ONYX Parttype (QFN50P400X400X100-25T245)
+TPS65131
+1.0 24.0 7.0 5.0 6.0 4.0 8.0 9.0 10.0 11.0 19.0 2.0 3.0 25.0 21.0 18.0 14.0 &
+13.0 15.0 16.0 17.0 22.0 23.0
+
+
+
+
+.LDO/TPS7990/SOT23-5 (D-296-17776-1-ND) :4 ;Linear Voltage Regulator IC Positive Adjustable Output 1.2 V ~ 6.5 V 200m
+SOT95P280X145-5L30
+*VALUE TPS7990
+*STM U
+*PLB 1="IN" 2="GND" 3="EN" 4="FB" 5="OUT"
+*MXP 5
+*DFN LDO/TPS7990/SOT23-5
+%ONYX Parttype (SOT95P280X145-5L30)
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Power/tps799.pdf)
+%MfgPartnr (TPS79901DDCR)
+VREG
+1.0 3.0 2.0 4.0 5.0
+
+.BUCK-BOOST/TPS63000/SON10 (D-296-19641-1-ND) :4 ;Buck-Boost Switching Regulator IC Positive Adjustable 1.2V 1 Output 1.6A
+SON50P300X300X100-11T165X240
+*VALUE TPS63000
+*STM U
+*PLB 1="VOUT" 2="L2" 3="PGND" 4="L1" 5="VIN" 6="EN" 7="PS/SYNC" 8="VINA" &
+9="GND" 10="FB" 11="PGND"
+*MXP 11
+*DFN BUCK-BOOST/TPS63000/SON10
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Power/tps6300x.pdf)
+%MfgPartnr (TPS63000DRCR)
+%ONYX Parttype (SON50P300X300X100-11T165X240)
+TPS63000
+4.0 5.0 8.0 6.0 7.0 9.0 3.0 11.0 10.0 1.0 2.0
+
+
+
+
+
+
+
+
+.BOOST/TPS61080/SON10 (D-296-27010-1-ND) :5 ;High-Voltage DC-DC Boost Converter With 0.5-A Integrated Switch
+SON50P300X300X100-11T165X240 (modified)
+*VALUE TPS61080
+*STM U
+*PLB 1="L" 2="VIN" 3="SS" 4="GND" 5="FB" 6="EN" 7="FSW" 8="PGND" 9="OUT" &
+10="SW" 11="GND" 12="GND" 13="GND"
+*MXP 13
+*DFN BOOST/TPS61080/SON10
+*PAC (BOOST/TPS61080/SON10) New Part - not verified!
+%ONYX Parttype (SON50P300X300X80-11T165X238)
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Power/tps61080.pdf)
+%MfgPartnr (TPS61080DRCR)
+TPS6108x
+2.0 6.0 7.0 3.0 4.0 11.0 8.0 5.0 9.0 10.0 1.0
+
+
+
+
+
+.END

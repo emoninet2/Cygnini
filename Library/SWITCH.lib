@@ -1,0 +1,84 @@
+# FORMAT 32
+
++N0 'root' &
+'SLIDE/EG1213/SPDT/RA' &
+'SLIDE/EG1271A/SPDT' &
+'SLIDE/EG2207/DPDT' &
+'SLIDE/EG2211/DPDT/RA' &
+'SLIDE/EG2310A/DP3T' &
+'TACTILE/BLACK/SMD' 
+
+.SLIDE/EG1213/SPDT/RA (D-EG1906-ND; M-612-EG1213) :7 ;SWITCH SLIDE SPDT 200MA 30V Right Angle
+ESWITCH_EG1213 (modified)
+*VALUE EG1213
+*STM SW
+*MXP 5
+*DFN SLIDE/EG1213/SPDT/RA
+~Link PDF Datasheet (http://tid.uio.no/elab\Datasheets\IPCLib\Switch\E-Switch_EG_series.pdf)
+%MfgPartnr (EG1213)
+Switch SPDT
+2.0 1.0 3.0
+
+.SLIDE/EG1271A/SPDT (D-EG1919-ND; M-612-EG1271A) :8 ;SWITCH SLIDE SPDT 200MA 30V
+ESWITCH_EG1271A (modified)
+*VALUE EG1271A
+*STM SW
+*MXP 6
+*DFN SLIDE/EG1271A/SPDT
+~Link PDF Datasheet (http://tid.uio.no/elab\Datasheets\IPCLib\Switch\E-Switch_EG_series.pdf)
+%MfgPartnr (EG1271A)
+Switch SPDT
+2.0 1.0 3.0
+
+.SLIDE/EG2207/DPDT (D-EG1940-ND) :9 ;SWITCH SLIDE DPDT 200MA 30V
+ESWITCH_EG2207 (modified)
+*VALUE EG2207
+*STM SW
+*MXP 8
+*DFN SLIDE/EG2207/DPDT
+~Link PDF Datasheet (http://tid.uio.no/elab\Datasheets\IPCLib\Switch\E-Switch_EG_series.pdf)
+%MfgPartnr (EG2207)
+Switch DPDT
+2.0 5.0 6.0 4.0 3.0 1.0
+
+.SLIDE/EG2211/DPDT/RA (D-EG1943-ND) :11 ;SWITCH SLIDE DPDT 200MA 30V Right Angle
+ESWITCH_EG2211 (modified)
+*VALUE EG2211
+*STM SW
+*MXP 8
+*DFN SLIDE/EG2211/DPDT/RA
+~Link PDF Datasheet (http://tid.uio.no/elab\Datasheets\IPCLib\Switch\E-Switch_EG_series.pdf)
+%MfgPartnr (EG2211)
+Switch DPDT
+2.0 5.0 6.0 4.0 3.0 1.0
+
+.SLIDE/EG2310A/DP3T (D-EG1947-ND) :10 ;SWITCH SLIDE DP3T 200MA 30V Right Anlge
+ESWITCH_EG2310A (modified)
+*VALUE EG2310A
+*STM SW
+*MXP 10
+*DFN SLIDE/EG2310A/DP3T
+*PAC (SLIDE/EG2310A/DP3T) Verify footprint and update name
+~Link PDF Datasheet (http://tid.uio.no/elab\Datasheets\IPCLib\Switch\E-Switch_EG_series.pdf)
+%MfgPartnr (EG2310A)
+Switch DP3T
+2.0 6.0 8.0 7.0 5.0 4.0 3.0 1.0
+
+.TACTILE/BLACK/SMD (E-13579000; M-688-SKHUALE10) :12 ;SPST Tactile switch with black button
+ALPS_SKHU
+*VALUE SKHUALE
+*STM SW
+*MXP 4
+*DFN TACTILE/BLACK/SMD
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Switch/Alps SKHU.pdf)
+%MfgPartnr (SKHUALE010)
+Switch Tactile 4P
+1.0 2.0 3.0 4.0
+
+
+
+
+
+
+
+.END

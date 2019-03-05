@@ -1,0 +1,95 @@
+# FORMAT 32
+
++N0 'root' &
+'PGA/LTC6910-1/SOT23-8' &
+'AMP/TPA2005D1/MSOP08' &
+'OPAMP/OPA2333/MSOP8' &
+'INA/INA333/MSOP8' &
+'OPAMP/TL072/SOIC8'
+
+.AMP/TPA2005D1/MSOP08 (D-296-26876-1-ND) :4 ;Power amplifier 1.45W heatpad on bottom side
+SOP65P490X10-9L30T157X189
+*VALUE TPA2005D1
+*STM U
+*PLB 1="nSHUTDOWN" 2="NC" 3="IN+" 4="IN-" 5="VO+" 6="VDD" 7="PGND" 8="VO-" &
+9="GND"
+*MXP 9
+*DFN AMP/TPA2005D1/MSOP08
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Amplifier/tpa2005d1.pdf)
+%MfgPartnr (TPA2005D1DGNR)
+%ONYX Parttype (SOP65P490X10-9L30T157X189)
+TPA200x
+1.0 3.0 4.0 7.0 9.0 8.0 5.0 6.0
+
+
+
+
+
+.PGA/LTC6910-1/SOT23-8 (D-LTC6910-1ITS8#TRMPBFCT-ND) :3 ;Digitally controlled programmable gain amplifer with gain 1-100V/V
+SOT65P280X100-8L20
+*VALUE LTC6910-1
+*STM X
+*PLB 1="OUT" 2="AGND" 3="IN" 4="V-" 5="G0" 6="G1" 7="G2" 8="V+"
+*MXP 8
+*DFN PGA/LTC6910-1/SOT23-8
+*PAC (PGA/LTC6910-1/SOT23-8) New Part - not verified!
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Amplifier/LTC6910.pdf)
+%MfgPartnr (LTC6910-1ITS8#TRMPBF)
+%ONYX Parttype (SOT65P280X100-8L20)
+LTC6910
+3.0 2.0 4.0 5.0 6.0 7.0 1.0 8.0
+
+
+
+
+
+
+.OPAMP/OPA2333/MSOP8 (D-296-32182-1-ND) :4 ;1.8V, microPower, CMOS Operational Amplifiers, Zero-Drift Series
+SOP65P490X110-8L30
+*VALUE OPA2333
+*STM U
+*MXP 8
+*DFN OPAMP/OPA2333/MSOP8
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Amplifier/opa2333.pdf)
+%MfgPartnr (OPA2333AIDGKT)
+%ONYX Parttype (SOP65P490X110-8L30)
+POP0
+4.0 8.0
+OP0
+3.0 2.0 1.0
+OP0
+5.0 6.0 7.0
+
+.INA/INA333/MSOP8 (D-296-23564-1-ND) :3 ;Micro-Power (50µA), Zero-Drift, Rail-to-Rail Out Instrumentation Amplifier
+SOP65P490X110-8L30
+*VALUE INA333
+*STM U
+*PLB 1="RG1" 2="VIN-" 3="VIN+" 5="REF" 6="VOUT" 8="RG8"
+*MXP 8
+*DFN INA/INA333/MSOP8
+%ONYX Parttype (SOP65P490X110-8L30)
+%MfgPartnr (INA333AIDGKR)
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Amplifier/ina333.pdf)
+POP0
+4.0 7.0
+INA_01
+2.0 1.0 8.0 3.0 6.0 5.0
+
+.OPAMP/TL072/SOIC8 (D-296-1282-1-ND) :2 ;Low-Noise JFET-Input Operational Amplifiers
+SOIC127P600X175-8L87
+*VALUE TL072
+*STM U
+*MXP 8
+*DFN OPAMP/TL072/SOIC8
+*PAC (OPAMP/TL072/SOIC8) New Part - not verified!
+%ONYX Parttype (SOIC127P600X175-8L87)
+%MfgPartnr (TL072CDR)
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Amplifier/tl071a.pdf)
+POP0
+4.0 8.0
+OP0
+3.0 2.0 1.0
+OP0
+5.0 6.0 7.0
+
+.END

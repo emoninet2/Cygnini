@@ -1,0 +1,76 @@
+#   FORMAT 32
++N0 'root' &
+'CAP/BYPASS/0402' 
+
+.CAP/BYPASS/0402 :7 ;10% 16V 0402 X7R
+CAPC1005X55L22 (Bypass)
+*VALUE 100NF
+*STM CB
+*EQU 1=2
+*SYM Capacitor
+*EXT 1 2
+*MXP 2
+*DFN CAP/BYPASS/0402
+*SPI (CAP/BYPASS/0402) C10% 100NF
+%ONYX Parttype (CAPC1005X55L22)
+Capacitor
+1.2 2.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.END

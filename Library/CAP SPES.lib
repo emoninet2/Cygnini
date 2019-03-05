@@ -1,0 +1,85 @@
+# FORMAT 32
+
++N0 'root' &
+'CAP/100U/6V3/1206' &
+'TANT/100UF/16V/SIZE-C' &
+'CAP/100N/2%/1210' &
+'CAP/10UF/16V/4MM3' 
+
+
+
+
+
+
+
+
+.CAP/100U/6V3/1206 (D-490-4539-1-ND) :12 ;CAP CER 100UF 6.3V 20% X5R 1206
+CAPC3216X160L50
+*VALUE 100U/6V3
+*STM C
+*EQU 1=2
+*SYM CAPACITOR
+*EXT 1 2
+*MXP 2
+*DFN CAP/100U/6V3/1206
+*SPI (CAP/100U/6V3/1206) C20% 100U
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/CAP_SPES/Murata Chip Capacitors.pdf)
+%MfgPartnr (GRM31CR60J107ME39L)
+%ONYX Parttype (CAPC3216X160L50)
+Capacitor
+1.2 2.1
+
+
+
+
+
+
+
+.TANT/100UF/16V/SIZE-C (F-2429372RL ;D-399-5214-1-ND) :26 ;KEMET T491 SERIES 10%
+CAPPM6032X280
+*VALUE 100UF/16V/C
+*STM C
+*NGS
+*MXP 2
+*DFN TANT/100UF/16V/SIZE-C
+*SPI (TANT/100UF/16V/SIZE-C) C10% 100U
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/CAP_SPES/Kemet Tantalum T491.pdf)
+%ONYX Parttype (CAPPM6032X280)
+%MfgPartnr (T491C107K016AT)
+Capacitor Polarized
+1.2 2.1
+
+
+
+
+.CAP/10UF/16V/4MM3 (D-493-14558-1-ND) :1 ;10µF 16V Aluminum Capacitors Radial, Can - SMD 1000 Hrs @ 105°C
+CAPAE430X550D455DD100L180
+*VALUE 10UF/4MM3
+*STM C
+*MXP 2
+*DFN CAP/10UF/16V/4MM3
+%ONYX Parttype (CAPAE430X550D455DD100L180)
+%MfgPartnr (UUQ1C100MCL1GB)
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/CAP_SPES/e-uuq.pdf)
+Capacitor Polarized
+1.0 2.0
+
+
+
+.CAP/100N/2%/1210 (D-399-6390-1-ND) :3 ;0.10µF 16V 2% PPS Film Capacitor 1210
+CAPC3225X230L50
+*VALUE 100N/2%
+*STM C
+*MXP 2
+*DFN CAP/100N/2%/1210
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/CAP_SPES/KEM_F3082_LDB.pdf)
+%MfgPartnr (LDBAB3100GC5N0)
+%ONYX Parttype (CAPC3225X230L50)
+Capacitor
+1.0 2.0
+
+
+
+
+
+.END

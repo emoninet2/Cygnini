@@ -1,0 +1,179 @@
+# FORMAT 32
+
++N0 'root' &
+'FIDUCIAL MARK' &
+'STENCIL MARK' &
+'MountingHole/3.2mm/6.0mm via' &
+'MountingHole/2.7mm/5.0mm' &
+'TP/PAD/1.5mm' &
+'MountingHole/3.2mm/NP' &
+'MountingHole/2.7mm/NP' &
+'TP/TESTPIN' &
+'TP/PAD/1.5mm/HOLE' &
+'TP/WIRESTUB' &
+'TP/TOUCHPAD' &
+'MountingHole/3.2mm/6.0mm' &
+'MountingHole/1.5mm/3.0mm' &
+'MountingHole/1.2mm/2.0mm' &
+'Jumper/BurnWireEdge' &
+'Jumper/BurnWireLoop'
+
+.FIDUCIAL MARK (NA) :4 ;Fiducial Mark made as simple part
+FIDUCIAL MARK
+*VALUE FIDUCIAL MARK
+*STM MARK
+*MXP 2
+*DFN FIDUCIAL MARK
+%MfgPartnr (NA)
+FIDUCIAL MARK
+
+.STENCIL MARK (NA) :8 ;Stencil Mark for aligning paste stencil
+STENCIL MARK
+*VALUE STENCIL MARK
+*STM SMARK
+*MXP 2
+*DFN STENCIL MARK
+%MfgPartnr (NA)
+FIDUCIAL MARK
+
+.MountingHole/3.2mm/6.0mm via (NA) :12 ;Mounting Hole 3.2 mm drill 6.0mm pad with vias
+MTGP600H320V6 (modified)
+*VALUE MH/3.2/6.0/VIA
+*STM MH
+*MXP 7
+*DFN MountingHole/3.2mm/6.0mm via
+%MfgPartnr (NA)
+MountingHole
+1.0
+
+.MountingHole/3.2mm/6.0mm (NA) :12 ;Mounting Hole 3.2 mm drill 6.0mm pad
+MTGP600H320
+*VALUE MH/3.2/6.0
+*STM MH
+*MXP 1
+*DFN MountingHole/3.2mm/6.0mm
+%MfgPartnr (NA)
+MountingHole
+1.0
+
+.TP/TOUCHPAD (NA) :17 ;Single point copper pad for designing custom shaped copper
+TESTPOINT (TouchPad)
+*VALUE TOUCHPAD
+*STM TP
+*MXP 1
+*DFN TP/TOUCHPAD
+%MfgPartnr (NA)
+TESTPOINT (TP)
+1.0
+
+.TP/PAD/1.5mm (NA) :15 ;Single side 1.5mm testpad
+TESTPOINT (Square 1.5mm)
+*VALUE PAD 1.5mm
+*STM TP
+*MXP 1
+*DFN TP/PAD/1.5mm
+%MfgPartnr (NA)
+TESTPOINT (TP)
+1.0
+
+.MountingHole/3.2mm/NP (NA) :15 ;Mounting Hole 3.2mm non plated for M3 No pad
+MTGNP320H320
+*VALUE MH/3.2mm
+*STM MH
+*MXP 1
+*DFN MountingHole/3.2mm/NP
+%MfgPartnr (NA)
+MountingHole
+1.0
+
+.MountingHole/2.7mm/NP (NA) :18 ;Mounting Hole 2.7mm non plated for M2.5 No pad
+MTGNP270H270
+*VALUE MH/2.7mm
+*STM MH
+*MXP 1
+*DFN MountingHole/2.7mm/NP
+%MfgPartnr (NA)
+MountingHole
+1.0
+
+.TP/TESTPIN (NA) :15 ;Terminal Test Pin with hole
+TESTPOINT (TEST PIN)
+*VALUE TEST PIN
+*STM TP
+*MXP 1
+*DFN TP/TESTPIN
+%MfgPartnr (NA)
+TESTPOINT (TP)
+1.0
+
+.TP/PAD/1.5mm/HOLE (NA) :20 ;Terminal Test Pin with hole
+TESTPOINT (Square 1.5mm Hole)
+*VALUE PAD 1.5 HOLE
+*STM TP
+*MXP 1
+*DFN TP/PAD/1.5mm/HOLE
+%MfgPartnr (NA)
+TESTPOINT (TP)
+1.0
+
+.TP/WIRESTUB (NA) :17 ;Terminal Test Pin with hole
+TESTPOINT (WIRE)
+*VALUE WIRESTUB
+*STM TP
+*MXP 1
+*DFN TP/WIRESTUB
+%MfgPartnr (NA)
+TESTPOINT (TP)
+1.0
+
+.MountingHole/2.7mm/5.0mm (NA) :15 ;Mounting Hole 2.7 mm drill 5.0mm pad, for M2,5
+MTGP500H270
+*VALUE MH/2.7/5.0
+*STM MH
+*MXP 1
+*DFN MountingHole/2.7mm/5.0mm
+%MfgPartnr (NA)
+MountingHole
+1.0
+
+.MountingHole/1.2mm/2.0mm (NA) :17 ;Mounting Hole 1.2 mm drill 2.0mm pad, for 1,17mm screw
+MTGP200H120
+*VALUE MH/1.2/2.0
+*STM MH
+*MXP 1
+*DFN MountingHole/1.2mm/2.0mm
+%MfgPartnr (NA)
+MountingHole
+1.0
+
+.MountingHole/1.5mm/3.0mm (NA) :18 ;Mounting Hole 1.5 mm drill 3.0mm pad, for M1,4 screw
+MTGP300H150
+*VALUE MH/1.5/3.0
+*STM MH
+*MXP 1
+*DFN MountingHole/1.5mm/3.0mm
+%MfgPartnr (NA)
+MountingHole
+1.0
+
+.Jumper/BurnWireLoop (NA) :4 ;Jumper / Loop for threading burnwire to PCBs
+BurnWireLoop
+*STM J
+*MXP 2
+*DFN Jumper/BurnWireLoop
+%MfgPartnr (NA)
+%ONYX Parttype (NA)
+BurnWireLoop
+1.0 2.0
+
+.Jumper/BurnWireEdge (NA) :5 ;Jumper / Edge for burnwire to run over
+BurnWireEdge
+*STM J
+*MXP 2
+*DFN Jumper/BurnWireEdge
+%MfgPartnr (NA)
+%ONYX Parttype (NA)
+BurnWireLoop
+1.0 2.0
+
+.END

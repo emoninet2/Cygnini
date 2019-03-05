@@ -1,0 +1,1418 @@
+# FORMAT 32
+
++N0 'root' &
+'PR/2.00mm/3x1' &
+'PH/2.00mm/3x1' &
+'PR/2.54mm/2x1' &
+'PR/2.54mm/3x1' &
+'PR/2.54mm/4x1' &
+'PR/2.54mm/5x1' &
+'PR/2.54mm/6x1' &
+'PR/2.54mm/7x1' &
+'PR/2.54mm/8x1' &
+'PR/2.54mm/9x1' &
+'PR/2.54mm/10x1' &
+'PR/2.54mm/11x1' &
+'PR/2.54mm/12x1' &
+'PR/2.54mm/13x1' &
+'PR/2.54mm/14x1' &
+'PR/2.54mm/15x1' &
+'PR/2.54mm/16x1' &
+'PR/2.54mm/17x1' &
+'PR/2.54mm/18x1' &
+'PR/2.54mm/19x1' &
+'PR/2.54mm/20x1' &
+'PR/2.54mm/2x2' &
+'PR/2.54mm/3x2' &
+'PR/2.54mm/4x2' &
+'PR/2.54mm/5x2' &
+'PR/2.54mm/6x2' &
+'PR/2.54mm/7x2' &
+'PR/2.54mm/8x2' &
+'PR/2.54mm/9x2' &
+'PR/2.54mm/10x2' &
+'PR/2.54mm/11x2' &
+'PR/2.54mm/12x2' &
+'PR/2.54mm/13x2' &
+'PR/2.54mm/14x2' &
+'PR/2.54mm/15x2' &
+'PR/2.54mm/16x2' &
+'PR/2.54mm/17x2' &
+'PR/2.54mm/18x2' &
+'PR/2.54mm/19x2' &
+'PR/2.54mm/20x2' &
+'PR/2.54mm/RA/2x1' &
+'PR/2.54mm/RA/3x1' &
+'PR/2.54mm/RA/4x1' &
+'PR/2.54mm/RA/5x1' &
+'PR/2.54mm/RA/6x1' &
+'PR/2.54mm/RA/7x1' &
+'PR/2.54mm/RA/8x1' &
+'PR/2.54mm/RA/9x1' &
+'PR/2.54mm/RA/10x1' &
+'PR/2.54mm/RA/11x1' &
+'PR/2.54mm/RA/12x1' &
+'PR/2.54mm/RA/13x1' &
+'PR/2.54mm/RA/14x1' &
+'PR/2.54mm/RA/15x1' &
+'PR/2.54mm/RA/16x1' &
+'PR/2.54mm/RA/17x1' &
+'PR/2.54mm/RA/18x1' &
+'PR/2.54mm/RA/19x1' &
+'PR/2.54mm/RA/20x1' &
+'PR/2.54mm/RA/2x2' &
+'PR/2.54mm/RA/3x2' &
+'PR/2.54mm/RA/4x2' &
+'PR/2.54mm/RA/5x2' &
+'PR/2.54mm/RA/6x2' &
+'PR/2.54mm/RA/7x2' &
+'PR/2.54mm/RA/8x2' &
+'PR/2.54mm/RA/9x2' &
+'PR/2.54mm/RA/10x2' &
+'PR/2.54mm/RA/11x2' &
+'PR/2.54mm/RA/12x2' &
+'PR/2.54mm/RA/13x2' &
+'PR/2.54mm/RA/14x2' &
+'PR/2.54mm/RA/15x2' &
+'PR/2.54mm/RA/16x2' &
+'PR/2.54mm/RA/17x2' &
+'PR/2.54mm/RA/18x2' &
+'PR/2.54mm/RA/19x2' &
+'PR/2.54mm/RA/20x2' &
+'PH/2.54mm/2x1' &
+'PH/2.54mm/3x1' &
+'PH/2.54mm/4x1' &
+'PH/2.54mm/5x1' &
+'PH/2.54mm/6x1' &
+'PH/2.54mm/7x1' &
+'PH/2.54mm/8x1' &
+'PH/2.54mm/9x1' &
+'PH/2.54mm/10x1' &
+'PH/2.54mm/11x1' &
+'PH/2.54mm/12x1' &
+'PH/2.54mm/13x1' &
+'PH/2.54mm/14x1' &
+'PH/2.54mm/15x1' &
+'PH/2.54mm/16x1' &
+'PH/2.54mm/17x1' &
+'PH/2.54mm/18x1' &
+'PH/2.54mm/19x1' &
+'PH/2.54mm/20x1' &
+'PH/2.54mm/2x2' &
+'PH/2.54mm/3x2' &
+'PH/2.54mm/4x2' &
+'PH/2.54mm/5x2' &
+'PH/2.54mm/6x2' &
+'PH/2.54mm/7x2' &
+'PH/2.54mm/8x2' &
+'PH/2.54mm/9x2' &
+'PH/2.54mm/10x2' &
+'PH/2.54mm/11x2' &
+'PH/2.54mm/12x2' &
+'PH/2.54mm/13x2' &
+'PH/2.54mm/14x2' &
+'PH/2.54mm/15x2' &
+'PH/2.54mm/16x2' &
+'PH/2.54mm/17x2' &
+'PH/2.54mm/18x2' &
+'PH/2.54mm/19x2' &
+'PH/2.54mm/20x2'
+
+.PR/2.00mm/3x1 (D-952-1312-ND) :11 ;2.00mm Pinrow Straight Single Row 3x1
+HDRV3W45P200_3X1_600X200H730
+*VALUE PR3 2mm
+*STM CN
+*MXP 3
+*DFN PR/2.00mm/3x1
+*PAC (PR/2.00mm/3x1) USE 2.54mm PITCH PINROW
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M22.pdf)
+%MfgPartnr (M22-25103xx)
+PR3
+1.0 2.0 3.0
+
+.PH/2.00mm/3x1 (D-952-1350-5-ND) :11 ;2.00mm Pin Header Straight Single Row 3x1
+SHDRV3W45P200_3X1_600X240H700
+*VALUE PH3 2mm
+*STM CN
+*MXP 3
+*DFN PH/2.00mm/3x1
+*PAC (PH/2.00mm/3x1) USE 2.54mm PITCH PINROW
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M22.pdf)
+%MfgPartnr (M22-71303xx)
+PR3
+1.0 2.0 3.0
+
+.PR/2.54mm/2x1 (M20-99902xx) :9 ;Pinrow Straight Single Row 2x1
+HDRV2W64P254_2X1_508X254H864
+*VALUE PR2
+*STM CN
+*MXP 2
+*DFN PR/2.54mm/2x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99902xx)
+PR2
+1.0 2.0
+
+.PR/2.54mm/3x1 (M20-99903xx) :7 ;Pinrow Straight Single Row 3x1
+HDRV3W64P254_3X1_762X254H864
+*VALUE PR3
+*STM CN
+*MXP 3
+*DFN PR/2.54mm/3x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99903xx)
+PR3
+1.0 2.0 3.0
+
+.PR/2.54mm/4x1 (M20-99904xx) :8 ;Pinrow Straight Single Row 4x1
+HDRV4W64P254_4X1_1016X254H864
+*VALUE PR4
+*STM CN
+*MXP 4
+*DFN PR/2.54mm/4x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99904xx)
+PR4
+1.0 2.0 3.0 4.0
+
+.PR/2.54mm/5x1 (M20-99905xx) :8 ;Pinrow Straight Single Row 5x1
+HDRV5W64P254_5X1_1270X254H864
+*VALUE PR5
+*STM CN
+*MXP 5
+*DFN PR/2.54mm/5x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99905xx)
+PR5
+1.0 2.0 3.0 4.0 5.0
+
+.PR/2.54mm/6x1 (M20-99906xx) :8 ;Pinrow Straight Single Row 6x1
+HDRV6W64P254_6X1_1524X254H864
+*VALUE PR6
+*STM CN
+*MXP 6
+*DFN PR/2.54mm/6x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99906xx)
+PR6
+1.0 2.0 3.0 4.0 5.0 6.0
+
+.PR/2.54mm/7x1 (M20-99907xx) :8 ;Pinrow Straight Single Row 7x1
+HDRV7W64P254_7X1_1778X254H864
+*VALUE PR7
+*STM CN
+*MXP 7
+*DFN PR/2.54mm/7x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99907xx)
+PR7
+1.0 2.0 3.0 4.0 5.0 6.0 7.0
+
+.PR/2.54mm/8x1 (M20-99908xx) :8 ;Pinrow Straight Single Row 8x1
+HDRV8W64P254_8X1_2032X254H864
+*VALUE PR8
+*STM CN
+*MXP 8
+*DFN PR/2.54mm/8x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99908xx)
+PR8
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0
+
+.PR/2.54mm/9x1 (M20-99909xx) :9 ;Pinrow Straight Single Row 9x1
+HDRV9W64P254_9X1_2286X254H864
+*VALUE PR9
+*STM CN
+*MXP 9
+*DFN PR/2.54mm/9x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99909xx)
+PR9
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0
+
+.PR/2.54mm/10x1 (M20-99910xx) :8 ;Pinrow Straight Single Row 10x1
+HDRV10W64P254_10X1_2540X254H864
+*VALUE PR10
+*STM CN
+*MXP 10
+*DFN PR/2.54mm/10x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99910xx)
+PR10
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0
+
+.PR/2.54mm/11x1 (M20-99911xx) :8 ;Pinrow Straight Single Row 11x1
+HDRV11W64P254_11X1_2794X254H864
+*VALUE PR11
+*STM CN
+*MXP 11
+*DFN PR/2.54mm/11x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99911xx)
+PR11
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0
+
+.PR/2.54mm/12x1 (M20-99912xx) :8 ;Pinrow Straight Single Row 12x1
+HDRV12W64P254_12X1_3048X254H864
+*VALUE PR12
+*STM CN
+*MXP 12
+*DFN PR/2.54mm/12x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99912xx)
+PR12
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0
+
+.PR/2.54mm/13x1 (M20-99913xx) :10 ;Pinrow Straight Single Row 13x1
+HDRV13W64P254_13X1_3302X254H864
+*VALUE PR13
+*STM CN
+*MXP 13
+*DFN PR/2.54mm/13x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99913xx)
+PR13
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0
+
+.PR/2.54mm/14x1 (M20-99914xx) :8 ;Pinrow Straight Single Row 14x1
+HDRV14W64P254_14X1_3556X254H864
+*VALUE PR14
+*STM CN
+*MXP 14
+*DFN PR/2.54mm/14x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99914xx)
+PR14
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0
+
+.PR/2.54mm/15x1 (M20-99915xx) :9 ;Pinrow Straight Single Row 15x1
+HDRV15W64P254_15X1_3810X254H864
+*VALUE PR15
+*STM CN
+*MXP 15
+*DFN PR/2.54mm/15x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99915xx)
+PR15
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0
+
+.PR/2.54mm/16x1 (M20-99916xx) :9 ;Pinrow Straight Single Row 16x1
+HDRV16W64P254_16X1_4064X254H864
+*VALUE PR16
+*STM CN
+*MXP 16
+*DFN PR/2.54mm/16x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99916xx)
+PR16
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0
+
+.PR/2.54mm/17x1 (M20-99917xx) :10 ;Pinrow Straight Single Row 17x1
+HDRV17W64P254_17X1_4318X254H864
+*VALUE PR17
+*STM CN
+*MXP 17
+*DFN PR/2.54mm/17x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99917xx)
+PR17
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0
+
+.PR/2.54mm/18x1 (M20-99918xx) :9 ;Pinrow Straight Single Row 18x1
+HDRV18W64P254_18X1_4572X254H864
+*VALUE PR18
+*STM CN
+*MXP 18
+*DFN PR/2.54mm/18x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99918xx)
+PR18
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0
+
+.PR/2.54mm/19x1 (M20-99919xx) :9 ;Pinrow Straight Single Row 19x1
+HDRV19W64P254_19X1_4826X254H864
+*VALUE PR19
+*STM CN
+*MXP 19
+*DFN PR/2.54mm/19x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99919xx)
+PR19
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0
+
+.PR/2.54mm/20x1 (M20-99920xx) :9 ;Pinrow Straight Single Row 20x1
+HDRV20W64P254_20X1_5080X254H864
+*VALUE PR20
+*STM CN
+*MXP 20
+*DFN PR/2.54mm/20x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99920xx)
+PR20
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0
+
+.PR/2.54mm/2x2 (M20-99802xx) :11 ;Pinrow Straight Double Row 2x2
+HDRV4W64P254_2X2_508X508H864
+*VALUE PR2X2
+*STM CN
+*MXP 4
+*DFN PR/2.54mm/2x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99802xx)
+PR2X2
+1.0 2.0 3.0 4.0
+
+.PR/2.54mm/3x2 (M20-99803xx) :8 ;Pinrow Straight Double Row 3x2
+HDRV6W64P254_3X2_762X508H864
+*VALUE PR3X2
+*STM CN
+*MXP 6
+*DFN PR/2.54mm/3x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99803xx)
+PR3X2
+1.0 2.0 3.0 4.0 5.0 6.0
+
+.PR/2.54mm/4x2 (M20-99804xx) :11 ;Pinrow Straight Double Row 4X2
+HDRV8W64P254_4X2_1016X508H864
+*VALUE PR4X2
+*STM CN
+*MXP 8
+*DFN PR/2.54mm/4x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99804xx)
+PR4X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0
+
+.PR/2.54mm/5x2 (M20-99805xx) :10 ;Pinrow Straight Double Row 5X2
+HDRV10W64P254_5X2_1270X508H864
+*VALUE PR5X2
+*STM CN
+*MXP 10
+*DFN PR/2.54mm/5x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99805xx)
+PR5X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0
+
+.PR/2.54mm/6x2 (M20-99806xx) :10 ;Pinrow Straight Double Row 6X2
+HDRV12W64P254_6X2_1524X508H864
+*VALUE PR6X2
+*STM CN
+*MXP 12
+*DFN PR/2.54mm/6x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99806xx)
+PR6X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0
+
+.PR/2.54mm/7x2 (M20-99807xx) :10 ;Pinrow Straight Double Row 7X2
+HDRV14W64P254_7X2_1778X508H864
+*VALUE PR7X2
+*STM CN
+*MXP 14
+*DFN PR/2.54mm/7x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99807xx)
+PR7X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0
+
+.PR/2.54mm/8x2 (M20-99808xx) :10 ;Pinrow Straight Double Row 8X2
+HDRV16W64P254_8X2_2032X508H864
+*VALUE PR8X2
+*STM CN
+*MXP 16
+*DFN PR/2.54mm/8x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99808xx)
+PR8X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0
+
+.PR/2.54mm/9x2 (M20-99809xx) :10 ;Pinrow Straight Double Row 9X2
+HDRV18W64P254_9X2_2286X508H864
+*VALUE PR9X2
+*STM CN
+*MXP 18
+*DFN PR/2.54mm/9x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99809xx)
+PR9X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0
+
+.PR/2.54mm/10x2 (M20-99810xx) :10 ;Pinrow Straight Double Row 10X2
+HDRV20W64P254_10X2_2540X508H864
+*VALUE PR10X2
+*STM CN
+*MXP 20
+*DFN PR/2.54mm/10x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99810xx)
+PR10X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0
+
+.PR/2.54mm/11x2 (M20-99811xx) :10 ;Pinrow Straight Double Row 11X2
+HDRV22W64P254_11X2_2794X508H864
+*VALUE PR11X2
+*STM CN
+*MXP 22
+*DFN PR/2.54mm/11x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99811xx)
+PR11X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0
+
+.PR/2.54mm/12x2 (M20-99812xx) :10 ;Pinrow Straight Double Row 12X2
+HDRV24W64P254_12X2_3048X508H864
+*VALUE PR12X2
+*STM CN
+*MXP 24
+*DFN PR/2.54mm/12x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99812xx)
+PR12X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0
+
+.PR/2.54mm/13x2 (M20-99813xx) :10 ;Pinrow Straight Double Row 13X2
+HDRV26W64P254_13X2_3302X508H864
+*VALUE PR13X2
+*STM CN
+*MXP 26
+*DFN PR/2.54mm/13x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99813xx)
+PR13X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0
+
+.PR/2.54mm/14x2 (M20-99814xx) :10 ;Pinrow Straight Double Row 14X2
+HDRV28W64P254_14X2_3556X508H864
+*VALUE PR14X2
+*STM CN
+*MXP 28
+*DFN PR/2.54mm/14x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99814xx)
+PR14X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0
+
+.PR/2.54mm/15x2 (M20-99815xx) :10 ;Pinrow Straight Double Row 15X2
+HDRV30W64P254_15X2_3810X508H864
+*VALUE PR15X2
+*STM CN
+*MXP 30
+*DFN PR/2.54mm/15x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99815xx)
+PR15X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0
+
+.PR/2.54mm/16x2 (M20-99816xx) :10 ;Pinrow Straight Double Row 16X2
+HDRV32W64P254_16X2_4064X508H864
+*VALUE PR16X2
+*STM CN
+*MXP 32
+*DFN PR/2.54mm/16x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99816xx)
+PR16X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0
+
+.PR/2.54mm/17x2 (M20-99817xx) :10 ;Pinrow Straight Double Row 17X2
+HDRV34W64P254_17X2_4318X508H864
+*VALUE PR17X2
+*STM CN
+*MXP 34
+*DFN PR/2.54mm/17x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99817xx)
+PR17X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 &
+33.0 34.0
+
+.PR/2.54mm/18x2 (M20-99818xx) :10 ;Pinrow Straight Double Row 18X2
+HDRV36W64P254_18X2_4572X508H864
+*VALUE PR18X2
+*STM CN
+*MXP 36
+*DFN PR/2.54mm/18x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99818xx)
+PR18X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 &
+33.0 34.0 35.0 36.0
+
+.PR/2.54mm/19x2 (M20-99819xx) :10 ;Pinrow Straight Double Row 19X2
+HDRV38W64P254_19X2_4826X508H864
+*VALUE PR19X2
+*STM CN
+*MXP 38
+*DFN PR/2.54mm/19x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99819xx)
+PR19X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 &
+33.0 34.0 35.0 36.0 37.0 38.0
+
+.PR/2.54mm/20x2 (M20-99820xx) :9 ;Pinrow Straight Double Row 20x2
+HDRV40W64P254_20X2_5080X508H864
+*VALUE PR20X2
+*STM CN
+*MXP 40
+*DFN PR/2.54mm/20x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99820xx)
+PR20X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 &
+33.0 34.0 35.0 36.0 37.0 38.0 39.0 40.0
+
+.PR/2.54mm/RA/2x1 (M20-99602xx) :12 ;Pinrow Right Angle Single row 2x1
+HDRRA2W64P254_2X1_508X254H254
+*VALUE PR2 RA
+*STM CN
+*MXP 2
+*DFN PR/2.54mm/RA/2x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99602xx)
+PR2 RA
+1.0 2.0
+
+.PR/2.54mm/RA/3x1 (M20-99603xx) :14 ;Pinrow Right Angle Single row 3x1
+HDRRA3W64P254_3X1_762X254H254
+*VALUE PR3 RA
+*STM CN
+*MXP 3
+*DFN PR/2.54mm/RA/3x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99603xx)
+PR3 RA
+1.0 2.0 3.0
+
+.PR/2.54mm/RA/4x1 (M20-99604xx) :14 ;Pinrow Right Angle Single row 4x1
+HDRRA4W64P254_4X1_1016X254H254
+*VALUE PR4 RA
+*STM CN
+*MXP 4
+*DFN PR/2.54mm/RA/4x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99604xx)
+PR4 RA
+1.0 2.0 3.0 4.0
+
+.PR/2.54mm/RA/5x1 (M20-99605xx) :14 ;Pinrow Right Angle Single row 5x1
+HDRRA5W64P254_5X1_1270X254H254
+*VALUE PR5 RA
+*STM CN
+*MXP 5
+*DFN PR/2.54mm/RA/5x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99605xx)
+PR5 RA
+1.0 2.0 3.0 4.0 5.0
+
+.PR/2.54mm/RA/6x1 (M20-99606xx) :14 ;Pinrow Right Angle Single row 6x1
+HDRRA6W64P254_6X1_1524X254H254
+*VALUE PR6 RA
+*STM CN
+*MXP 6
+*DFN PR/2.54mm/RA/6x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99606xx)
+PR6 RA
+1.0 2.0 3.0 4.0 5.0 6.0
+
+.PR/2.54mm/RA/7x1 (M20-99607xx) :14 ;Pinrow Right Angle Single row 7x1
+HDRRA7W64P254_7X1_1778X254H254
+*VALUE PR7 RA
+*STM CN
+*MXP 7
+*DFN PR/2.54mm/RA/7x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99607xx)
+PR7 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0
+
+.PR/2.54mm/RA/8x1 (M20-99608xx) :14 ;Pinrow Right Angle Single row 8x1
+HDRRA8W64P254_8X1_2032X254H254
+*VALUE PR8 RA
+*STM CN
+*MXP 8
+*DFN PR/2.54mm/RA/8x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99608xx)
+PR8 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0
+
+.PR/2.54mm/RA/9x1 (M20-99609xx) :14 ;Pinrow Right Angle Single row 9x1
+HDRRA9W64P254_9X1_2286X254H254
+*VALUE PR9 RA
+*STM CN
+*MXP 9
+*DFN PR/2.54mm/RA/9x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99609xx)
+PR9 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0
+
+.PR/2.54mm/RA/10x1 (M20-99610xx) :14 ;Pinrow Right Angle Single row 10x1
+HDRRA10W64P254_10X1_2540X254H254
+*VALUE PR10 RA
+*STM CN
+*MXP 10
+*DFN PR/2.54mm/RA/10x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99610xx)
+PR10 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0
+
+.PR/2.54mm/RA/11x1 (M20-99611xx) :14 ;Pinrow Right Angle Single row 11x1
+HDRRA11W64P254_11X1_2794X254H254
+*VALUE PR11 RA
+*STM CN
+*MXP 11
+*DFN PR/2.54mm/RA/11x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99611xx)
+PR11 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0
+
+.PR/2.54mm/RA/12x1 (M20-99612xx) :14 ;Pinrow Right Angle Single row 12x1
+HDRRA12W64P254_12X1_3048X254H254
+*VALUE PR12 RA
+*STM CN
+*MXP 12
+*DFN PR/2.54mm/RA/12x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99612xx)
+PR12 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0
+
+.PR/2.54mm/RA/13x1 (M20-99613xx) :14 ;Pinrow Right Angle Single row 13x1
+HDRRA13W64P254_13X1_3302X254H254
+*VALUE PR13 RA
+*STM CN
+*MXP 13
+*DFN PR/2.54mm/RA/13x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99613xx)
+PR13 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0
+
+.PR/2.54mm/RA/14x1 (M20-99614xx) :14 ;Pinrow Right Angle Single row 14x1
+HDRRA14W64P254_14X1_3556X254H254
+*VALUE PR14 RA
+*STM CN
+*MXP 14
+*DFN PR/2.54mm/RA/14x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99614xx)
+PR14 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0
+
+.PR/2.54mm/RA/15x1 (M20-99615xx) :14 ;Pinrow Right Angle Single row 15x1
+HDRRA15W64P254_15X1_3810X254H254
+*VALUE PR15 RA
+*STM CN
+*MXP 15
+*DFN PR/2.54mm/RA/15x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99615xx)
+PR15 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0
+
+.PR/2.54mm/RA/16x1 (M20-99616xx) :14 ;Pinrow Right Angle Single row 16x1
+HDRRA16W64P254_16X1_4064X254H254
+*VALUE PR16 RA
+*STM CN
+*MXP 16
+*DFN PR/2.54mm/RA/16x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99616xx)
+PR16 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0
+
+.PR/2.54mm/RA/17x1 (M20-99617xx) :14 ;Pinrow Right Angle Single row 17x1
+HDRRA17W64P254_17X1_4318X254H254
+*VALUE PR17 RA
+*STM CN
+*MXP 17
+*DFN PR/2.54mm/RA/17x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99617xx)
+PR17 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0
+
+.PR/2.54mm/RA/18x1 (M20-99618xx) :14 ;Pinrow Right Angle Single row 18x1
+HDRRA18W64P254_18X1_4572X254H254
+*VALUE PR18 RA
+*STM CN
+*MXP 18
+*DFN PR/2.54mm/RA/18x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99618xx)
+PR18 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0
+
+.PR/2.54mm/RA/19x1 (M20-99619xx) :14 ;Pinrow Right Angle Single row 19x1
+HDRRA19W64P254_19X1_4826X254H254
+*VALUE PR19 RA
+*STM CN
+*MXP 19
+*DFN PR/2.54mm/RA/19x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99619xx)
+PR19 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0
+
+.PR/2.54mm/RA/20x1 (M20-99620xx) :14 ;Pinrow Right Angle Single row 20x1
+HDRRA20W64P254_20X1_5080X254H254
+*VALUE PR20 RA
+*STM CN
+*MXP 20
+*DFN PR/2.54mm/RA/20x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99620xx)
+PR20 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0
+
+.PR/2.54mm/RA/2x2 (M20-99502xx) :13 ;Pinrow Right Angle Single row 2x2
+HDRRA4W64P254_2X2_508X254H508
+*VALUE PR2x2 RA
+*STM CN
+*MXP 4
+*DFN PR/2.54mm/RA/2x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99502xx)
+PR2x2 RA
+1.0 2.0 3.0 4.0
+
+.PR/2.54mm/RA/3x2 (M20-99503xx) :15 ;Pinrow Right Angle Single row 3x2
+HDRRA6W64P254_3X2_762X254H508
+*VALUE PR3x2 RA
+*STM CN
+*MXP 6
+*DFN PR/2.54mm/RA/3x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99503xx)
+PR3x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0
+
+.PR/2.54mm/RA/4x2 (M20-99504xx) :15 ;Pinrow Right Angle Single row 4x2
+HDRRA8W64P254_4X2_1016X254H508
+*VALUE PR4x2 RA
+*STM CN
+*MXP 8
+*DFN PR/2.54mm/RA/4x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99504xx)
+PR4x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0
+
+.PR/2.54mm/RA/5x2 (M20-99505xx) :15 ;Pinrow Right Angle Single row 5x2
+HDRRA10W64P254_5X2_1270X254H508
+*VALUE PR5x2 RA
+*STM CN
+*MXP 10
+*DFN PR/2.54mm/RA/5x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99505xx)
+PR5x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0
+
+.PR/2.54mm/RA/6x2 (M20-99506xx) :15 ;Pinrow Right Angle Single row 6x2
+HDRRA12W64P254_6X2_1524X254H508
+*VALUE PR6x2 RA
+*STM CN
+*MXP 12
+*DFN PR/2.54mm/RA/6x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99506xx)
+PR6x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0
+
+.PR/2.54mm/RA/7x2 (M20-99507xx) :15 ;Pinrow Right Angle Single row 7x2
+HDRRA14W64P254_7X2_1778X254H508
+*VALUE PR7x2 RA
+*STM CN
+*MXP 14
+*DFN PR/2.54mm/RA/7x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99507xx)
+PR7x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0
+
+.PR/2.54mm/RA/8x2 (M20-99508xx) :15 ;Pinrow Right Angle Single row 8x2
+HDRRA16W64P254_8X2_2032X254H508
+*VALUE PR8x2 RA
+*STM CN
+*MXP 16
+*DFN PR/2.54mm/RA/8x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99508xx)
+PR8x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0
+
+.PR/2.54mm/RA/9x2 (M20-99509xx) :15 ;Pinrow Right Angle Single row 9x2
+HDRRA18W64P254_9X2_2286X254H508
+*VALUE PR9x2 RA
+*STM CN
+*MXP 18
+*DFN PR/2.54mm/RA/9x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99509xx)
+PR9x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0
+
+.PR/2.54mm/RA/10x2 (M20-99510xx) :15 ;Pinrow Right Angle Single row 10x2
+HDRRA20W64P254_10X2_2540X254H508
+*VALUE PR10x2 RA
+*STM CN
+*MXP 20
+*DFN PR/2.54mm/RA/10x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99510xx)
+PR10x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0
+
+.PR/2.54mm/RA/11x2 (M20-99511xx) :15 ;Pinrow Right Angle Single row 11x2
+HDRRA22W64P254_11X2_2794X254H508
+*VALUE PR11x2 RA
+*STM CN
+*MXP 22
+*DFN PR/2.54mm/RA/11x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99511xx)
+PR11x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0
+
+.PR/2.54mm/RA/12x2 (M20-99512xx) :15 ;Pinrow Right Angle Single row 12x2
+HDRRA24W64P254_12X2_3048X254H508
+*VALUE PR12x2 RA
+*STM CN
+*MXP 24
+*DFN PR/2.54mm/RA/12x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99512xx)
+PR12x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0
+
+.PR/2.54mm/RA/13x2 (M20-99513xx) :15 ;Pinrow Right Angle Single row 13x2
+HDRRA26W64P254_13X2_3302X254H508
+*VALUE PR13x2 RA
+*STM CN
+*MXP 26
+*DFN PR/2.54mm/RA/13x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99513xx)
+PR13x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0
+
+.PR/2.54mm/RA/14x2 (M20-99514xx) :15 ;Pinrow Right Angle Single row 14x2
+HDRRA28W64P254_14X2_3556X254H508
+*VALUE PR14x2 RA
+*STM CN
+*MXP 28
+*DFN PR/2.54mm/RA/14x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99514xx)
+PR14x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0
+
+.PR/2.54mm/RA/15x2 (M20-99515xx) :15 ;Pinrow Right Angle Single row 15x2
+HDRRA30W64P254_15X2_3810X254H508
+*VALUE PR15x2 RA
+*STM CN
+*MXP 30
+*DFN PR/2.54mm/RA/15x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99515xx)
+PR15x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0
+
+.PR/2.54mm/RA/16x2 (M20-99516xx) :15 ;Pinrow Right Angle Single row 16x2
+HDRRA32W64P254_16X2_4064X254H508
+*VALUE PR16x2 RA
+*STM CN
+*MXP 32
+*DFN PR/2.54mm/RA/16x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99516xx)
+PR16x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0
+
+.PR/2.54mm/RA/17x2 (M20-99517xx) :15 ;Pinrow Right Angle Single row 17x2
+HDRRA34W64P254_17X2_4318X254H508
+*VALUE PR17x2 RA
+*STM CN
+*MXP 34
+*DFN PR/2.54mm/RA/17x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99517xx)
+PR17x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 &
+33.0 34.0
+
+.PR/2.54mm/RA/18x2 (M20-99518xx) :15 ;Pinrow Right Angle Single row 18x2
+HDRRA36W64P254_18X2_4572X254H508
+*VALUE PR18x2 RA
+*STM CN
+*MXP 36
+*DFN PR/2.54mm/RA/18x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99518xx)
+PR18x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 &
+33.0 34.0 35.0 36.0
+
+.PR/2.54mm/RA/19x2 (M20-99519xx) :15 ;Pinrow Right Angle Single row 19x2
+HDRRA38W64P254_19X2_4826X254H508
+*VALUE PR19x2 RA
+*STM CN
+*MXP 38
+*DFN PR/2.54mm/RA/19x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99519xx)
+PR19x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 &
+33.0 34.0 35.0 36.0 37.0 38.0
+
+.PR/2.54mm/RA/20x2 (M20-99520xx) :15 ;Pinrow Right Angle Single row 20x2
+HDRRA40W64P254_20X2_5080X254H508
+*VALUE PR20x2 RA
+*STM CN
+*MXP 40
+*DFN PR/2.54mm/RA/20x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+%MfgPartnr (M20-99520xx)
+PR20x2 RA
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 &
+33.0 34.0 35.0 36.0 37.0 38.0 39.0 40.0
+
+.PH/2.54mm/2x1 (M20-78202xx) :6 ;Pinheader Female Straight Single Row 2x1
+RHDRV2W64P254_2X1_548X254H864
+*VALUE PH2
+*STM CN
+*MXP 2
+*DFN PH/2.54mm/2x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR2
+1.0 2.0
+
+.PH/2.54mm/3x1 (M20-78203xx) :4 ;Pinheader Female Straight Single Row 3x1
+RHDRV3W64P254_3X1_802X254H864
+*VALUE PH3
+*STM CN
+*MXP 3
+*DFN PH/2.54mm/3x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR3
+1.0 2.0 3.0
+
+.PH/2.54mm/4x1 (M20-78204xx) :5 ;Pinheader Female Straight Single Row 4x1
+RHDRV4W64P254_4X1_1056X254H864
+*VALUE PH4
+*STM CN
+*MXP 4
+*DFN PH/2.54mm/4x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR4
+1.0 2.0 3.0 4.0
+
+.PH/2.54mm/5x1 (M20-78205xx) :5 ;Pinheader Female Straight Single Row 5x1
+RHDRV5W64P254_5X1_1310X254H864
+*VALUE PH5
+*STM CN
+*MXP 5
+*DFN PH/2.54mm/5x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR5
+1.0 2.0 3.0 4.0 5.0
+
+.PH/2.54mm/6x1 (M20-78206xx) :5 ;Pinheader Female Straight Single Row 6x1
+RHDRV6W64P254_6X1_1564X254H864
+*VALUE PH6
+*STM CN
+*MXP 6
+*DFN PH/2.54mm/6x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR6
+1.0 2.0 3.0 4.0 5.0 6.0
+
+.PH/2.54mm/7x1 (M20-78207xx) :5 ;Pinheader Female Straight Single Row 7x1
+RHDRV7W64P254_7X1_1818X254H864
+*VALUE PH7
+*STM CN
+*MXP 7
+*DFN PH/2.54mm/7x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR7
+1.0 2.0 3.0 4.0 5.0 6.0 7.0
+
+.PH/2.54mm/8x1 (M20-78208xx) :5 ;Pinheader Female Straight Single Row 8x1
+RHDRV8W64P254_8X1_2072X254H864
+*VALUE PH8
+*STM CN
+*MXP 8
+*DFN PH/2.54mm/8x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR8
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0
+
+.PH/2.54mm/9x1 (M20-78209xx) :6 ;Pinheader Female Straight Single Row 9x1
+RHDRV9W64P254_9X1_2326X254H864
+*VALUE PH9
+*STM CN
+*MXP 9
+*DFN PH/2.54mm/9x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR9
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0
+
+.PH/2.54mm/10x1 (M20-78210xx) :5 ;Pinheader Female Straight Single Row 10x1
+RHDRV10W64P254_10X1_2580X254H864
+*VALUE PH10
+*STM CN
+*MXP 10
+*DFN PH/2.54mm/10x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR10
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0
+
+.PH/2.54mm/11x1 (M20-78211xx) :5 ;Pinheader Female Straight Single Row 11x1
+RHDRV11W64P254_11X1_2834X254H864
+*VALUE PH11
+*STM CN
+*MXP 11
+*DFN PH/2.54mm/11x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR11
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0
+
+.PH/2.54mm/12x1 (M20-78212xx) :5 ;Pinheader Female Straight Single Row 12x1
+RHDRV12W64P254_12X1_3088X254H864
+*VALUE PH12
+*STM CN
+*MXP 12
+*DFN PH/2.54mm/12x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR12
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0
+
+.PH/2.54mm/13x1 (M20-78213xx) :7 ;Pinheader Female Straight Single Row 13x1
+RHDRV13W64P254_13X1_3342X254H864
+*VALUE PH13
+*STM CN
+*MXP 13
+*DFN PH/2.54mm/13x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR13
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0
+
+.PH/2.54mm/14x1 (M20-78214xx) :5 ;Pinheader Female Straight Single Row 14x1
+RHDRV14W64P254_14X1_3596X254H864
+*VALUE PH14
+*STM CN
+*MXP 14
+*DFN PH/2.54mm/14x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR14
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0
+
+.PH/2.54mm/15x1 (M20-78215xx) :6 ;Pinheader Female Straight Single Row 15x1
+RHDRV15W64P254_15X1_3850X254H864
+*VALUE PH15
+*STM CN
+*MXP 15
+*DFN PH/2.54mm/15x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR15
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0
+
+.PH/2.54mm/16x1 (M20-78216xx) :6 ;Pinheader Female Straight Single Row 16x1
+RHDRV16W64P254_16X1_4104X254H864
+*VALUE PH16
+*STM CN
+*MXP 16
+*DFN PH/2.54mm/16x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR16
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0
+
+.PH/2.54mm/17x1 (M20-78217xx) :7 ;Pinheader Female Straight Single Row 17x1
+RHDRV17W64P254_17X1_4358X254H864
+*VALUE PH17
+*STM CN
+*MXP 17
+*DFN PH/2.54mm/17x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR17
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0
+
+.PH/2.54mm/18x1 (M20-78218xx) :6 ;Pinheader Female Straight Single Row 18x1
+RHDRV18W64P254_18X1_4612X254H864
+*VALUE PH18
+*STM CN
+*MXP 18
+*DFN PH/2.54mm/18x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR18
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0
+
+.PH/2.54mm/19x1 (M20-78219xx) :6 ;Pinheader Female Straight Single Row 19x1
+RHDRV19W64P254_19X1_4866X254H864
+*VALUE PH19
+*STM CN
+*MXP 19
+*DFN PH/2.54mm/19x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR19
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0
+
+.PH/2.54mm/20x1 (M20-78220xx) :6 ;Pinheader Female Straight Single Row 20x1
+RHDRV20W64P254_20X1_5120X254H864
+*VALUE PH20
+*STM CN
+*MXP 20
+*DFN PH/2.54mm/20x1
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR20
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0
+
+.PH/2.54mm/2x2 (M20-78302xx) :8 ;Pinheader Female Straight Double Row 2x2
+RHDRV4W64P254_2X2_548X508H864
+*VALUE PH2X2
+*STM CN
+*MXP 4
+*DFN PH/2.54mm/2x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR2X2
+1.0 2.0 3.0 4.0
+
+.PH/2.54mm/3x2 (M20-78303xx) :5 ;Pinheader Female Straight Double Row 3x2
+RHDRV6W64P254_3X2_802X508H864
+*VALUE PH3X2
+*STM CN
+*MXP 6
+*DFN PH/2.54mm/3x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR3X2
+1.0 2.0 3.0 4.0 5.0 6.0
+
+.PH/2.54mm/4x2 (M20-78304xx) :8 ;Pinheader Female Straight Double Row 4X2
+RHDRV8W64P254_4X2_1056X508H864
+*VALUE PH4X2
+*STM CN
+*MXP 8
+*DFN PH/2.54mm/4x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR4X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0
+
+.PH/2.54mm/5x2 (M20-78305xx) :7 ;Pinheader Female Straight Double Row 5X2
+RHDRV10W64P254_5X2_1310X508H864
+*VALUE PH5X2
+*STM CN
+*MXP 10
+*DFN PH/2.54mm/5x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR5X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0
+
+.PH/2.54mm/6x2 (M20-78306xx) :7 ;Pinheader Female Straight Double Row 6X2
+RHDRV12W64P254_6X2_1564X508H864
+*VALUE PH6X2
+*STM CN
+*MXP 12
+*DFN PH/2.54mm/6x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR6X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0
+
+.PH/2.54mm/7x2 (M20-78307xx) :7 ;Pinheader Female Straight Double Row 7X2
+RHDRV14W64P254_7X2_1818X508H864
+*VALUE PH7X2
+*STM CN
+*MXP 14
+*DFN PH/2.54mm/7x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR7X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0
+
+.PH/2.54mm/8x2 (M20-78308xx) :7 ;Pinheader Female Straight Double Row 8X2
+RHDRV16W64P254_8X2_2072X508H864
+*VALUE PH8X2
+*STM CN
+*MXP 16
+*DFN PH/2.54mm/8x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR8X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0
+
+.PH/2.54mm/9x2 (M20-78309xx) :7 ;Pinheader Female Straight Double Row 9X2
+RHDRV18W64P254_9X2_2326X508H864
+*VALUE PH9X2
+*STM CN
+*MXP 18
+*DFN PH/2.54mm/9x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR9X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0
+
+.PH/2.54mm/10x2 (M20-78310xx) :7 ;Pinheader Female Straight Double Row 10X2
+RHDRV20W64P254_10X2_2580X508H864
+*VALUE PH10X2
+*STM CN
+*MXP 20
+*DFN PH/2.54mm/10x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR10X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0
+
+.PH/2.54mm/11x2 (M20-78311xx) :7 ;Pinheader Female Straight Double Row 11X2
+RHDRV22W64P254_11X2_2834X508H864
+*VALUE PH11X2
+*STM CN
+*MXP 22
+*DFN PH/2.54mm/11x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR11X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0
+
+.PH/2.54mm/12x2 (M20-78312xx) :7 ;Pinheader Female Straight Double Row 12X2
+RHDRV24W64P254_12X2_3088X508H864
+*VALUE PH12X2
+*STM CN
+*MXP 24
+*DFN PH/2.54mm/12x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR12X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0
+
+.PH/2.54mm/13x2 (M20-78313xx) :7 ;Pinheader Female Straight Double Row 13X2
+RHDRV26W64P254_13X2_3342X508H864
+*VALUE PH13X2
+*STM CN
+*MXP 26
+*DFN PH/2.54mm/13x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR13X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0
+
+.PH/2.54mm/14x2 (M20-78314xx) :7 ;Pinheader Female Straight Double Row 14X2
+RHDRV28W64P254_14X2_3596X508H864
+*VALUE PH14X2
+*STM CN
+*MXP 28
+*DFN PH/2.54mm/14x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR14X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0
+
+.PH/2.54mm/15x2 (M20-78315xx) :7 ;Pinheader Female Straight Double Row 15X2
+RHDRV30W64P254_15X2_3850X508H864
+*VALUE PH15X2
+*STM CN
+*MXP 30
+*DFN PH/2.54mm/15x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR15X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0
+
+.PH/2.54mm/16x2 (M20-78316xx) :7 ;Pinheader Female Straight Double Row 16X2
+RHDRV32W64P254_16X2_4104X508H864
+*VALUE PH16X2
+*STM CN
+*MXP 32
+*DFN PH/2.54mm/16x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR16X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0
+
+.PH/2.54mm/17x2 (M20-78317xx) :7 ;Pinheader Female Straight Double Row 17X2
+RHDRV34W64P254_17X2_4358X508H864
+*VALUE PH17X2
+*STM CN
+*MXP 34
+*DFN PH/2.54mm/17x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR17X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 &
+33.0 34.0
+
+.PH/2.54mm/18x2 (M20-78318xx) :7 ;Pinheader Female Straight Double Row 18X2
+RHDRV36W64P254_18X2_4612X508H864
+*VALUE PH18X2
+*STM CN
+*MXP 36
+*DFN PH/2.54mm/18x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR18X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 &
+33.0 34.0 35.0 36.0
+
+.PH/2.54mm/19x2 (M20-78319xx) :7 ;Pinheader Female Straight Double Row 19X2
+RHDRV38W64P254_19X2_4866X508H864
+*VALUE PH19X2
+*STM CN
+*MXP 38
+*DFN PH/2.54mm/19x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR19X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 &
+33.0 34.0 35.0 36.0 37.0 38.0
+
+.PH/2.54mm/20x2 (M20-78320xx) :6 ;Pinheader Female Straight Double Row 20x2
+RHDRV40W64P254_20X2_5120X508H864
+*VALUE PH20X2
+*STM CN
+*MXP 40
+*DFN PH/2.54mm/20x2
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Connector/Harwin M20.pdf)
+PR20X2
+1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 &
+18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 &
+33.0 34.0 35.0 36.0 37.0 38.0 39.0 40.0
+
+.END

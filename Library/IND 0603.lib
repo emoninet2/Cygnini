@@ -1,0 +1,199 @@
+#   FORMAT 32
++N0 'root' &
+'IND/2n7H/0603' &
+'IND/3n9H/0603' &
+'IND/8n2H/0603' &
+'IND/10nH/0603' &
+'IND/5n6H/0603' &
+'IND/6n8H/0603' &
+'IND/4n7H/0603' &
+'IND/1n0H/0603' &
+'IND/1n5H/0603' &
+'IND/1n8H/0603' &
+'IND/2n2H/0603' &
+'IND/3n3H/0603' &
+'IND/18nH/0603' &
+'IND/27nH/0603' &
+'IND/120nH/0603'
+
+.IND/2n7H/0603 (L-14C2N7SV4T-ND) :3 ;Fixed High Frequency Inductor 150mA 100mOhm +/-0.3nH
+INDC1608X95L30
+*VALUE 2n7H
+*STM L
+*MXP 2
+*DFN IND/2n7H/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C2N7SV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/3n9H/0603 (D-712-1429-1-ND) :3 ;Fixed High Frequency Inductor 200mA 100mOhm +/-0.3nH
+INDC1608X95L30
+*VALUE 3n9H
+*STM L
+*MXP 2
+*DFN IND/3n9H/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C3N9SV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/8n2H/0603 (D-712-1433-1-ND) :3 ;Fixed High Frequency Inductor 300mA 330mOhm +/-5%
+INDC1608X95L30
+*VALUE 8n2H
+*STM L
+*MXP 2
+*DFN IND/8n2H/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C8N2JV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/10nH/0603 (D-712-1434-1-ND) :2 ;Fixed High Frequency Inductor 300mA 350mOhm +/-5%
+INDC1608X95L30
+*VALUE 10nH
+*STM L
+*MXP 2
+*DFN IND/10nH/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C10NJV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/5n6H/0603 (D-712-1431-1-ND) :3 ;Fixed High Frequency Inductor 250mA 100mOhm +/-0.3nH
+INDC1608X95L30
+*VALUE 5n6H
+*STM L
+*MXP 2
+*DFN IND/5n6H/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C5N6SV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/6n8H/0603 (D-712-1432-1-ND) :3 ;Fixed High Frequency Inductor 300mA 300mOhm +/-5%
+INDC1608X95L30
+*VALUE 6n8H
+*STM L
+*MXP 2
+*DFN IND/6n8H/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C6N8JV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/4n7H/0603 (D-712-1430-1-ND) :3 ;Fixed High Frequency Inductor 300mA 200mOhm +/-0.3nH
+INDC1608X95L30
+*VALUE 4n7H
+*STM L
+*MXP 2
+*DFN IND/4n7H/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C4N7SV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/1n0H/0603 (D-712-1424-1-ND) :2 ;Fixed High Frequency Inductor 100mA 100mOhm +/-0.3nH
+INDC1608X95L30
+*VALUE 1n0H
+*STM L
+*MXP 2
+*DFN IND/1n0H/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C1N0SV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/1n5H/0603 (D-712-1425-1-ND) :3 ;Fixed High Frequency Inductor 100mA 100mOhm +/-0.3nH
+INDC1608X95L30
+*VALUE 1n5H
+*STM L
+*MXP 2
+*DFN IND/1n5H/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C1N5SV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/1n8H/0603 (D-712-1426-1-ND) :3 ;Fixed High Frequency Inductor 100mA 100mOhm +/-0.3nH
+INDC1608X95L30
+*VALUE 1n8H
+*STM L
+*MXP 2
+*DFN IND/1n8H/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C1N8SV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/2n2H/0603 (D-712-1427-1-ND) :3 ;Fixed High Frequency Inductor 150mA 100mOhm +/-0.3nH
+INDC1608X95L30
+*VALUE 2n2H
+*STM L
+*MXP 2
+*DFN IND/2n2H/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C2N2SV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/3n3H/0603 (D-712-1428-1-ND) :3 ;Fixed High Frequency Inductor 300mA 200mOhm +/-0.3nH
+INDC1608X95L30
+*VALUE 3n3H
+*STM L
+*MXP 2
+*DFN IND/3n3H/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C3N3SV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/18nH/0603 (D-712-1437-1-ND) :2 ;Fixed High Frequency Inductor 500mA 500mOhm +/-5%
+INDC1608X95L30
+*VALUE 18nH
+*STM L
+*MXP 2
+*DFN IND/18nH/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C18NJV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/27nH/0603 (D-712-1439-1-ND) :3 ;Fixed High Frequency Inductor 600mA 100mOhm +/-5%
+INDC1608X95L30
+*VALUE 27nH
+*STM L
+*MXP 2
+*DFN IND/27nH/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14C27NJV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.IND/120nH/0603 (D-712-1447-1-ND) :3 ;Fixed High Frequency Inductor 300mA 1.3Ohm +/-5%
+INDC1608X95L30
+*VALUE 120nH
+*STM L
+*MXP 2
+*DFN IND/120nH/0603
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/Inductor/johanson_rf_ceramic_chip_inductors-L14CxxxSV6T.pdf)
+%MfgPartnr (L-14CR12JV4T)
+%ONYX Parttype (INDC1608X95L30)
+Inductor
+1.0 2.0
+
+.END

@@ -1,0 +1,95 @@
+# FORMAT 32
+
++N0 'root' &
+'POT/10K0/23B/SMD' &
+'POT/500K/23B/SMD' &
+'POT/100R/23B/SMD' &
+'RES/10R0/1206' &
+'RES/1R00/1206' 
+
+
+
+
+
+
+
+
+
+
+
+.POT/100R/23B/SMD (D-987-1591-1-ND) :5 ;Single turn CERMET potmeter, 4mm, sealed
+SOT115P650X300-4L60 (modified)
+*VALUE 100R
+*STM RP
+*MXP 3
+*DFN POT/100R/23B/SMD
+*PAC (POT/100R/23B/SMD) New Part - not verified!
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/RES_SPES/POT23.pdf)
+%ONYX Parttype (POT 23B)
+%MfgPartnr (23BR100LFTR)
+Potmeter
+2.0 1.0 3.0
+
+
+
+
+
+.POT/10K0/23B/SMD (D-987-1014-1-ND) :6 ;Single turn CERMET potmeter, 4mm, sealed
+SOT115P650X300-4L60 (modified)
+*VALUE 10K0
+*STM RP
+*MXP 3
+*DFN POT/10K0/23B/SMD
+*PAC (POT/10K0/23B/SMD) New Part - not verified!
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/RES_SPES/POT23.pdf)
+%ONYX Parttype (POT 23B)
+%MfgPartnr (23BR10KLFTR)
+Potmeter
+2.0 1.0 3.0
+
+
+
+
+.RES/10R0/1206 :9 ;Generic 10R 1206 Resistor
+RESC3216X55L50
+*VALUE 10R0
+*STM R
+*MXP 2
+*DFN RES/10R0/1206
+*SPI R1% 10R
+%ONYX Parttype (RESC3216X55L50)
+Resistor
+1.0 2.0
+
+
+
+.RES/1R00/1206 :1 ;Generic 1R0 1206 Resistor
+RESC3216X55L50
+*VALUE 1R00
+*STM R
+*MXP 2
+*DFN RES/1R00/1206
+*SPI R1% 1R
+%ONYX Parttype (RESC3216X55L50)
+Resistor
+1.0 2.0
+
+
+.POT/500K/23B/SMD (E-164-32-140) :7 ;Single turn CERMET potmeter, 4mm, sealed
+SOT115P650X300-4L60 (modified)
+*VALUE 500K
+*STM RP
+*MXP 3
+*DFN POT/500K/23B/SMD
+*PAC (POT/500K/23B/SMD) New Part - not verified!
+~Link PDF Datasheet (http://tid.uio.no/elab/Datasheets/IPCLib/RES_SPES/POT23.pdf)
+%ONYX Parttype (POT 23B)
+%MfgPartnr (23BR500KLFTR)
+Potmeter
+2.0 1.0 3.0
+
+
+
+
+
+.END
