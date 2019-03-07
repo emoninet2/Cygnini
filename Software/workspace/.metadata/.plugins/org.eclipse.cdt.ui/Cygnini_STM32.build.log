@@ -1,0 +1,16 @@
+00:33:39 **** Incremental Build of configuration Debug for project Cygnini_STM32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -o Cygnini_STM32.elf src\main.o src\startup.o src\syscalls.o src\system_init.o src\tiny_printf.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32L443RC_FLASH.ld -specs=nosys.specs -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=Cygnini_STM32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+C:\Program Files (x86)\Atollic\TrueSTUDIO for STM32 9.2.0\ide\jre\bin\java -jar C:\Program Files (x86)\Atollic\TrueSTUDIO for STM32 9.2.0\Tools\arm-atollic-reports.jar sizeinfo list Cygnini_STM32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+    348	      8	    540	    896	    380	Cygnini_STM32.elf
+Print size information done
+Generate listing file
+Output sent to: Cygnini_STM32.list
+Generate listing file done
+Generate build reports done
+
+00:33:39 Build Finished (took 621ms)
+

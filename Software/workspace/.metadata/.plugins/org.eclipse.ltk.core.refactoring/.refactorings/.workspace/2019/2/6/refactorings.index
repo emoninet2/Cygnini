@@ -1,0 +1,5 @@
+1549307865201	Delete resource 'Cygnini'
+1549307974503	Delete resource 'microcontroller_board'
+1549309440323	Delete resource 'Cygnini/Drivers/CMSIS'
+1549310295269	Delete resource 'Cygnini/template_CortexM_flash.ld'
+1549310672139	Delete resource 'Cygnini/inc/syscalls.c'

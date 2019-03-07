@@ -1,0 +1,11 @@
+00:13:06 **** Incremental Build of configuration Debug for project FreeRTOS_Tutorial ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c ..\..\..\CMSIS_Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -D_RTE_ -DSTM32F446xx -IC:/Users/emon1/Atollic/TrueSTUDIO/CMSIS_Packs/ARM/CMSIS-FreeRTOS/10.0.1/CMSIS/RTOS2/FreeRTOS/Include -IC:/Users/emon1/Atollic/TrueSTUDIO/CMSIS_Packs/ARM/CMSIS-FreeRTOS/10.0.1/Source/include -IC:/Users/emon1/Atollic/TrueSTUDIO/CMSIS_Packs/ARM/CMSIS-FreeRTOS/10.0.1/Source/portable/GCC/ARM_CM4F -IC:/Users/emon1/Atollic/TrueSTUDIO/CMSIS_Packs/ARM/CMSIS/5.4.0/CMSIS/Core/Include -IC:/Users/emon1/Atollic/TrueSTUDIO/CMSIS_Packs/Keil/STM32F4xx_DFP/2.13.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include -IC:/Users/emon1/Atollic/TrueSTUDIO/CMSIS_Packs/Keil/STM32F4xx_DFP/2.13.0/Drivers/STM32F4xx_HAL_Driver/Inc -IC:\Users\emon1\Atollic\TrueSTUDIO\STM32_workspace_9.2\FreeRTOS_Tutorial/RTE -IC:\Users\emon1\Atollic\TrueSTUDIO\STM32_workspace_9.2\FreeRTOS_Tutorial/RTE/RTOS -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o RTE\Device\STM32F446RETx\stm32f4xx_hal_pwr.o 
+In file included from ..\..\..\CMSIS_Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c:42:0:
+C:/Users/emon1/Atollic/TrueSTUDIO/CMSIS_Packs/Keil/STM32F4xx_DFP/2.13.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:46:32: fatal error: stm32f4xx_hal_conf.h: No such file or directory
+ #include "stm32f4xx_hal_conf.h"
+                                ^
+compilation terminated.
+
+00:13:06 Build Finished (took 161ms)
+

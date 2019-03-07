@@ -1,0 +1,8 @@
+00:30:49 **** Incremental Build of configuration Debug for project Cygnini2 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -o Cygnini2.elf src\main.o src\startup.o src\syscalls.o src\system_init.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../template_CortexM_flash.ld -specs=nosys.specs -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=Cygnini2.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+c:/program files (x86)/atollic/truestudio for stm32 9.2.0/armtools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/bin/ld.exe:../template_CortexM_flash.ld:41: syntax error
+collect2.exe: error: ld returned 1 exit status
+
+00:30:49 Build Finished (took 168ms)
+
