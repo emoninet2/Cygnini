@@ -1,0 +1,15 @@
+/*
+ * main.h
+ *
+ *  Created on: Mar 7, 2019
+ *      Author: emon1
+ */
+
+#ifndef MAIN_H_
+#define MAIN_H_
+
+/** System Clock Configuration
+*/
+void SystemClock_Config(void)
+
+#endif /* MAIN_H_ */

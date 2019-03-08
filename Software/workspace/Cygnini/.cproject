@@ -39,6 +39,7 @@
 							</tool>
 							<tool id="com.atollic.truestudio.exe.debug.toolchain.gcc.1229435862" name="C Compiler" superClass="com.atollic.truestudio.exe.debug.toolchain.gcc">
 								<option id="com.atollic.truestudio.gcc.symbols.defined.1835574508" name="Defined symbols" superClass="com.atollic.truestudio.gcc.symbols.defined" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="USE_HAL_DRIVER"/>
 									<listOptionValue builtIn="false" value="STM32L443xx"/>
 								</option>
 								<option id="com.atollic.truestudio.gcc.directories.select.776788789" name="Include path" superClass="com.atollic.truestudio.gcc.directories.select" useByScannerDiscovery="false" valueType="includePath">
@@ -54,6 +55,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Middlewares/Third_Party/FreeRTOS/Source}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Middlewares/ST/STM32_USB_Device_Library/Core/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Components/C12832}&quot;"/>
 								</option>
 								<option id="com.atollic.truestudio.common_options.target.endianess.787406456" name="Endianess" superClass="com.atollic.truestudio.common_options.target.endianess" useByScannerDiscovery="false"/>
 								<option id="com.atollic.truestudio.common_options.target.mcpu.1615984723" name="Microcontroller" superClass="com.atollic.truestudio.common_options.target.mcpu" useByScannerDiscovery="false" value="STM32L443RC" valueType="enumerated"/>
@@ -107,7 +109,10 @@
 								<option id="com.atollic.truestudio.ldcc.general.scriptfile.1485771559" name="Linker script" superClass="com.atollic.truestudio.ldcc.general.scriptfile" value="../stm32l4_flash.ld" valueType="string"/>
 							</tool>
 							<tool id="com.atollic.truestudio.ar.base.1377367503" name="Archiver" superClass="com.atollic.truestudio.ar.base"/>
-							<tool id="com.atollic.truestudio.exe.debug.toolchain.secoutput.984357857" name="Other" superClass="com.atollic.truestudio.exe.debug.toolchain.secoutput"/>
+							<tool id="com.atollic.truestudio.exe.debug.toolchain.secoutput.984357857" name="Other" superClass="com.atollic.truestudio.exe.debug.toolchain.secoutput">
+								<option id="com.atollic.truestudio.secoutput.general.convert.222968583" name="Convert build output" superClass="com.atollic.truestudio.secoutput.general.convert" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.atollic.truestudio.mbs.convert.263612443" name="Format" superClass="com.atollic.truestudio.mbs.convert" useByScannerDiscovery="false" value="com.atollic.truestudio.mbs.convert.hex" valueType="enumerated"/>
+							</tool>
 						</toolChain>
 					</folderInfo>
 					<folderInfo id="com.atollic.truestudio.exe.debug.2033098541.1293656315" name="/" resourcePath="Middlewares">
@@ -115,8 +120,13 @@
 							<option id="com.atollic.truestudio.general.runtimelib.1635645909.985321532" name="Runtime Library" superClass="com.atollic.truestudio.general.runtimelib.1635645909"/>
 							<option id="com.atollic.truestudio.toolchain_options.mcu.367131480.485927461" name="Microcontroller" superClass="com.atollic.truestudio.toolchain_options.mcu.367131480"/>
 							<option id="com.atollic.truestudio.toolchain_options.vendor.473120738.727490033" name="Vendor name" superClass="com.atollic.truestudio.toolchain_options.vendor.473120738"/>
-							<tool id="com.atollic.truestudio.exe.debug.toolchain.as.402306244" name="Assembler" superClass="com.atollic.truestudio.exe.debug.toolchain.as.767908837"/>
-							<tool id="com.atollic.truestudio.exe.debug.toolchain.gcc.2133110564" name="C Compiler" superClass="com.atollic.truestudio.exe.debug.toolchain.gcc.1229435862"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.atollic.truestudio.exe.debug.toolchain.platform" isAbstract="false" name="Debug platform" osList="all" superClass="com.atollic.truestudio.exe.debug.toolchain.platform"/>
+							<tool id="com.atollic.truestudio.exe.debug.toolchain.as.402306244" name="Assembler" superClass="com.atollic.truestudio.exe.debug.toolchain.as.767908837">
+								<inputType id="com.atollic.truestudio.as.input.592986709" name="Input" superClass="com.atollic.truestudio.as.input"/>
+							</tool>
+							<tool id="com.atollic.truestudio.exe.debug.toolchain.gcc.2133110564" name="C Compiler" superClass="com.atollic.truestudio.exe.debug.toolchain.gcc.1229435862">
+								<inputType id="com.atollic.truestudio.gcc.input.1106384922" superClass="com.atollic.truestudio.gcc.input"/>
+							</tool>
 							<tool id="com.atollic.truestudio.exe.debug.toolchain.ld.1535562925" name="C Linker" superClass="com.atollic.truestudio.exe.debug.toolchain.ld.1031357236"/>
 							<tool id="com.atollic.truestudio.exe.debug.toolchain.gpp.1279970956" name="C++ Compiler" superClass="com.atollic.truestudio.exe.debug.toolchain.gpp.1538751610"/>
 							<tool id="com.atollic.truestudio.exe.debug.toolchain.ldcc.1042728912" name="C++ Linker" superClass="com.atollic.truestudio.exe.debug.toolchain.ldcc.254181726"/>
@@ -125,6 +135,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Components"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="inc"/>
@@ -236,6 +247,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Components"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="inc"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
