@@ -1,0 +1,572 @@
+.DATESTAMP "22.01.2019"
+.VERSION "3.7"
+.DESIGNTECH VIAS_ALLOWED 2 3 1 4 .DESIGNTECH_END
+.AREA
+"Board" 2d I M U A ffffffff ffffffff
+10bf5a8 114e6b8 10bf5a8 13b0c58 0
+10bf5a8 13b0c58 148fea8 13b0c58 0
+148fea8 13b0c58 148fea8 114e6b8 0
+148fea8 114e6b8 10bf5a8 114e6b8 0
+.AS
+.AC 64 .AE
+.LAYR
+"Top Place" 1 P
+"Top Elec" 2 E
+"Bot Elec" 3 E
+"Bot Place" 4 P
+.PREC 0 0 5f5e100 5f5e100
+.LS 4e20 57e4 57e4 c350 61a8 57e4 61a8 57e4 61a8
+.PD
+1 1 -c350 -c350 c350 c350
+2 1 -a410 -b5a4 a410 b5a4
+3 1 -a410 -b5a4 a410 b5a4
+4 1 -b798 -b5a4 b798 b5a4
+5 1 -b798 -b5a4 b798 b5a4
+6 1 -6d60 -10b94 6d60 10b94
+7 1 -6d60 -10b94 6d60 10b94
+8 0 -27100 -27100 27100 27100
+9 1 -9470 -b1bc 9470 b1bc
+a 1 -9470 -b1bc 9470 b1bc
+.DE
+.SYMB
+.SST
+f "CAPC1608X90L40"
+.SA
+.SYMALTNAME " "
+.USA 0
+.ST
+-12304 0
+12304 0
+.TE
+.SS
+1
+-23e38 -11940 -23e38 11940 0
+-23e38 11940 23e38 11940 0
+23e38 11940 23e38 -11940 0
+23e38 -11940 -23e38 -11940 0
+.BE
+1
+-61a8 0 61a8 0 -3fff
+61a8 0 -61a8 0 -3fff
+.BE
+1
+-88b8 0 88b8 0 0
+.BE
+1
+0 88b8 0 -88b8 0
+.BE
+.SE
+.OA
+.SWA 0
+.ST
+-12304 0
+12304 0
+.TE
+.SS
+4
+-23e38 -11940 -23e38 11940 0
+-23e38 11940 23e38 11940 0
+23e38 11940 23e38 -11940 0
+23e38 -11940 -23e38 -11940 0
+.BE
+4
+-61a8 0 61a8 0 -3fff
+61a8 0 -61a8 0 -3fff
+.BE
+4
+-88b8 0 88b8 0 0
+.BE
+4
+0 88b8 0 -88b8 0
+.BE
+.SE
+.OA
+.AE
+.SST
+a "FIDUCIAL MARK"
+.SA
+.SYMALTNAME " "
+.USA 0
+.ST
+0 0
+0 0
+.TE
+.SS
+4
+0 -1e848 0 1e848 -3fff
+0 1e848 0 -1e848 -3fff
+.BE
+1
+0 -1e848 0 1e848 -3fff
+0 1e848 0 -1e848 -3fff
+.BE
+.SE
+.OA
+.SWA 0
+.ST
+0 0
+0 0
+.TE
+.SS
+1
+0 -1e848 0 1e848 -3fff
+0 1e848 0 -1e848 -3fff
+.BE
+4
+0 -1e848 0 1e848 -3fff
+0 1e848 0 -1e848 -3fff
+.BE
+.SE
+.OA
+.AE
+.SST
+19 "LEDC1608X75L30"
+.SA
+.SYMALTNAME " "
+.USA 0
+.ST
+14244 0
+-14244 0
+.TE
+.SS
+1
+-23a50 -11558 -23a50 11558 0
+-23a50 11558 23a50 11558 0
+23a50 11558 23a50 -11558 0
+23a50 -11558 -23a50 -11558 0
+.BE
+1
+-61a8 0 61a8 0 -3fff
+61a8 0 -61a8 0 -3fff
+.BE
+1
+-88b8 0 88b8 0 0
+.BE
+1
+0 88b8 0 -88b8 0
+.BE
+.SE
+.OA
+.SWA 0
+.ST
+14244 0
+-14244 0
+.TE
+.SS
+4
+-23a50 -11558 -23a50 11558 0
+-23a50 11558 23a50 11558 0
+23a50 11558 23a50 -11558 0
+23a50 -11558 -23a50 -11558 0
+.BE
+4
+-61a8 0 61a8 0 -3fff
+61a8 0 -61a8 0 -3fff
+.BE
+4
+-88b8 0 88b8 0 0
+.BE
+4
+0 88b8 0 -88b8 0
+.BE
+.SE
+.OA
+.AE
+.SST
+5 "MTGNP320H320"
+.SA
+.SYMALTNAME " "
+.USA 0
+.ST
+0 0
+.TE
+.SS
+1
+-61a8 0 61a8 0 -3fff
+61a8 0 -61a8 0 -3fff
+.BE
+1
+-88b8 0 88b8 0 0
+.BE
+1
+0 88b8 0 -88b8 0
+.BE
+1
+0 -4f588 0 4f588 -3fff
+0 4f588 0 -4f588 -3fff
+.BE
+.SE
+.OA
+.SWA 0
+.ST
+0 0
+.TE
+.SS
+4
+-61a8 0 61a8 0 -3fff
+61a8 0 -61a8 0 -3fff
+.BE
+4
+-88b8 0 88b8 0 0
+.BE
+4
+0 88b8 0 -88b8 0
+.BE
+4
+0 -4f588 0 4f588 -3fff
+0 4f588 0 -4f588 -3fff
+.BE
+.SE
+.OA
+.AE
+.SST
+14 "RESC1608X55L30"
+.SA
+.SYMALTNAME " "
+.USA 0
+.ST
+-1368c 0
+1368c 0
+.TE
+.SS
+1
+-23e38 -11940 -23e38 11940 0
+-23e38 11940 23e38 11940 0
+23e38 11940 23e38 -11940 0
+23e38 -11940 -23e38 -11940 0
+.BE
+1
+-61a8 0 61a8 0 -3fff
+61a8 0 -61a8 0 -3fff
+.BE
+1
+-88b8 0 88b8 0 0
+.BE
+1
+0 88b8 0 -88b8 0
+.BE
+.SE
+.OA
+.SWA 0
+.ST
+-1368c 0
+1368c 0
+.TE
+.SS
+4
+-23e38 -11940 -23e38 11940 0
+-23e38 11940 23e38 11940 0
+23e38 11940 23e38 -11940 0
+23e38 -11940 -23e38 -11940 0
+.BE
+4
+-61a8 0 61a8 0 -3fff
+61a8 0 -61a8 0 -3fff
+.BE
+4
+-88b8 0 88b8 0 0
+.BE
+4
+0 88b8 0 -88b8 0
+.BE
+.SE
+.OA
+.AE
+.SST
+1e "SOIC127P600X175-8L10"
+.SA
+.SYMALTNAME " "
+.USA 0
+.ST
+-2e824 -43a08
+-f80c -43a08
+f80c -43a08
+2e824 -43a08
+2e824 43a08
+f80c 43a08
+-f80c 43a08
+-2e824 43a08
+.TE
+.SS
+1
+-61a8 0 61a8 0 -3fff
+61a8 0 -61a8 0 -3fff
+.BE
+1
+0 88b8 0 -88b8 0
+.BE
+1
+-88b8 0 88b8 0 0
+.BE
+1
+-43238 -36ee8 -43238 36ee8 0
+-43238 36ee8 -3b920 36ee8 0
+-3b920 36ee8 -3b920 5a938 0
+-3b920 5a938 3b920 5a938 0
+3b920 5a938 3b920 36ee8 0
+3b920 36ee8 43238 36ee8 0
+43238 36ee8 43238 -36ee8 0
+43238 -36ee8 3b920 -36ee8 0
+3b920 -36ee8 3b920 -5a938 0
+3b920 -5a938 -3b920 -5a938 0
+-3b920 -5a938 -3b920 -36ee8 0
+-3b920 -36ee8 -43238 -36ee8 0
+.BE
+.SE
+.OA
+.SWA 0
+.ST
+-2e824 -43a08
+-f80c -43a08
+f80c -43a08
+2e824 -43a08
+2e824 43a08
+f80c 43a08
+-f80c 43a08
+-2e824 43a08
+.TE
+.SS
+4
+-61a8 0 61a8 0 -3fff
+61a8 0 -61a8 0 -3fff
+.BE
+4
+0 88b8 0 -88b8 0
+.BE
+4
+-88b8 0 88b8 0 0
+.BE
+4
+-43238 -36ee8 -43238 36ee8 0
+-43238 36ee8 -3b920 36ee8 0
+-3b920 36ee8 -3b920 5a938 0
+-3b920 5a938 3b920 5a938 0
+3b920 5a938 3b920 36ee8 0
+3b920 36ee8 43238 36ee8 0
+43238 36ee8 43238 -36ee8 0
+43238 -36ee8 3b920 -36ee8 0
+3b920 -36ee8 3b920 -5a938 0
+3b920 -5a938 -3b920 -5a938 0
+-3b920 -5a938 -3b920 -36ee8 0
+-3b920 -36ee8 -43238 -36ee8 0
+.BE
+.SE
+.OA
+.AE
+.ELEM
+3 "MTGNP320H320"
+.ET 1 .TE
+8 "FIDUCIAL MARK"
+.ET 1 2 .TE
+d "CAPC1608X90L40"
+.ET 1 2 .TE
+12 "RESC1608X55L30"
+.ET 1 2 .TE
+17 "LEDC1608X75L30"
+.ET 1 2 .TE
+1c "SOIC127P600X175-8L10"
+.ET 1 2 3 4 5 6 7 8 .TE
+.PACK
+2 "MTGNP320H320" 5 A 1 0
+.PACKPINNAMES
+"1"
+.PACKPINNAMES_END
+.PAS
+" "
+8
+.PAE
+7 "FIDUCIAL MARK" a C 2 1
+.PACKPINNAMES
+"1"
+"2"
+.PACKPINNAMES_END
+.PAS
+" "
+1
+1
+.PAE
+c "CAPC1608X90L40" f C 2 1
+.PACKPINNAMES
+"1"
+"2"
+.PACKPINNAMES_END
+.PAS
+" "
+4
+5
+.PAE
+11 "RESC1608X55L30" 14 C 2 1
+.PACKPINNAMES
+"1"
+"2"
+.PACKPINNAMES_END
+.PAS
+" "
+2
+3
+.PAE
+16 "LEDC1608X75L30" 19 C 2 1
+.PACKPINNAMES
+"A"
+"C"
+.PACKPINNAMES_END
+.PAS
+" "
+9
+a
+.PAE
+1b "SOIC127P600X175-8L10" 1e C 8 1
+.PACKPINNAMES
+"1"
+"2"
+"3"
+"4"
+"5"
+"6"
+"7"
+"8"
+.PACKPINNAMES_END
+.PAS
+" "
+6
+6
+6
+6
+7
+7
+7
+7
+.PAE
+.PART
+1 "MTGNP320H320" .PACAT O "XXX" "default" 2 3
+.PM
+
+1 1 .PP
+
+6 "FIDUCIAL MARK" .PACAT O "XXX" "default" 7 8
+.PM
+
+1 1 2 2 .PP
+
+b "CAPC1608X90L40" .PACAT O "XXX" "default" c d
+.PM
+
+1 1 2 2 .PP
+
+10 "RESC1608X55L30" .PACAT O "XXX" "default" 11 12
+.PM
+
+1 1 2 2 .PP
+
+15 "LEDC1608X75L30" .PACAT O "XXX" "default" 16 17
+.PM
+
+1 1 2 2 .PP
+
+1a "SOIC127P600X175-8L10" .PACAT O "XXX" "default" 1b 1c
+.PM
+
+1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 .PP
+
+.PCAT
+"default" 0 167 1 0 "T" 1 c350 c350
+.TREE
+2e 0 "$96" "1" "" 0 ""
+2f 0 "$94" "1" "" 0 ""
+30 0 "$91" "1" "" 0 ""
+31 0 "$90" "1" "" 0 ""
+32 0 "$109" "1" "" 0 ""
+33 0 "GND" "1" "" 0 ""
+34 0 "VBAT" "1" "" 0 ""
+.COMP
+1f 6 "MARK2" 2  1182aa8 117f3f8 0 0 1 0 "default" "" -1 -1
+.CP
+0 1 0 1 "" ""
+0 1 0 1 "" ""
+.PE
+20 10 "R1" 2  12215b8 127f988 4000 0 1 0 "default" "" d6d8 -1
+.CP
+30 1 0 2 "" ""
+31 1 0 3 "" ""
+.PE
+21 b "C1" 2  11fcbc8 12a4378 4000 0 1 0 "default" "" 15f90 -1
+.CP
+31 1 0 4 "" ""
+33 1 0 5 "" ""
+.PE
+22 1a "U1" 8  12a7a28 127f988 4000 0 1 0 "default" "" 2ab98 -1
+.CP
+33 1 0 6 "" ""
+31 1 0 6 "" ""
+32 1 0 6 "" ""
+34 1 0 6 "" ""
+2f 1 0 7 "" ""
+31 1 0 7 "" ""
+30 1 0 7 "" ""
+34 1 0 7 "" ""
+.PE
+23 1 "MH1" 1  1114cd8 11a3de8 0 0 1 0 "default" "" 0 -1
+.CP
+0 1 0 8 "" ""
+.PE
+24 1 "MH3" 1  143a778 135b528 0 0 1 0 "default" "" 0 -1
+.CP
+0 1 0 8 "" ""
+.PE
+25 6 "MARK3" 2  145f168 12ed758 0 0 1 0 "default" "" -1 -1
+.CP
+0 1 0 1 "" ""
+0 1 0 1 "" ""
+.PE
+26 1 "MH4" 1  143a778 11a3de8 0 0 1 0 "default" "" 0 -1
+.CP
+0 1 0 8 "" ""
+.PE
+27 1 "MH2" 1  1114cd8 135b528 0 0 1 0 "default" "" 0 -1
+.CP
+0 1 0 8 "" ""
+.PE
+28 b "C2" 2  12215b8 12c8d68 4000 0 1 0 "default" "" 15f90 -1
+.CP
+2f 1 0 4 "" ""
+33 1 0 5 "" ""
+.PE
+29 15 "D1" 2  13fd6e8 127f988 4000 0 1 0 "default" "" 124f8 -1
+.CP
+2e 1 0 9 "" ""
+32 1 0 a "" ""
+.PE
+2a 10 "R2" 2  11fcbc8 125af98 4000 0 1 0 "default" "" d6d8 -1
+.CP
+34 1 0 2 "" ""
+30 1 0 3 "" ""
+.PE
+2b 6 "MARK1" 2  1182aa8 137ff18 0 0 1 0 "default" "" -1 -1
+.CP
+0 1 0 1 "" ""
+0 1 0 1 "" ""
+.PE
+2c 10 "R3" 2  139bc68 12b06c8 0 0 1 0 "default" "" d6d8 -1
+.CP
+34 1 0 2 "" ""
+2e 1 0 3 "" ""
+.PE
+.WG
+9ec 9ec 10bf5a8 114e6b8
+.PIFEND
+.STARTPOF
+__STARTATTR LAYER
+__ATTR thm_botPerp 0 "1"
+__ATTR thm_topPerp 0 "1"
+__ATTR thm_topVelocity 0 "0.100000"
+__ATTR thm_botVelocity 0 "0.100000"
+__ATTR thm_botNatural 0 "1"
+__ATTR thm_topNatural 0 "1"
+__ATTR thm_vertical 0 "0"
+__ATTR thm_botHtCoef 0 "2.000000"
+__ATTR thm_topHtCoef 0 "2.000000"
+__ATTR thm_botFlTemp 0 "30.000000"
+__ATTR thm_topFlTemp 0 "30.000000"
+__ATTR conductivity 0 "6.000000"
+__ATTR thickness 0 "0.002000"
+__ENDATTR

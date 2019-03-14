@@ -1,0 +1,143 @@
+
+(CADSTARPPF
+ (HEADER
+  (FORMAT CADSTARPPFMAP 3 4)
+  (TIMESTAMP 2014 10 17 9 49 24)
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "TOPPASTE_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "TOPPASTE.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Toppaste")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "TOPSILK_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "TOPSILK.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Topsilk")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "TOPSTOP_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "TOPSTOP.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Topstop")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "TOPELEC_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "TOPELEC.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Topelec")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "GND_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "GND.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "GND")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "Power_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "POWER.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Power")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "BOTELEC_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "BOTELEC.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Botelec")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "BOTSTOP_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "BOTSTOP.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Botstop")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "BOTSILK_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "BOTSILK.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Botsilk")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "BOARD_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "BOARD.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Board")
+ )
+ (MAPPING
+  (USE Y) PP_NC_DRILL
+  (COLFILE "DRILL_PP.col") OUT_NC_DRILL
+  (DEVFILE "excellon2.usr")
+  (SELFILE "Drill_Plated.sel")
+  (OUTFILE "DRILL_PLATED.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Drill plated")
+ )
+ (MAPPING
+  (USE Y) PP_NC_DRILL
+  (COLFILE "DRILL_PP.col") OUT_NC_DRILL
+  (DEVFILE "excellon2.usr")
+  (SELFILE "Drill_NonPlated.sel")
+  (OUTFILE "DRILL_UNPLATED.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Drill unplated")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "BotPaste_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "BOTPASTE.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Botpaste")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "Inner1_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "INNER1.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Inner1")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "Inner2_PP.col") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "INNER2.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Inner2")
+ )
+)
+

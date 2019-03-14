@@ -1,0 +1,3 @@
+attr	Template	"NRF24L01p_ANT"
+	(	"ppp_is_plane"	"N"	)
+

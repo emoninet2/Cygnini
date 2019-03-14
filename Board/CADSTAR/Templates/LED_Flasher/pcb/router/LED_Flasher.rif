@@ -1,0 +1,1484 @@
+.rif	17
+
+.chg
+INC
+.cfg
+ATTR
+AREA	E	"*"	I
+"opt_trk_trk"	E
+"opt_trk_via"	E
+"opt_trk_pin"	E
+"space_cop_prf"	E
+"space_cop_cop"	E
+"space_smd_prf"	E
+"space_smd_cop"	E
+"space_smd_smd"	E
+"space_pin_prf"	E
+"space_pin_cop"	E
+"space_pin_smd"	E
+"space_pin_pin"	E
+"space_via_prf"	E
+"space_via_cop"	E
+"space_via_via"	E
+"space_via_smd"	E
+"space_via_pin"	E
+"space_trk_prf"	E
+"space_trk_cop"	E
+"space_trk_trk"	E
+"space_trk_via"	E
+"space_trk_smd"	E
+"space_trk_pin"	E
+ATTR
+PAD_CODE	E	"*"	I
+"teargenrule"	E
+ATTR
+NET	E	"*"	I
+"net_via"	N
+"net_max_width"	N
+"net_min_width"	N
+"net_opt_width"	N
+"net_width"	N
+"volt_amplitude"	N
+"via_delay"	N
+"src_pin_order"	N
+"rise_time"	N
+"spacing_class"	E
+"net_class"	E
+"net_topology"	E
+"net_testpoints"	E
+ATTR
+PIN	E	"*"	I
+"pin_exit_dirs"	N
+"smd_via"	E
+"pin_test"	E
+ATTR
+BOARD	E	"*"	I
+"checksum"	I
+"suppress_via"	N
+"suppress_pin"	N
+"via_layer_pairs"	N
+"no_backoff"	N
+"smd_via"	E
+"teargenrule"	E
+"min_width"	E
+"stacked_vias"	E
+"min_len_fat"	E
+"min_len_thin"	E
+"miter_max"	E
+"miter_min"	E
+"opt_trk_trk"	E
+"opt_trk_via"	E
+"opt_trk_pin"	E
+"space_drl_drl"	E
+"space_tpt_plc"	E
+"space_tpt_prf"	E
+"space_tpt_tpt"	E
+"space_cop_prf"	E
+"space_cop_cop"	E
+"space_smd_prf"	E
+"space_smd_cop"	E
+"space_smd_smd"	E
+"space_pin_prf"	E
+"space_pin_cop"	E
+"space_pin_smd"	E
+"space_pin_pin"	E
+"space_via_prf"	E
+"space_via_cop"	E
+"space_via_via"	E
+"space_via_smd"	E
+"space_via_pin"	E
+"space_trk_prf"	E
+"space_trk_cop"	E
+"space_trk_trk"	E
+"space_trk_via"	E
+"space_trk_smd"	E
+"space_trk_pin"	E
+"ppp_ignore_via_to_prof"	E
+"ppp_ignore_pin_to_prof"	E
+"ppp_is_plane"	E
+"ppp_auto_repour"	E
+"ppp_ignore_res"	E
+"ppp_box_pins"	E
+"ppp_signal"	E
+"ppp_relief_type"	E
+"ppp_out_width"	E
+"ppp_isolation"	E
+"ppp_sliver"	E
+"ppp_via_relief"	E
+"ppp_pad_relief"	E
+"ppp_keep_disj"	E
+"ppp_keep_iso"	E
+"ppp_clearance"	E
+"ppp_con_width"	E
+ATTR
+TEMPLATE	E	"*"	I
+"ppp_ignore_via_to_prof"	E
+"ppp_ignore_pin_to_prof"	E
+"ppp_is_plane"	E
+"ppp_auto_repour"	E
+"ppp_ignore_res"	E
+"ppp_box_pins"	E
+"ppp_signal"	E
+"ppp_relief_type"	E
+"ppp_out_width"	E
+"ppp_isolation"	E
+"ppp_sliver"	E
+"ppp_keep_disj"	E
+"ppp_keep_iso"	E
+"ppp_via_relief"	E
+"ppp_pad_relief"	E
+"ppp_clearance"	E
+"ppp_con_width"	E
+ATTR
+CLASS	E	"*"	I
+"net_topology"	E
+"volt_amplitude"	E
+"via_delay"	E
+"src_pin_order"	E
+"rise_time"	E
+ATTR
+SPACING	E	"*"	I
+"space_any_any"	E
+DIALOG
+RULE
+SHAPE
+POWER_PLANE
+TEMPLATE
+NO_TRACK_AREA
+NO_VIA_AREA
+ROUTE_AREA
+COPPER
+
+.btp
+CHG	1	2540	G	2540
+C	2	4
+DESTYPE	cadstar
+
+attr	"plc_category"	"default"
+attr	"checksum"	"3379426468"
+attr	"rif_synchronisation"	"18149749"
+attr	"stacked_vias"	"N"
+attr	"via_layer_pairs"	"2-4"
+attr	"min_width"	"20000ds"
+attr	"plc_grid"	"0.50000mm"
+attr	"ppp_keep_iso"	"N"
+attr	"ppp_keep_disj"	"N"
+attr	"ppp_out_width"	"0.125mm"
+attr	"ppp_con_width"	"0.250mm"
+attr	"ppp_clearance"	"0.250mm"
+attr	"ppp_sliver"	"0.250mm"
+attr	"ppp_isolation"	"0.000mm"
+attr	"ppp_pad_relief"	" 45.000"
+attr	"ppp_via_relief"	"N"
+attr	"ppp_relief_type"	"CROSS"
+attr	"ppp_ignore_res"	"N"
+attr	"ppp_box_pins"	"N"
+attr	"ppp_auto_repour"	"N"
+attr	"ppp_is_plane"	"N"
+attr	"ppp_ignore_pin_to_prof"	"N"
+attr	"ppp_ignore_via_to_prof"	"N"
+attr	"no_backoff"	"track"
+attr	"space_trk_trk"	"22500ds"
+attr	"space_trk_pin"	"22500ds"
+attr	"space_trk_via"	"22500ds"
+attr	"space_trk_cop"	"25000ds"
+attr	"space_trk_prf"	"25000ds"
+attr	"space_pin_pin"	"20000ds"
+attr	"space_via_pin"	"22500ds"
+attr	"space_pin_cop"	"22500ds"
+attr	"space_pin_prf"	"50000ds"
+attr	"space_via_via"	"25000ds"
+attr	"space_via_cop"	"40000ds"
+attr	"space_via_prf"	"25000ds"
+attr	"space_cop_cop"	"40000ds"
+attr	"space_cop_prf"	"40000ds"
+attr	"space_drl_drl"	"50000ds"
+attr	"space_pin_smd"	"20000ds"
+attr	"space_via_smd"	"25000ds"
+attr	"space_trk_smd"	"22500ds"
+attr	"space_smd_prf"	"50000ds"
+attr	"space_smd_cop"	"25000ds"
+attr	"space_smd_smd"	"20000ds"
+attr	"space_tpt_prf"	"70000ds"
+attr	"space_tpt_tpt"	"70000ds"
+attr	"space_tpt_plc"	"70000ds"
+attr	"opt_trk_trk"	"25000ds"
+attr	"opt_trk_pin"	"25000ds"
+attr	"opt_trk_via"	"25000ds"
+attr	"miter_min"	"0ds"
+attr	"miter_max"	"0ds"
+attr	"min_len_thin"	"25000ds"
+attr	"min_len_fat"	"25000ds"
+attr	"ttlh"	"5ns"
+attr	"tthl"	"5ns"
+attr	"cpin"	"1pF"
+attr	"vol"	"0.0V"
+attr	"voh"	"5.0V"
+attr	"char_Z"	"70Ohms"
+attr	"Z_tol"	"10.0%"
+attr	"cvia"	"1pF"
+attr	"dist_cap"	"TRUE"
+attr	"stub_fraction"	"0.1"
+attr	"diel_thickness"	"0.254mm"
+attr	"diel_constant"	"4.7"
+attr	"cond_thickness"	"0.0254mm"
+attr	"lay_embed"	"ABOVE"
+
+.rol
+5	"Bottom Jumper"	J
+
+attr	"lay_usage"	"J"
+attr	"lay_exclude"	"TRUE"
+attr	"lay_embed"	"BELOW"
+4	"Bot Elec"	Y
+
+attr	"lay_usage"	"Y"
+attr	"lay_thickness"	"3500ds"
+attr	"lay_embed"	"BELOW"
+3	"Core"	L
+
+attr	"lay_usage"	"L"
+attr	"lay_thickness"	"150000ds"
+attr	"lay_material"	"FR4"
+2	"Top Elec"	X
+
+attr	"lay_usage"	"X"
+attr	"lay_thickness"	"3500ds"
+attr	"lay_embed"	"ABOVE"
+1	"Top Jumper"	J
+
+attr	"lay_usage"	"J"
+attr	"lay_exclude"	"TRUE"
+attr	"lay_embed"	"ABOVE"
+
+.boa
+FILL	4
+0	0	4000000	0	0
+4000000	0	4000000	2500000	0
+4000000	2500000	0	2500000	0
+0	2500000	0	0	0
+
+.uni
+METRIC	1	"mm"	3
+
+.pcl
+"TriDriver"
+attr	"data_type"	"i"
+
+.pcl
+"TriInput"
+attr	"data_type"	"j"
+
+.pcl
+"TriBiDriver"
+attr	"data_type"	"h"
+
+.pcl
+"Ground"
+attr	"data_type"	"b"
+
+.pcl
+"Power"
+attr	"data_type"	"a"
+
+.pcl
+"OutputNotNormOr"
+attr	"data_type"	"d"
+
+.pcl
+"OutputNotOr"
+attr	"data_type"	"c"
+
+.pcl
+"OutputOr"
+attr	"data_type"	"e"
+
+.pcl
+"Input"
+attr	"data_type"	"f"
+
+.pcl
+"Uncommited"
+attr	"data_type"	"g"
+
+.pcl
+"Unknown"
+attr	"data_type"	"g"
+
+.mrl
+"FR4"
+attr	"mat_permitivity"	"1.000000"
+attr	"mat_conduct"	"5.714286e+007"
+attr	"mat_loss_tan"	"0.000000"
+
+.scl
+"__NO_CLASS"	"__NO_CLASS"
+
+.pct
+"default"	0	359.999	0.1	0
+T	SWAP	50000	50000
+
+.net
+"VBAT"	U
+attr	"spacing_class"	"__NO_CLASS"
+attr	"net_width"	"20000ds"
+attr	"net_opt_width"	"70000ds"
+attr	"net_min_width"	"15000ds"
+attr	"net_max_width"	"500000ds"
+attr	"net_via"	"(1-5)\"Circle 0.7/0.3 mm(via)\""
+
+.net
+"GND"	U
+attr	"spacing_class"	"__NO_CLASS"
+attr	"net_width"	"20000ds"
+attr	"net_opt_width"	"70000ds"
+attr	"net_min_width"	"15000ds"
+attr	"net_max_width"	"500000ds"
+attr	"net_via"	"(1-5)\"Circle 0.7/0.3 mm(via)\""
+
+.net
+CHG	ROUTES
+"$109"	U
+attr	"spacing_class"	"__NO_CLASS"
+attr	"net_width"	"15000ds"
+attr	"net_opt_width"	"20000ds"
+attr	"net_min_width"	"15000ds"
+attr	"net_max_width"	"500000ds"
+attr	"net_via"	"(1-5)\"Circle 0.7/0.3 mm(via)\""
+
+.net
+"$90"	U
+attr	"spacing_class"	"__NO_CLASS"
+attr	"net_width"	"15000ds"
+attr	"net_opt_width"	"20000ds"
+attr	"net_min_width"	"15000ds"
+attr	"net_max_width"	"500000ds"
+attr	"net_via"	"(1-5)\"Circle 0.7/0.3 mm(via)\""
+
+.net
+"$91"	U
+attr	"spacing_class"	"__NO_CLASS"
+attr	"net_width"	"15000ds"
+attr	"net_opt_width"	"20000ds"
+attr	"net_min_width"	"15000ds"
+attr	"net_max_width"	"500000ds"
+attr	"net_via"	"(1-5)\"Circle 0.7/0.3 mm(via)\""
+
+.net
+"$94"	U
+attr	"spacing_class"	"__NO_CLASS"
+attr	"net_width"	"15000ds"
+attr	"net_opt_width"	"20000ds"
+attr	"net_min_width"	"15000ds"
+attr	"net_max_width"	"500000ds"
+attr	"net_via"	"(1-5)\"Circle 0.7/0.3 mm(via)\""
+
+.net
+"$96"	U
+attr	"spacing_class"	"__NO_CLASS"
+attr	"net_width"	"15000ds"
+attr	"net_opt_width"	"20000ds"
+attr	"net_min_width"	"15000ds"
+attr	"net_max_width"	"500000ds"
+attr	"net_via"	"(1-5)\"Circle 0.7/0.3 mm(via)\""
+
+.txt
+4	FILL	4
+1002500	248000	1002500	452000	0
+1002500	452000	2997500	452000	0
+2997500	452000	2997500	248000	0
+2997500	248000	1002500	248000	0
+
+.pad
+"Circle 1.0/0.5 mm(via)"	50000
+NORMAL
+2	4	FILL	1
+50000	0	-50000	0	32766
+
+S
+
+attr	"pad_backoff"	"50000dsu"
+
+.pad
+"Circle 0.7/0.3 mm(via)"	30000
+NORMAL
+2	4	FILL	1
+35000	0	-35000	0	32766
+
+S
+
+attr	"pad_backoff"	"35000dsu"
+
+.pad
+"__NO_PAD"	0
+S
+
+.pad
+"c320hn320@180000"	320000
+NORMAL
+2	4	FILL	1
+-160000	0	160000	0	32766
+
+S
+NORMAL
+2	4	FILL	1
+160000	0	-160000	0	-32766
+
+
+attr	"pad_backoff"	"160000dsu"
+
+.pad
+"FIDUCIAL MARK(min)"	0
+NORMAL
+2	2	FILL	1
+50000	0	-50000	0	32766
+
+S
+NORMAL
+4	4	FILL	1
+-50000	0	50000	0	-32766
+
+
+attr	"pad_backoff"	"50000dsu"
+
+.pad
+"FIDUCIAL MARK(max)"	0
+NORMAL
+4	4	FILL	1
+50000	0	-50000	0	32766
+
+S
+NORMAL
+2	2	FILL	1
+-50000	0	50000	0	-32766
+
+
+attr	"pad_backoff"	"50000dsu"
+
+.pad
+"r94_93r23(min)"	0
+NORMAL
+2	2	FILL	8
+-24000	-46500	24000	-46500	0
+24000	-46500	47000	-23500	8192
+47000	-23500	47000	23500	0
+47000	23500	24000	46500	8192
+24000	46500	-24000	46500	0
+-24000	46500	-47000	23500	8192
+-47000	23500	-47000	-23500	0
+-47000	-23500	-24000	-46500	8192
+
+S
+NORMAL
+4	4	FILL	8
+24000	-46500	-24000	-46500	0
+-24000	-46500	-47000	-23500	-8192
+-47000	-23500	-47000	23500	0
+-47000	23500	-24000	46500	-8192
+-24000	46500	24000	46500	0
+24000	46500	47000	23500	-8192
+47000	23500	47000	-23500	0
+47000	-23500	24000	-46500	-8192
+
+
+attr	"pad_backoff"	"46500dsu"
+
+.pad
+"r94_93r23(max)"	0
+NORMAL
+4	4	FILL	8
+-24000	-46500	24000	-46500	0
+24000	-46500	47000	-23500	8192
+47000	-23500	47000	23500	0
+47000	23500	24000	46500	8192
+24000	46500	-24000	46500	0
+-24000	46500	-47000	23500	8192
+-47000	23500	-47000	-23500	0
+-47000	-23500	-24000	-46500	8192
+
+S
+NORMAL
+2	2	FILL	8
+24000	-46500	-24000	-46500	0
+-24000	-46500	-47000	-23500	-8192
+-47000	-23500	-47000	23500	0
+-47000	23500	-24000	46500	-8192
+-24000	46500	24000	46500	0
+24000	46500	47000	23500	-8192
+47000	23500	47000	-23500	0
+47000	-23500	24000	-46500	-8192
+
+
+attr	"pad_backoff"	"46500dsu"
+
+.pad
+"r94_93r23(min)@180000"	0
+NORMAL
+2	2	FILL	8
+24000	46500	-24000	46500	0
+-24000	46500	-47000	23500	8192
+-47000	23500	-47000	-23500	0
+-47000	-23500	-24000	-46500	8192
+-24000	-46500	24000	-46500	0
+24000	-46500	47000	-23500	8192
+47000	-23500	47000	23500	0
+47000	23500	24000	46500	8192
+
+S
+NORMAL
+4	4	FILL	8
+-24000	46500	24000	46500	0
+24000	46500	47000	23500	-8192
+47000	23500	47000	-23500	0
+47000	-23500	24000	-46500	-8192
+24000	-46500	-24000	-46500	0
+-24000	-46500	-47000	-23500	-8192
+-47000	-23500	-47000	23500	0
+-47000	23500	-24000	46500	-8192
+
+
+attr	"pad_backoff"	"46500dsu"
+
+.pad
+"r84_93r21(min)"	0
+NORMAL
+2	2	FILL	8
+42000	-25500	42000	25500	0
+42000	25500	21000	46500	8192
+21000	46500	-21000	46500	0
+-21000	46500	-42000	25500	8192
+-42000	25500	-42000	-25500	0
+-42000	-25500	-21000	-46500	8192
+-21000	-46500	21000	-46500	0
+21000	-46500	42000	-25500	8192
+
+S
+NORMAL
+4	4	FILL	8
+-42000	-25500	-42000	25500	0
+-42000	25500	-21000	46500	-8192
+-21000	46500	21000	46500	0
+21000	46500	42000	25500	-8192
+42000	25500	42000	-25500	0
+42000	-25500	21000	-46500	-8192
+21000	-46500	-21000	-46500	0
+-21000	-46500	-42000	-25500	-8192
+
+
+attr	"pad_backoff"	"42000dsu"
+
+.pad
+"r84_93r21(max)"	0
+NORMAL
+4	4	FILL	8
+42000	-25500	42000	25500	0
+42000	25500	21000	46500	8192
+21000	46500	-21000	46500	0
+-21000	46500	-42000	25500	8192
+-42000	25500	-42000	-25500	0
+-42000	-25500	-21000	-46500	8192
+-21000	-46500	21000	-46500	0
+21000	-46500	42000	-25500	8192
+
+S
+NORMAL
+2	2	FILL	8
+-42000	-25500	-42000	25500	0
+-42000	25500	-21000	46500	-8192
+-21000	46500	21000	46500	0
+21000	46500	42000	25500	-8192
+42000	25500	42000	-25500	0
+42000	-25500	21000	-46500	-8192
+21000	-46500	-21000	-46500	0
+-21000	-46500	-42000	-25500	-8192
+
+
+attr	"pad_backoff"	"42000dsu"
+
+.pad
+"r84_93r21(min)@180000"	0
+NORMAL
+2	2	FILL	8
+-42000	25500	-42000	-25500	0
+-42000	-25500	-21000	-46500	8192
+-21000	-46500	21000	-46500	0
+21000	-46500	42000	-25500	8192
+42000	-25500	42000	25500	0
+42000	25500	21000	46500	8192
+21000	46500	-21000	46500	0
+-21000	46500	-42000	25500	8192
+
+S
+NORMAL
+4	4	FILL	8
+42000	25500	42000	-25500	0
+42000	-25500	21000	-46500	-8192
+21000	-46500	-21000	-46500	0
+-21000	-46500	-42000	-25500	-8192
+-42000	-25500	-42000	25500	0
+-42000	25500	-21000	46500	-8192
+-21000	46500	21000	46500	0
+21000	46500	42000	25500	-8192
+
+
+attr	"pad_backoff"	"42000dsu"
+
+.pad
+"r76_91r19(min)@180000"	0
+NORMAL
+2	2	FILL	8
+-38000	26500	-38000	-26500	0
+-38000	-26500	-19000	-45500	8192
+-19000	-45500	19000	-45500	0
+19000	-45500	38000	-26500	8192
+38000	-26500	38000	26500	0
+38000	26500	19000	45500	8192
+19000	45500	-19000	45500	0
+-19000	45500	-38000	26500	8192
+
+S
+NORMAL
+4	4	FILL	8
+38000	26500	38000	-26500	0
+38000	-26500	19000	-45500	-8192
+19000	-45500	-19000	-45500	0
+-19000	-45500	-38000	-26500	-8192
+-38000	-26500	-38000	26500	0
+-38000	26500	-19000	45500	-8192
+-19000	45500	19000	45500	0
+19000	45500	38000	26500	-8192
+
+
+attr	"pad_backoff"	"38000dsu"
+
+.pad
+"r76_91r19(min)"	0
+NORMAL
+2	2	FILL	8
+38000	-26500	38000	26500	0
+38000	26500	19000	45500	8192
+19000	45500	-19000	45500	0
+-19000	45500	-38000	26500	8192
+-38000	26500	-38000	-26500	0
+-38000	-26500	-19000	-45500	8192
+-19000	-45500	19000	-45500	0
+19000	-45500	38000	-26500	8192
+
+S
+NORMAL
+4	4	FILL	8
+-38000	-26500	-38000	26500	0
+-38000	26500	-19000	45500	-8192
+-19000	45500	19000	45500	0
+19000	45500	38000	26500	-8192
+38000	26500	38000	-26500	0
+38000	-26500	19000	-45500	-8192
+19000	-45500	-19000	-45500	0
+-19000	-45500	-38000	-26500	-8192
+
+
+attr	"pad_backoff"	"38000dsu"
+
+.pad
+"r76_91r19(max)"	0
+NORMAL
+4	4	FILL	8
+38000	-26500	38000	26500	0
+38000	26500	19000	45500	8192
+19000	45500	-19000	45500	0
+-19000	45500	-38000	26500	8192
+-38000	26500	-38000	-26500	0
+-38000	-26500	-19000	-45500	8192
+-19000	-45500	19000	-45500	0
+19000	-45500	38000	-26500	8192
+
+S
+NORMAL
+2	2	FILL	8
+-38000	-26500	-38000	26500	0
+-38000	26500	-19000	45500	-8192
+-19000	45500	19000	45500	0
+19000	45500	38000	26500	-8192
+38000	26500	38000	-26500	0
+38000	-26500	19000	-45500	-8192
+19000	-45500	-19000	-45500	0
+-19000	-45500	-38000	-26500	-8192
+
+
+attr	"pad_backoff"	"38000dsu"
+
+.pad
+"r137_56r14(min)@90000"	0
+NORMAL
+2	2	FILL	8
+28000	-54500	28000	54500	0
+28000	54500	14000	68500	8192
+14000	68500	-14000	68500	0
+-14000	68500	-28000	54500	8192
+-28000	54500	-28000	-54500	0
+-28000	-54500	-14000	-68500	8192
+-14000	-68500	14000	-68500	0
+14000	-68500	28000	-54500	8192
+
+S
+NORMAL
+4	4	FILL	8
+-28000	-54500	-28000	54500	0
+-28000	54500	-14000	68500	-8192
+-14000	68500	14000	68500	0
+14000	68500	28000	54500	-8192
+28000	54500	28000	-54500	0
+28000	-54500	14000	-68500	-8192
+14000	-68500	-14000	-68500	0
+-14000	-68500	-28000	-54500	-8192
+
+
+attr	"pad_backoff"	"28000dsu"
+
+.pad
+"r137_56r14(min)@270000"	0
+NORMAL
+2	2	FILL	8
+-28000	54500	-28000	-54500	0
+-28000	-54500	-14000	-68500	8192
+-14000	-68500	14000	-68500	0
+14000	-68500	28000	-54500	8192
+28000	-54500	28000	54500	0
+28000	54500	14000	68500	8192
+14000	68500	-14000	68500	0
+-14000	68500	-28000	54500	8192
+
+S
+NORMAL
+4	4	FILL	8
+28000	54500	28000	-54500	0
+28000	-54500	14000	-68500	-8192
+14000	-68500	-14000	-68500	0
+-14000	-68500	-28000	-54500	-8192
+-28000	-54500	-28000	54500	0
+-28000	54500	-14000	68500	-8192
+-14000	68500	14000	68500	0
+14000	68500	28000	54500	-8192
+
+
+attr	"pad_backoff"	"28000dsu"
+
+.clu
+B	""	0
+
+.sym
+"SOIC127P600X175-8L10"	8	" "
+-190500	-277000
+-63500	-277000
+63500	-277000
+190500	-277000
+190500	277000
+63500	277000
+-63500	277000
+-190500	277000
+
+U
+
+pla
+2	2	FILL	12
+-275000	-225000	-244000	-225000	0
+-244000	-225000	-244000	-371000	0
+-244000	-371000	244000	-371000	0
+244000	-371000	244000	-225000	0
+244000	-225000	275000	-225000	0
+275000	-225000	275000	225000	0
+275000	225000	244000	225000	0
+244000	225000	244000	371000	0
+244000	371000	-244000	371000	0
+-244000	371000	-244000	225000	0
+-244000	225000	-275000	225000	0
+-275000	225000	-275000	-225000	0
+
+pla
+2	2	UNF
+0	1
+-35000	0	35000	0	0
+
+pla
+2	2	UNF
+0	1
+0	35000	0	-35000	0
+
+pla
+2	2	FILL	2
+-25000	0	25000	0	-16383
+25000	0	-25000	0	-16383
+
+S
+
+pla
+4	4	FILL	12
+-275000	-225000	-244000	-225000	0
+-244000	-225000	-244000	-371000	0
+-244000	-371000	244000	-371000	0
+244000	-371000	244000	-225000	0
+244000	-225000	275000	-225000	0
+275000	-225000	275000	225000	0
+275000	225000	244000	225000	0
+244000	225000	244000	371000	0
+244000	371000	-244000	371000	0
+-244000	371000	-244000	225000	0
+-244000	225000	-275000	225000	0
+-275000	225000	-275000	-225000	0
+
+pla
+4	4	UNF
+0	1
+-35000	0	35000	0	0
+
+pla
+4	4	UNF
+0	1
+0	35000	0	-35000	0
+
+pla
+4	4	FILL	2
+-25000	0	25000	0	-16383
+25000	0	-25000	0	-16383
+
+.sym
+"LEDC1608X75L30"	2	" "
+82500	0
+-82500	0
+
+U
+
+pla
+2	2	UNF
+0	1
+0	35000	0	-35000	0
+
+pla
+2	2	UNF
+0	1
+35000	0	-35000	0	0
+
+pla
+2	2	FILL	2
+-25000	0	25000	0	-16383
+25000	0	-25000	0	-16383
+
+pla
+2	2	FILL	4
+-146000	-71000	-146000	71000	0
+-146000	71000	146000	71000	0
+146000	71000	146000	-71000	0
+146000	-71000	-146000	-71000	0
+
+S
+
+pla
+4	4	UNF
+0	1
+0	35000	0	-35000	0
+
+pla
+4	4	UNF
+0	1
+35000	0	-35000	0	0
+
+pla
+4	4	FILL	2
+-25000	0	25000	0	-16383
+25000	0	-25000	0	-16383
+
+pla
+4	4	FILL	4
+-146000	-71000	-146000	71000	0
+-146000	71000	146000	71000	0
+146000	71000	146000	-71000	0
+146000	-71000	-146000	-71000	0
+
+.sym
+"RESC1608X55L30"	2	" "
+-79500	0
+79500	0
+
+U
+
+pla
+2	2	UNF
+0	1
+0	35000	0	-35000	0
+
+pla
+2	2	UNF
+0	1
+35000	0	-35000	0	0
+
+pla
+2	2	FILL	2
+-25000	0	25000	0	-16383
+25000	0	-25000	0	-16383
+
+pla
+2	2	FILL	4
+-147000	-72000	-147000	72000	0
+-147000	72000	147000	72000	0
+147000	72000	147000	-72000	0
+147000	-72000	-147000	-72000	0
+
+S
+
+pla
+4	4	UNF
+0	1
+0	35000	0	-35000	0
+
+pla
+4	4	UNF
+0	1
+35000	0	-35000	0	0
+
+pla
+4	4	FILL	2
+-25000	0	25000	0	-16383
+25000	0	-25000	0	-16383
+
+pla
+4	4	FILL	4
+-147000	-72000	-147000	72000	0
+-147000	72000	147000	72000	0
+147000	72000	147000	-72000	0
+147000	-72000	-147000	-72000	0
+
+.sym
+"CAPC1608X90L40"	2	" "
+-74500	0
+74500	0
+
+U
+
+pla
+2	2	UNF
+0	1
+0	35000	0	-35000	0
+
+pla
+2	2	UNF
+0	1
+35000	0	-35000	0	0
+
+pla
+2	2	FILL	2
+-25000	0	25000	0	-16383
+25000	0	-25000	0	-16383
+
+pla
+2	2	FILL	4
+-147000	-72000	-147000	72000	0
+-147000	72000	147000	72000	0
+147000	72000	147000	-72000	0
+147000	-72000	-147000	-72000	0
+
+S
+
+pla
+4	4	UNF
+0	1
+0	35000	0	-35000	0
+
+pla
+4	4	UNF
+0	1
+35000	0	-35000	0	0
+
+pla
+4	4	FILL	2
+-25000	0	25000	0	-16383
+25000	0	-25000	0	-16383
+
+pla
+4	4	FILL	4
+-147000	-72000	-147000	72000	0
+-147000	72000	147000	72000	0
+147000	72000	147000	-72000	0
+147000	-72000	-147000	-72000	0
+
+.sym
+"FIDUCIAL MARK"	2	" "
+0	0
+0	0
+
+U
+
+pla
+2	2	FILL	2
+0	-125000	0	125000	-16383
+0	125000	0	-125000	-16383
+
+opla
+4	4	FILL	2
+0	-125000	0	125000	-16383
+0	125000	0	-125000	-16383
+
+vin
+4	4	FILL	2
+0	-125000	0	125000	-16383
+0	125000	0	-125000	-16383
+
+trn
+4	4	FILL	2
+0	-125000	0	125000	-16383
+0	125000	0	-125000	-16383
+
+vin
+2	2	FILL	2
+0	-125000	0	125000	-16383
+0	125000	0	-125000	-16383
+
+trn
+2	2	FILL	2
+0	-125000	0	125000	-16383
+0	125000	0	-125000	-16383
+
+S
+
+pla
+4	4	FILL	2
+0	-125000	0	125000	-16383
+0	125000	0	-125000	-16383
+
+opla
+2	2	FILL	2
+0	-125000	0	125000	-16383
+0	125000	0	-125000	-16383
+
+vin
+2	2	FILL	2
+0	-125000	0	125000	-16383
+0	125000	0	-125000	-16383
+
+trn
+2	2	FILL	2
+0	-125000	0	125000	-16383
+0	125000	0	-125000	-16383
+
+vin
+4	4	FILL	2
+0	-125000	0	125000	-16383
+0	125000	0	-125000	-16383
+
+trn
+4	4	FILL	2
+0	-125000	0	125000	-16383
+0	125000	0	-125000	-16383
+
+.sym
+"MTGNP320H320"	1	" "
+0	0
+
+U
+
+pla
+2	2	UNF
+0	2
+0	-325000	0	325000	-16383
+0	325000	0	-325000	-16383
+
+pla
+2	2	UNF
+0	1
+0	35000	0	-35000	0
+
+pla
+2	2	UNF
+0	1
+35000	0	-35000	0	0
+
+pla
+2	2	FILL	2
+-25000	0	25000	0	-16383
+25000	0	-25000	0	-16383
+
+S
+
+pla
+4	4	UNF
+0	2
+0	-325000	0	325000	-16383
+0	325000	0	-325000	-16383
+
+pla
+4	4	UNF
+0	1
+0	35000	0	-35000	0
+
+pla
+4	4	UNF
+0	1
+35000	0	-35000	0	0
+
+pla
+4	4	FILL	2
+-25000	0	25000	0	-16383
+25000	0	-25000	0	-16383
+
+.pak
+"SOIC127P600X175-8L10(<UNALLOCATED>SOIC127P600X175-8L10)"	"SOIC127P600X175-8L10"	8
+" "	HEIGHT	175000
+"r137_56r14(min)@90000"	511
+"r137_56r14(min)@90000"	511
+"r137_56r14(min)@90000"	511
+"r137_56r14(min)@90000"	511
+"r137_56r14(min)@270000"	511
+"r137_56r14(min)@270000"	511
+"r137_56r14(min)@270000"	511
+"r137_56r14(min)@270000"	511
+
+.pak
+"LEDC1608X75L30(<UNALLOCATED>LEDC1608X75L30)"	"LEDC1608X75L30"	2
+" "	HEIGHT	75000
+"r76_91r19(min)@180000"	511
+"r76_91r19(min)"	511
+
+.pak
+"RESC1608X55L30(<UNALLOCATED>RESC1608X55L30)"	"RESC1608X55L30"	2
+" "	HEIGHT	55000
+"r84_93r21(min)"	511
+"r84_93r21(min)@180000"	511
+
+.pak
+"CAPC1608X90L40(<UNALLOCATED>CAPC1608X90L40)"	"CAPC1608X90L40"	2
+" "	HEIGHT	90000
+"r94_93r23(min)"	511
+"r94_93r23(min)@180000"	511
+
+.pak
+"FIDUCIAL MARK(<UNALLOCATED>FIDUCIAL MARK)"	"FIDUCIAL MARK"	2
+" "
+"FIDUCIAL MARK(min)"	511
+"FIDUCIAL MARK(max)"	511
+
+.pak
+"MTGNP320H320(<UNALLOCATED>MTGNP320H320)"	"MTGNP320H320"	1
+" "
+"c320hn320@180000"	511
+
+.par
+"<UNALLOCATED>SOIC127P600X175-8L10"	"SOIC127P600X175-8L10(<UNALLOCATED>SOIC127P600X175-8L10)"	0
+
+.par
+"<UNALLOCATED>LEDC1608X75L30"	"LEDC1608X75L30(<UNALLOCATED>LEDC1608X75L30)"	0
+
+.par
+"<UNALLOCATED>RESC1608X55L30"	"RESC1608X55L30(<UNALLOCATED>RESC1608X55L30)"	0
+
+.par
+"<UNALLOCATED>CAPC1608X90L40"	"CAPC1608X90L40(<UNALLOCATED>CAPC1608X90L40)"	0
+
+.par
+"<UNALLOCATED>FIDUCIAL MARK"	"FIDUCIAL MARK(<UNALLOCATED>FIDUCIAL MARK)"	0
+
+.par
+"<UNALLOCATED>MTGNP320H320"	"MTGNP320H320(<UNALLOCATED>MTGNP320H320)"	0
+
+.com
+CHG	"MARK2"	"<UNALLOCATED>FIDUCIAL MARK"	" "	800000	200000	0	0
+
+attr	"plc_category"	"default"
+attr	"mfgpartnr"	"NA"
+attr	"value"	"FIDUCIAL MARK"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+PIN	2
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"R1"	"<UNALLOCATED>RESC1608X55L30"	" "	1450000	1250000	90	0
+
+attr	"plc_height"	"0.55000mm"
+attr	"plc_category"	"default"
+attr	"onyx parttype"	"RESC1608X55L30"
+attr	"value"	"68K0"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+PIN	2
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"C1"	"<UNALLOCATED>CAPC1608X90L40"	" "	1300000	1400000	90	0
+
+attr	"plc_height"	"0.90000mm"
+attr	"plc_category"	"default"
+attr	"onyx parttype"	"CAPC1608X90L40"
+attr	"value"	"10UF"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+PIN	2
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"U1"	"<UNALLOCATED>SOIC127P600X175-8L10"	" "	2000000	1250000	90	0
+
+attr	"plc_height"	"1.75000mm"
+attr	"plc_category"	"default"
+attr	"mfgpartnr"	"ICM7555ESA+"
+attr	"onyx parttype"	"SOIC127P600X175-8L10"
+attr	"value"	"7555"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+PIN	2
+
+attr	"pin_class"	"Uncommited"
+PIN	3
+
+attr	"pin_class"	"Uncommited"
+PIN	4
+
+attr	"pin_class"	"Uncommited"
+PIN	5
+
+attr	"pin_class"	"Uncommited"
+PIN	6
+
+attr	"pin_class"	"Uncommited"
+PIN	7
+
+attr	"pin_class"	"Uncommited"
+PIN	8
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"MH1"	"<UNALLOCATED>MTGNP320H320"	" "	350000	350000	0	0
+
+attr	"plc_category"	"default"
+attr	"mfgpartnr"	"NA"
+attr	"value"	"MH/3.2mm"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"MH3"	"<UNALLOCATED>MTGNP320H320"	" "	3650000	2150000	0	0
+
+attr	"plc_category"	"default"
+attr	"mfgpartnr"	"NA"
+attr	"value"	"MH/3.2mm"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"MARK3"	"<UNALLOCATED>FIDUCIAL MARK"	" "	3800000	1700000	0	0
+
+attr	"plc_category"	"default"
+attr	"mfgpartnr"	"NA"
+attr	"value"	"FIDUCIAL MARK"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+PIN	2
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"MH4"	"<UNALLOCATED>MTGNP320H320"	" "	3650000	350000	0	0
+
+attr	"plc_category"	"default"
+attr	"mfgpartnr"	"NA"
+attr	"value"	"MH/3.2mm"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"MH2"	"<UNALLOCATED>MTGNP320H320"	" "	350000	2150000	0	0
+
+attr	"plc_category"	"default"
+attr	"mfgpartnr"	"NA"
+attr	"value"	"MH/3.2mm"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"C2"	"<UNALLOCATED>CAPC1608X90L40"	" "	1450000	1550000	90	0
+
+attr	"plc_height"	"0.90000mm"
+attr	"plc_category"	"default"
+attr	"onyx parttype"	"CAPC1608X90L40"
+attr	"value"	"10NF"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+PIN	2
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"D1"	"<UNALLOCATED>LEDC1608X75L30"	" "	3400000	1250000	90	0
+
+attr	"plc_height"	"0.75000mm"
+attr	"plc_category"	"default"
+attr	"mfgpartnr"	"APT1608SURCK"
+attr	"onyx parttype"	"LEDC1608X75L30"
+attr	"value"	"LED RED"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+PIN	2
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"R2"	"<UNALLOCATED>RESC1608X55L30"	" "	1300000	1100000	90	0
+
+attr	"plc_height"	"0.55000mm"
+attr	"plc_category"	"default"
+attr	"onyx parttype"	"RESC1608X55L30"
+attr	"value"	"4K70"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+PIN	2
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"MARK1"	"<UNALLOCATED>FIDUCIAL MARK"	" "	800000	2300000	0	0
+
+attr	"plc_category"	"default"
+attr	"mfgpartnr"	"NA"
+attr	"value"	"FIDUCIAL MARK"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+PIN	2
+
+attr	"pin_class"	"Uncommited"
+
+.com
+CHG	"R3"	"<UNALLOCATED>RESC1608X55L30"	" "	3000000	1450000	0	0
+
+attr	"plc_height"	"0.55000mm"
+attr	"plc_category"	"default"
+attr	"onyx parttype"	"RESC1608X55L30"
+attr	"value"	"330R"
+PIN	1
+
+attr	"pin_class"	"Uncommited"
+PIN	2
+
+attr	"pin_class"	"Uncommited"
+
+.con
+"VBAT"
+"U1"	4	"R3"	1	"R2"	1	"U1"	8
+.con
+"GND"
+"C2"	2	"C1"	2	"U1"	1
+.con
+"$109"
+"D1"	2	"U1"	3
+.con
+"$90"
+"U1"	2	"C1"	1	"R1"	2	"U1"	6
+.con
+"$91"
+"U1"	7	"R1"	1	"R2"	2
+.con
+"$94"
+"U1"	5	"C2"	1
+.con
+"$96"
+"R3"	2	"D1"	1
+.rou
+"VBAT"
+
+PATH	U	2	25000	2920500	1450000
+2911000	1440500
+
+PATH	U	2	20000	2911000	1440500
+2277000	1440500
+
+PATH	U	2	20000	2277000	1440500
+2029780	1440500
+1957500	1368220
+1957500	1059500
+1723000	1059500
+
+PATH	U	2	25000	1723000	1059500
+1564960	1059500
+1525960	1020500
+1300000	1020500
+
+.rou
+"GND"
+
+PATH	U	2	25000	1300000	1474500
+1300000	1625600
+1450000	1625600
+1450000	1624500
+
+.rou
+"$109"
+
+PATH	U	2	20000	3400000	1167500
+3400000	1027640
+3347720	975360
+3060700	975360
+2722560	1313500
+2277000	1313500
+
+.rou
+"$90"
+
+PATH	U	2	20000	2277000	1186500
+2448240	1186500
+2501900	1132840
+2501900	838200
+2438920	775220
+1157720	775220
+1094740	838200
+1094740	1247140
+1173100	1325500
+1300000	1325500
+
+PATH	U	2	20000	1300000	1325500
+1300000	1329500
+1450000	1329500
+
+PATH	U	2	20000	1450000	1329500
+1450000	1313500
+1723000	1313500
+
+.rou
+"$91"
+
+PATH	U	2	20000	1300000	1179500
+1300000	1170500
+1450000	1170500
+
+PATH	U	2	20000	1450000	1170500
+1450000	1186500
+1723000	1186500
+
+.rou
+"$94"
+
+PATH	U	2	20000	1450000	1475500
+1485000	1440500
+1723000	1440500
+
+.rou
+"$96"
+
+PATH	U	2	20000	3079500	1450000
+3400000	1450000
+3400000	1332500
+
+.eof

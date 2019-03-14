@@ -1,0 +1,35 @@
+
+(CADSTARPPF
+ (HEADER
+  (FORMAT CADSTARPPFMAP 3 4)
+  (TIMESTAMP 2017 4 26 15 19 3)
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "Manual Placement Top.col") OUT_WINDOWS_PRINTER
+  (DEVFILE "\\\\pushprint\\fyselab")
+  (SELFILE "windows.sel")
+  (OUTFILE "<Device>")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Manual placement")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "Silkscreen Cleanup.col") OUT_WINDOWS_PRINTER
+  (DEVFILE "\\\\pushprint\\fyselab")
+  (SELFILE "windows.sel")
+  (OUTFILE "<Device>")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Silkscreen Top")
+ )
+ (MAPPING
+  (USE N) PP_REPORT
+  (COLFILE "part_list.rgf") OUT_WINDOWS_PRINTER
+  (DEVFILE "\\\\pushprint\\fyselab")
+  (SELFILE "<None>")
+  (OUTFILE "<Device>")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Parts List")
+ )
+)
+

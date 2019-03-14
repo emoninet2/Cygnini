@@ -1,0 +1,98 @@
+
+(CADSTARPPF
+ (HEADER
+  (FORMAT CADSTARPPFMAP 3 4)
+  (TIMESTAMP 2014 3 24 15 7 17)
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "BOARD_PP.COL") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "Board.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Board outline")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "TOPELEC_PP.COL") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "TopElec.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "TopElec")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "BOTSTOP_PP.COL") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "BotStop.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "BotStop")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "TOPSTOP_PP.COL") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "TopStop.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "TopStop")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "BOTELEC_PP.COL") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "BotElec.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "BotElec")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "TOPSILK_PP.COL") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "TopSilk.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "TopSilk")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "TOPPASTE_PP.COL") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "TopPaste.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "TopPaste")
+ )
+ (MAPPING
+  (USE Y) PP_NC_DRILL
+  (COLFILE "DRILL_PP.COL") OUT_NC_DRILL
+  (DEVFILE "excellon2.usr")
+  (SELFILE "Drill_Plated.sel")
+  (OUTFILE "Drill_plated.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Drill plated")
+ )
+ (MAPPING
+  (USE Y) PP_NC_DRILL
+  (COLFILE "DRILL_PP.COL") OUT_NC_DRILL
+  (DEVFILE "excellon2.usr")
+  (SELFILE "Drill_NonPlated.sel")
+  (OUTFILE "Drill_Nonplated.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "Drill_unplated")
+ )
+ (MAPPING
+  (USE Y) PP_ARTWORK
+  (COLFILE "BOTSILK_PP.COL") OUT_PHOTO_PLOT
+  (DEVFILE "gerb_ext.usr")
+  (SELFILE "Artwork.sel")
+  (OUTFILE "BotSilk.spl")
+  (VARIANT "<NO VARIANTS>")
+  (ROWDESC "BotSilk")
+ )
+)
+

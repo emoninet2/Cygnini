@@ -1,0 +1,201 @@
+* SPICE CONTROLL FILE
+*-----------------------
+
+* INSERT NODES FOR XX's
+
+
+*GENERATORS :
+
+Vin  XX  0  AC 1 SIN ( 0V 0.1V 1KHZ 0 0 0 )
+
+
+*POWER SUPPLY
+
+VDC1  XX   XX  9V
+VDC2  XX   XX -9V
+
+*------------------------
+
+.CADSPICE
+
+*------------------------
+
+*DUMMY TEST COMPONENTS:
+Rload X   0   10R
+
+*------------------------
+
+*TESTS :
+
+.AC OCT 10 10 100MEG
+*.NOISE V(2) VIN 100
+
+*.MC 10 AC VDB(2) YMAX LIST
+*.WCASE AC VDB(2) YMAX LIST
+
+.TRAN  1US 2MS
+*.FOUR 1KHZ V(2)
+
+
+.DC  VIN -0.125V 0.125V 0.005V
+
+*.MODEL CMOD CAP(C=10PF)
+*.STEP CAP CMOD(C) LIST 1P 10PF 100PF
+
+*.MODEL RMOD RES(R=1K)
+*.STEP RES RMOD(R) LIST 1K 2K 3K
+
+*------------------------
+
+* MODELS :
+*--------------------------------
+
+* NPN SMALL SIGNAL THROUGH HOLE :
+
+.MODEL BC550C   NPN(Is=7.049f Xti=3 Eg=1.11 Vaf=23.89 Bf=493.2 Ise=99.2f
++               Ne=1.829 Ikf=.1542 Nk=.6339 Xtb=1.5 Br=2.886 Isc=7.371p
++               Nc=1.508 Ikr=5.426 Rc=1.175 Cjc=5.5p Mjc=.3132 Vjc=.4924 Fc=.5
++               Cje=11.5p Mje=.6558 Vje=.5 Tr=10n Tf=420.3p Itf=1.374 Xtf=39.42
++               Vtf=10)
+
+* NPN SMALL SIGNAL SMD :
+
+.MODEL BC817 NPN IS = 9.198E-14 NF = 1.003 ISE = 4.468E-16 NE = 1.65
++					BF = 338.8  IKF = 0.4913 VAF = 107.9 NR = 1.002 
++					ISC = 5.109E-15 NC = 1.071  BR = 29.48 IKR = 0.193 
++					VAR = 25 RB = 1 IRB = 1000 RBM = 1  RE = 0.2126 RC = 0.143 
++					XTB = 0 EG = 1.11  XTI = 3 CJE = 3.825E-11 
++					VJE = 0.7004 MJE = 0.364 TF = 5.229E-10 XTF = 219.7 
++					VTF = 3.502  ITF = 7.257 PTF = 0 CJC = 1.27E-11 VJC = 0.4431 
++					MJC = 0.3983  XCJC = 0.4555 TR = 7E-11
++					CJS = 0 VJS = 0.75 MJS = 0.333 FC = 0.905
+
+.MODEL BC850C   NPN(Is=7.049f Xti=3 Eg=1.11 Vaf=62.37 Bf=279.1 Ise=59.16f
++               Ne=1.81 Ikf=.2201 Nk=.6305 Xtb=1.5 Br=3.816 Isc=16.17f Nc=2.394
++               Ikr=1.859 Rc=1.508 Cjc=7.287p Mjc=.3333 Vjc=.5 Fc=.5 Cje=9.485p
++               Mje=.3333 Vje=.5 Tr=10n Tf=664p Itf=4.664 Xtf=147 Vtf=10)
+
+
+.MODEL FMBM5551 NPN IS     = 5.88844E-15     BF     = 76.1           NF     = 1                  
++ 						BR     = 0.028           NR     = 1              ISE    = 1.0E-14              
++ 						NE     = 1.56            ISC    = 1.01826E-14    NC     = 1.5                
++ 						VAF    = 74.03           VAR    = 20             IKF    = 0.049453             
++ 						IKR    = 0.017378        RB     = 12.5           RBM    = 1.2                
++ 						IRB    = 2.51189E-5      RE     = 0.11           RC     = 1.03
++ 						CJE    = 2.079424E-12    VJE    = 0.6464066      MJE    = 0.2596434
++ 						FC     = 0.5             CJC    = 1.091838E-12   VJC    = 0.5
++ 						MJC    = 0.1964945       TF     = 1.012E-09      XTF    = 2.0
++ 						ITF    = 0.4             VTF    = 4.0            TR     = 2.395E-7
++ 						XTB    = 1.65            EG     = 0.82            
++ 						XTI    = 3 
+
+
+* PNP SMALL SIGNAL THROUGH HOLE :
+*--------------------------------
+.MODEL BC560C   PNP(Is=1.02f Xti=3 Eg=1.11 Vaf=34.62 Bf=401.6 Ise=38.26p
++               Ne=5.635 Ikf=74.73m Nk=.512 Xtb=1.5 Br=9.011 Isc=1.517f
++               Nc=1.831 Ikr=.1469 Rc=1.151 Cjc=9.81p Mjc=.332 Vjc=.4865 Fc=.5
++               Cje=30p Mje=.3333 Vje=.5 Tr=10n Tf=524p Itf=.9847 Xtf=17.71
++               Vtf=10)
+
+* PNP SMALL SIGNAL SMD :
+*--------------------------------
+.MODEL BC807 PNP IS=1.08E-13 NF=0.99 ISE=2.713E-14 
++ 						NE=1.4 BF=385.7 KF=0.3603 VAF=31.29 NR=0.9849 ISC=5.062E-13 
++ 						NC=1.295 BR=20.57 IKR=0.054 VAR=11.62 RB=1 IRB=1E-06
++ 						RBM=0.5 RE=0.1415 RC=0.2623 XTB=0 EG=1.11 XTI=3
++ 						CJE=5.114E-11 VJE=0.8911 MJE=0.4417 TF=7.359E-10 XTF=1.859
++ 						VTF=3.813 ITF=0.4393 PTF=0 CJC=2.656E-11 VJC=0.62 MJC=0.4836
++ 						XCJC=0.459 TR=5.00E-08 CJS=0 VJS=0.75 MJS=0.333 FC=0.99
+
+.MODEL BC860C   PNP(Is=336.7f Xti=3 Eg=1.11 Vaf=29.03 Bf=462.2 Ise=1.648p
++               Ne=2.405 Ikf=.1165 Nk=.5254 Xtb=1.5 Br=7.16 Isc=196p Nc=1.815
++               Ikr=9.677 Rc=2.791 Cjc=11.51p Mjc=.3626 Vjc=.5 Fc=.5 Cje=8.397p
++               Mje=.3865 Vje=.5 Tr=10n Tf=605.4p Itf=3.088 Xtf=41.48 Vtf=10)
+
+.MODEL FMBM5401 PNP IS= 9.0095E-14  BF= 91.0  NF = 1                  
++ 						BR= 0.2745 NR= 1  ISE= 1.059573E-12    
++ NE     = 2             ISC    = 1.5578E-09     NC     = 1.5                
++ VAF    = 86.87         VAR    = 39.22          IKF    = 0.9394           
++ IKR    = 0.831764      RB     = 18.4           RBM    = 0.0126              
++ IRB    = 1.0256E-7     RE     = 0.048          RC     = 1.5212              
++ CJE    = 2.61493E-12   VJE    = 0.7535019      MJE    = 0.3860237          
++ FC     = 0.5           CJC    = 1.882005E-11   VJC    = 0.5964168          
++ MJC    = 0.3948966     TF     = 1.57155e-09    EG     = 0.7005 
++ XTB    = 1.115
+
+
+
+*DRIVERS:
+*--------------------------------
+
+* NPN  THROUGH HOLE :
+
+.MODEL BD139 NPN IS=1e-09 BF=222.664 NF=0.85 VAF=36.4079
++IKF=0.166126 ISE=5.03418e-09 NE=1.45313 BR=1.35467
++NR=1.33751 VAR=142.931 IKR=1.66126 ISC=5.02557e-09
++NC=3.10227 RB=26.9143 IRB=0.1 RBM=0.1
++RE=0.000472454 RC=1.04109 XTB=0.727762 XTI=1.04311
++EG=1.05 CJE=1e-11 VJE=0.75 MJE=0.33
++TF=1e-09 XTF=1 VTF=10 ITF=0.01
++CJC=1e-11 VJC=0.75 MJC=0.33 XCJC=0.9
++FC=0.5 CJS=0 VJS=0.75 MJS=0.5
++TR=1e-07 PTF=0 KF=0 AF=1
+
+* NPN  SMD :
+
+.MODEL FZT651 NPN IS =2.218E-13 NF =.9956 BF =230 IKF=2 VAF=100 ISE=2.9E-14
++NE =1.35 NR =.995 BR =56 IKR=1 VAR=30 ISC=2.971E-13 NC =1.321 RB =.04
++RE =.075 RC =.069 CJC=51E-12 MJC=.42 VJC=.595 CJE=318E-12 TF =.77E-9
++TR =27E-9
+
+* PNP  THROUGH HOLE :
+
+.MODEL BD140 PNP IS=1e-09 BF=650.842 NF=0.85 VAF=10
++IKF=0.0950125 ISE=1e-08 NE=1.54571 BR=56.177
++NR=1.5 VAR=2.11267 IKR=0.950125 ISC=1e-08
++NC=3.58527 RB=41.7566 IRB=0.1 RBM=0.108893
++RE=0.000347052 RC=1.32566 XTB=19.5239 XTI=1
++EG=1.05 CJE=1e-11 VJE=0.75 MJE=0.33
++TF=1e-09 XTF=1 VTF=10 ITF=0.01
++CJC=1e-11 VJC=0.75 MJC=0.33 XCJC=0.9
++FC=0.5 CJS=0 VJS=0.75 MJS=0.5
++TR=1e-07 PTF=0 KF=0 AF=1
+
+* PNP  SMD :
+
+.MODEL FZT751 PNP IS =2.715E-13 BF =170 VAF=70 NF =1.004 IKF=2.75 ISE=1E-13
++NE =1.535 BR =23 VAR=40 NR =1.005 IKR=.55 ISC=5.15E-14 NC =1.13 RB =.07
++RE =.065 RC =.085 CJE=360E-12 TF =.94E-9 CJC=90E-12 TR =60E-9 VJC=.705
++MJC=.46
+
+
+* DIODES :
+*--------------------------------
+
+* THROUGH HOLE :
+
+.MODEL 1N4148	D(Is=2.682n N=1.836 Rs=.5664 Ikf=44.17m Xti=3 Eg=1.11 Cjo=4p
++		M=.3333 Vj=.5 Fc=.5 Isr=1.565n Nr=2 Bv=100 Ibv=100u Tt=11.54n)
+
+* SMD :
+.MODEL BAS16    D(Is=4.198n N=1.977 Rs=.4599 Ikf=1.408 Xti=3 Eg=1.11 Cjo=2p
++		M=.3333 Vj=.5 Fc=.5 Isr=1.115n Nr=2 Bv=75 Ibv=100u Tt=8.656n)
+
+.MODEL BAV70 D(IS=3.2E-009 N=1.85 BV=125.9    
++IBV=2.906E-007 RS=1.1 CJO=4.957E-013 VJ=0.54     
++M=0.03 FC=0.5 TT=0 EG=1.1 XTI=3)  
+
+* DIV.  MODELS :
+*--------------------------------
+
+.MODEL C025%	CAP(C=1 DEV=2.5% TC1=0.00015);150ppm
+.MODEL C5%	CAP(C=1 DEV=5% TC1=0.00015);150ppm
+.MODEL C20%	CAP(C=1 DEV=20% TC1=0.00015);150ppm
+
+.MODEL R01%	RES(R=1 DEV=1% TC1=.00005 TC2=.00001)
+
+.OP
+.LIB
+.PROBE/CSDF 
+.END
