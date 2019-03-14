@@ -81,6 +81,7 @@ DesFileList8=M:\pc\Desktop\Cygnini\Board\Cygnini\Cygnini_v2.pcb
 DesFileList9=M:\pc\Desktop\Cygnini\Cygnini\Cygnini.scm
 WorkspaceList1=<workspacepath=M:\pc\Dokumenter\CADSTAR\Workspace\>workspace.csw
 DesFileOpen1=<workspacepath=M:\pc\Dokumenter\CADSTAR\Workspace\>Cygnini\Cygnini.pcb
+DesFileOpen2=<workspacepath=M:\pc\Dokumenter\CADSTAR\Workspace\>Cygnini\Cygnini.scm
 [Libraries]
 Component1=pcb.lib
 DocSymbol1=docsym.lib

@@ -1,3 +1,18 @@
+attr	Template	"L3_GND"
+	(	"ppp_is_plane"	"N"	)
+
 attr	Template	"NRF24L01p_ANT"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"P3V0PLANE"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"L4_GND"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"RAWPLANE"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"P5V0PLANE"
 	(	"ppp_is_plane"	"N"	)
 

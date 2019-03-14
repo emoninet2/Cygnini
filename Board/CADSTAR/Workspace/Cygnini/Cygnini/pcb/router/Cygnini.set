@@ -97,10 +97,10 @@ filename	"Cygnini"
 overwrite            no
 
 .layer
-4   active         displayed     
 6   active         displayed     
-2   active         displayed     
 8   active         displayed     
+4   active         displayed     
+2   active         displayed     
 
 .colour
 wildcard	"*"
@@ -180,9 +180,6 @@ default_colour       colour_7
 wildcard	"$230"
 default_colour       colour_7
 
-wildcard	"NRF24L01_ANT"
-default_colour       colour_7
-
 wildcard	"NRF24_IRQ"
 default_colour       colour_7
 
@@ -194,9 +191,6 @@ default_colour       colour_7
 
 wildcard	"$431"
 default_colour       colour_7
-
-wildcard	"P5V0_REG"
-default_colour       colour_3
 
 wildcard	"$232"
 default_colour       colour_7
@@ -252,7 +246,7 @@ default_colour       colour_7
 wildcard	"$382"
 default_colour       colour_7
 
-wildcard	"P_RAW"
+wildcard	"P5V0_REG"
 default_colour       colour_3
 
 wildcard	"MCU_SCK"
@@ -285,13 +279,13 @@ default_colour       colour_7
 wildcard	"MCU_SDA"
 default_colour       colour_7
 
+wildcard	"P5V0_USB"
+default_colour       colour_3
+
 wildcard	"C12832_nRST"
 default_colour       colour_7
 
 wildcard	"C12832_A0"
-default_colour       colour_7
-
-wildcard	"NRF24_CSN"
 default_colour       colour_7
 
 wildcard	"LCD_BACKLIGHT"
@@ -327,7 +321,7 @@ default_colour       colour_7
 wildcard	"PC_TX"
 default_colour       colour_7
 
-wildcard	"MCU_nRST"
+wildcard	"NRF24_CSN"
 default_colour       colour_7
 
 wildcard	"$698"
@@ -348,11 +342,8 @@ default_colour       colour_7
 wildcard	"C12832_SCL"
 default_colour       colour_7
 
-wildcard	"P3V0"
+wildcard	"P_RAW"
 default_colour       colour_3
-
-wildcard	"GND"
-default_colour       colour_6
 
 wildcard	"SWO"
 default_colour       colour_7
@@ -369,8 +360,8 @@ default_colour       colour_7
 wildcard	"LED_RadioRX"
 default_colour       colour_7
 
-wildcard	"P5V0_USB"
-default_colour       colour_3
+wildcard	"MCU_nRST"
+default_colour       colour_7
 
 wildcard	"$628"
 default_colour       colour_7
@@ -423,13 +414,22 @@ default_colour       colour_7
 wildcard	"3VX_REG_INSEL"
 default_colour       colour_3
 
+wildcard	"NRF24L01_ANT"
+default_colour       colour_7
+
+wildcard	"P3V0"
+default_colour       colour_3
+
+wildcard	"GND"
+default_colour       colour_6
+
 
 .colour_vias
 colour_by_layer_pair	off
 default_layer_pair_colour	colour_1	vis	colour_1	vis
 
 .window
-677586 -1150928 7349055 2550366
+-2397174 -1535273 10228321 5469281
 
 .debug
 break	none
@@ -873,7 +873,7 @@ Via_(unfixed)        yes
 Via_(fixed)          yes
 Via_(semifixed)      yes
 Pad                  yes
-Copper               yes
+Copper               no
 Power_plane          yes
 Virtual_branch_point yes
 Testpoint            yes
