@@ -12,7 +12,7 @@ online_drc           yes
 autoneck             no
 move_comp            yes
 effort               10
-width_type	necked
+width_type	typed
 width_val            50800
 angle                45
 passes               1
@@ -49,10 +49,10 @@ spread_routes        yes
 .grid
 screen_type	off
 screen_typed         1
-grid_testpoint       2540
-grid_working         10000
 grid_track           2540
 grid_via             2540
+grid_testpoint       2540
+grid_working         10000
 
 .display
 autopan              no
@@ -104,314 +104,329 @@ overwrite            no
 
 .colour
 wildcard	"*"
-layers	1	2	8	4	6	9
-Pad                 mask_1	mask_1	mask_2	mask_6	mask_3	mask_3	
-Via_(unfixed)       mask_1	mask_1	mask_2	mask_6	mask_3	mask_3	
-Via_(fixed)         mask_1	mask_1	mask_2	mask_6	mask_3	mask_3	
-Via_(semi-fixed)    mask_1	mask_1	mask_2	mask_6	mask_3	mask_3	
-Drill_holes         mask_7	mask_7	mask_7	mask_7	mask_7	mask_7	
-Track_(unfixed)     mask_0	mask_1	mask_2	mask_6	mask_3	mask_0	
-Track_(fixed)       mask_0	mask_1	mask_2	mask_6	mask_3	mask_0	
-Track_(semi-fixed)  mask_0	mask_1	mask_2	mask_6	mask_3	mask_0	
-Track_(odd)         mask_0	mask_1	mask_2	mask_6	mask_3	mask_0	
-Track_(plating_tail)	mask_0	mask_1	mask_2	mask_6	mask_3	mask_0	
-Copper              mask_1	mask_1	mask_2	mask_6	mask_3	mask_3	
-Text                mask_1	mask_1	mask_2	mask_2	mask_2	mask_2	
-Ascii_text          mask_1	mask_1	mask_2	mask_2	mask_2	mask_2	
-Template            mask_51	mask_51	mask_51	mask_51	mask_51	mask_51	
-No_track_area       mask_51	mask_51	mask_51	mask_51	mask_51	mask_51	
-Other_Routing_area  mask_51	mask_51	mask_51	mask_51	mask_51	mask_51	
-Error_item          mask_7	mask_7	mask_7	mask_7	mask_7	mask_7	
-Error_letter        mask_7	mask_7	mask_7	mask_7	mask_7	mask_7	
-Connection/layer    colour_5	colour_5	colour_5	colour_5	colour_5	colour_5	
-Connection          colour_5	colour_5	colour_5	colour_5	colour_5	colour_5	
-Board_outline       mask_7	mask_7	mask_7	mask_7	mask_7	mask_7	
-Profile             mask_7	mask_7	mask_7	mask_7	mask_7	mask_7	
-Routing_area        mask_51	mask_51	mask_51	mask_51	mask_51	mask_51	
-No_via_area         mask_51	mask_51	mask_51	mask_51	mask_51	mask_51	
-Placement_Area_top  mask_51	mask_51	mask_51	mask_51	mask_51	mask_51	
-Placement_Area_bottom	mask_51	mask_51	mask_51	mask_51	mask_51	mask_51	
-Highlight           mask_5	mask_5	mask_5	mask_5	mask_5	mask_5	
-Grid                mask_7	mask_7	mask_7	mask_7	mask_7	mask_7	
-Testpoint_top       mask_5	mask_5	mask_5	mask_5	mask_5	mask_5	
-Testpoint_bottom    mask_5	mask_5	mask_5	mask_5	mask_5	mask_5	
-Placement_top       mask_54	mask_54	mask_54	mask_54	mask_54	mask_54	
-Placement_bottom    mask_55	mask_55	mask_55	mask_55	mask_55	mask_55	
-Clearance_top       mask_54	mask_54	mask_54	mask_54	mask_54	mask_54	
-Clearance_bottom    mask_55	mask_55	mask_55	mask_55	mask_55	mask_55	
-Component_name_top  mask_54	mask_54	mask_54	mask_54	mask_54	mask_54	
-Component_name_bottom	mask_55	mask_55	mask_55	mask_55	mask_55	mask_55	
-Power_dissipation_top	mask_0	mask_0	mask_0	mask_0	mask_0	mask_0	
-Power_dissipation_bottom	mask_0	mask_0	mask_0	mask_0	mask_0	mask_0	
-Thermal_box_top     mask_0	mask_0	mask_0	mask_0	mask_0	mask_0	
-Thermal_box_bottom  mask_0	mask_0	mask_0	mask_0	mask_0	mask_0	
-
-wildcard	 "$228"
-default_colour	colour_7	
-
-wildcard	 "$227"
-default_colour	colour_7	
-
-wildcard	 "$226"
-default_colour	colour_7	
-
-wildcard	 "$231"
-default_colour	colour_7	
-
-wildcard	 "$230"
-default_colour	colour_7	
+layers              2       8       4       6       
+Pad                 mask_1  mask_2  mask_6  mask_3  
+Via_(unfixed)       mask_1  mask_2  mask_6  mask_3  
+Via_(fixed)         mask_1  mask_2  mask_6  mask_3  
+Via_(semi-fixed)    mask_1  mask_2  mask_6  mask_3  
+Drill_holes         mask_7  mask_7  mask_7  mask_7  
+Track_(unfixed)     mask_1  mask_2  mask_6  mask_3  
+Track_(fixed)       mask_1  mask_2  mask_6  mask_3  
+Track_(semi-fixed)  mask_1  mask_2  mask_6  mask_3  
+Track_(odd)         mask_1  mask_2  mask_6  mask_3  
+Track_(plating_tail)	mask_1  mask_2  mask_6  mask_3  
+Copper              mask_1  mask_2  mask_6  mask_3  
+Text                mask_1  mask_2  mask_2  mask_2  
+Ascii_text          mask_1  mask_2  mask_2  mask_2  
+Template            mask_51 mask_51 mask_51 mask_51 
+No_track_area       mask_51 mask_51 mask_51 mask_51 
+Other_Routing_area  mask_51 mask_51 mask_51 mask_51 
+Error_item          mask_7  mask_7  mask_7  mask_7  
+Error_letter        mask_7  mask_7  mask_7  mask_7  
+Connection/layer    colour_5	colour_5	colour_5	colour_5
+Connection          colour_5	colour_5	colour_5	colour_5
+Board_outline       mask_7  mask_7  mask_7  mask_7  
+Profile             mask_7  mask_7  mask_7  mask_7  
+Routing_area        mask_51 mask_51 mask_51 mask_51 
+No_via_area         mask_51 mask_51 mask_51 mask_51 
+Placement_Area_top  mask_51 mask_51 mask_51 mask_51 
+Placement_Area_bottom	mask_51 mask_51 mask_51 mask_51 
+Highlight           mask_5  mask_5  mask_5  mask_5  
+Grid                mask_7  mask_7  mask_7  mask_7  
+Testpoint_top       mask_5  mask_5  mask_5  mask_5  
+Testpoint_bottom    mask_5  mask_5  mask_5  mask_5  
+Placement_top       mask_54 mask_54 mask_54 mask_54 
+Placement_bottom    mask_55 mask_55 mask_55 mask_55 
+Clearance_top       mask_54 mask_54 mask_54 mask_54 
+Clearance_bottom    mask_55 mask_55 mask_55 mask_55 
+Component_name_top  mask_54 mask_54 mask_54 mask_54 
+Component_name_bottom	mask_55 mask_55 mask_55 mask_55 
+Power_dissipation_top	mask_0  mask_0  mask_0  mask_0  
+Power_dissipation_bottom	mask_0  mask_0  mask_0  mask_0  
+Thermal_box_top     mask_0  mask_0  mask_0  mask_0  
+Thermal_box_bottom  mask_0  mask_0  mask_0  mask_0  
+Terminal            mask_0  mask_0  mask_0  mask_0  
+Component_group     mask_4  mask_4  mask_4  mask_4  
+Thermal             mask_0  mask_0  mask_0  mask_0  
+Virtual_branch_point	mask_1  mask_1  mask_1  mask_1  
+Power_plane         mask_0  mask_0  mask_0  mask_0  
+Expansion           mask_3  mask_4  mask_4  mask_3  
+Pin_swap_flags      mask_7  mask_7  mask_7  mask_7  
+LowLight            mask_50 mask_50 mask_50 mask_50 
+Annotation          mask_1  mask_1  mask_1  mask_1  
+Diff_pair_indicator mask_50 mask_50 mask_50 mask_50 
+Trunking_twist_arrow	mask_4  mask_4  mask_4  mask_4  
+Trunking_snap_axis  mask_50 mask_50 mask_50 mask_50 
+Trunking_marker     mask_7  mask_7  mask_7  mask_7  
+Trunking_marker_text	mask_5  mask_5  mask_5  mask_5  
+Trunking_end_routing_area	mask_50 mask_50 mask_50 mask_50 
+Comparison_comparison	mask_1  mask_1  mask_1  mask_1  
+Comparison_current  mask_2  mask_2  mask_2  mask_2  
+Power_plane_isolations	mask_0  mask_0  mask_0  mask_0  
+
+
+wildcard	"$228"
+default_colour       colour_7
+
+wildcard	"$227"
+default_colour       colour_7
+
+wildcard	"$226"
+default_colour       colour_7
+
+wildcard	"$231"
+default_colour       colour_7
+
+wildcard	"$230"
+default_colour       colour_7
+
+wildcard	"NRF24_IRQ"
+default_colour       colour_7
+
+wildcard	"C12832_nCS1"
+default_colour       colour_7
+
+wildcard	"LED_RadioTX"
+default_colour       colour_7
+
+wildcard	"$431"
+default_colour       colour_7
+
+wildcard	"SW3"
+default_colour       colour_7
+
+wildcard	"$232"
+default_colour       colour_7
+
+wildcard	"Si1133_INT"
+default_colour       colour_7
+
+wildcard	"$263"
+default_colour       colour_7
+
+wildcard	"$243"
+default_colour       colour_7
 
-wildcard	 "NRF24_IRQ"
-default_colour	colour_7	
+wildcard	"$244"
+default_colour       colour_7
 
-wildcard	 "C12832_nCS1"
-default_colour	colour_7	
+wildcard	"$246"
+default_colour       colour_7
 
-wildcard	 "LED_RadioTX"
-default_colour	colour_7	
+wildcard	"$248"
+default_colour       colour_7
 
-wildcard	 "$431"
-default_colour	colour_7	
+wildcard	"$250"
+default_colour       colour_7
 
-wildcard	 "$232"
-default_colour	colour_7	
+wildcard	"$245"
+default_colour       colour_7
 
-wildcard	 "Si1133_INT"
-default_colour	colour_7	
+wildcard	"$618"
+default_colour       colour_7
 
-wildcard	 "$263"
-default_colour	colour_7	
+wildcard	"$247"
+default_colour       colour_7
 
-wildcard	 "$243"
-default_colour	colour_7	
+wildcard	"$249"
+default_colour       colour_7
 
-wildcard	 "$244"
-default_colour	colour_7	
+wildcard	"$251"
+default_colour       colour_7
 
-wildcard	 "$246"
-default_colour	colour_7	
+wildcard	"$582"
+default_colour       colour_7
 
-wildcard	 "$248"
-default_colour	colour_7	
+wildcard	"$252"
+default_colour       colour_7
 
-wildcard	 "$250"
-default_colour	colour_7	
+wildcard	"$254"
+default_colour       colour_7
 
-wildcard	 "$245"
-default_colour	colour_7	
+wildcard	"$349"
+default_colour       colour_7
 
-wildcard	 "$618"
-default_colour	colour_7	
+wildcard	"$382"
+default_colour       colour_7
 
-wildcard	 "$247"
-default_colour	colour_7	
+wildcard	"P5V0_REG"
+default_colour       colour_3
 
-wildcard	 "$249"
-default_colour	colour_7	
+wildcard	"MCU_SCK"
+default_colour       colour_7
 
-wildcard	 "$251"
-default_colour	colour_7	
+wildcard	"$418"
+default_colour       colour_7
 
-wildcard	 "$582"
-default_colour	colour_7	
+wildcard	"$590"
+default_colour       colour_7
 
-wildcard	 "$252"
-default_colour	colour_7	
+wildcard	"$348"
+default_colour       colour_7
 
-wildcard	 "$254"
-default_colour	colour_7	
+wildcard	"$629"
+default_colour       colour_7
 
-wildcard	 "$349"
-default_colour	colour_7	
+wildcard	"$264"
+default_colour       colour_7
 
-wildcard	 "$382"
-default_colour	colour_7	
+wildcard	"$417"
+default_colour       colour_7
 
-wildcard	 "P5V0_REG"
-default_colour	colour_3	
+wildcard	"SW2"
+default_colour       colour_7
 
-wildcard	 "MCU_SCK"
-default_colour	colour_7	
+wildcard	"C12832_MOSI"
+default_colour       colour_7
 
-wildcard	 "$418"
-default_colour	colour_7	
+wildcard	"MCU_SDA"
+default_colour       colour_7
 
-wildcard	 "$590"
-default_colour	colour_7	
+wildcard	"P5V0_USB"
+default_colour       colour_3
 
-wildcard	 "$348"
-default_colour	colour_7	
+wildcard	"C12832_nRST"
+default_colour       colour_7
 
-wildcard	 "$629"
-default_colour	colour_7	
+wildcard	"C12832_A0"
+default_colour       colour_7
 
-wildcard	 "$264"
-default_colour	colour_7	
+wildcard	"LCD_BACKLIGHT"
+default_colour       colour_7
 
-wildcard	 "$417"
-default_colour	colour_7	
+wildcard	"NRF24_CE"
+default_colour       colour_7
 
-wildcard	 "SW2"
-default_colour	colour_7	
+wildcard	"SW0"
+default_colour       colour_7
 
-wildcard	 "C12832_MOSI"
-default_colour	colour_7	
+wildcard	"$429"
+default_colour       colour_7
 
-wildcard	 "MCU_SDA"
-default_colour	colour_7	
+wildcard	"$419"
+default_colour       colour_7
 
-wildcard	 "P5V0_USB"
-default_colour	colour_3	
+wildcard	"P3V0_REG"
+default_colour       colour_3
 
-wildcard	 "C12832_nRST"
-default_colour	colour_7	
+wildcard	"SW1"
+default_colour       colour_7
 
-wildcard	 "C12832_A0"
-default_colour	colour_7	
+wildcard	"USB_D+"
+default_colour       colour_7
 
-wildcard	 "LCD_BACKLIGHT"
-default_colour	colour_7	
+wildcard	"$697"
+default_colour       colour_7
 
-wildcard	 "NRF24_CE"
-default_colour	colour_7	
+wildcard	"PC_TX"
+default_colour       colour_7
 
-wildcard	 "SW0"
-default_colour	colour_7	
+wildcard	"NRF24_CSN"
+default_colour       colour_7
 
-wildcard	 "$429"
-default_colour	colour_7	
+wildcard	"$698"
+default_colour       colour_7
 
-wildcard	 "$419"
-default_colour	colour_7	
+wildcard	"$253"
+default_colour       colour_7
 
-wildcard	 "P3V0_REG"
-default_colour	colour_3	
+wildcard	"SWCLK"
+default_colour       colour_7
 
-wildcard	 "SW1"
-default_colour	colour_7	
+wildcard	"$416"
+default_colour       colour_7
 
-wildcard	 "SW3"
-default_colour	colour_7	
+wildcard	"C12832_SCL"
+default_colour       colour_7
 
-wildcard	 "USB_D+"
-default_colour	colour_7	
+wildcard	"P_RAW"
+default_colour       colour_3
 
-wildcard	 "$697"
-default_colour	colour_7	
+wildcard	"SWO"
+default_colour       colour_7
 
-wildcard	 "PC_TX"
-default_colour	colour_7	
+wildcard	"USB_D-"
+default_colour       colour_7
 
-wildcard	 "NRF24_CSN"
-default_colour	colour_7	
+wildcard	"MCU_BOOT0"
+default_colour       colour_7
 
-wildcard	 "$698"
-default_colour	colour_7	
+wildcard	"SWDIO"
+default_colour       colour_7
 
-wildcard	 "P5V0"
-default_colour	colour_3	
+wildcard	"LED_RadioRX"
+default_colour       colour_7
 
-wildcard	 "$253"
-default_colour	colour_7	
+wildcard	"MCU_nRST"
+default_colour       colour_7
 
-wildcard	 "SWCLK"
-default_colour	colour_7	
+wildcard	"$628"
+default_colour       colour_7
 
-wildcard	 "$416"
-default_colour	colour_7	
+wildcard	"$620"
+default_colour       colour_7
 
-wildcard	 "C12832_SCL"
-default_colour	colour_7	
+wildcard	"PC_RX"
+default_colour       colour_7
 
-wildcard	 "P_RAW"
-default_colour	colour_3	
+wildcard	"$385"
+default_colour       colour_7
 
-wildcard	 "SWO"
-default_colour	colour_7	
+wildcard	"$233"
+default_colour       colour_7
 
-wildcard	 "USB_D-"
-default_colour	colour_7	
+wildcard	"$234"
+default_colour       colour_7
 
-wildcard	 "MCU_BOOT0"
-default_colour	colour_7	
+wildcard	"MCU_MISO"
+default_colour       colour_7
 
-wildcard	 "SWDIO"
-default_colour	colour_7	
+wildcard	"MCU_MOSI"
+default_colour       colour_7
 
-wildcard	 "LED_RadioRX"
-default_colour	colour_7	
+wildcard	"$430"
+default_colour       colour_7
 
-wildcard	 "MCU_nRST"
-default_colour	colour_7	
+wildcard	"$432"
+default_colour       colour_7
 
-wildcard	 "$628"
-default_colour	colour_7	
+wildcard	"LED2"
+default_colour       colour_7
 
-wildcard	 "$620"
-default_colour	colour_7	
+wildcard	"LED3"
+default_colour       colour_7
 
-wildcard	 "PC_RX"
-default_colour	colour_7	
+wildcard	"LED1"
+default_colour       colour_7
 
-wildcard	 "$385"
-default_colour	colour_7	
+wildcard	"LED0"
+default_colour       colour_7
 
-wildcard	 "$233"
-default_colour	colour_7	
+wildcard	"MCU_SCL"
+default_colour       colour_7
 
-wildcard	 "$234"
-default_colour	colour_7	
+wildcard	"$376"
+default_colour       colour_7
 
-wildcard	 "MCU_MISO"
-default_colour	colour_7	
+wildcard	"NRF24L01_ANT"
+default_colour       colour_7
 
-wildcard	 "MCU_MOSI"
-default_colour	colour_7	
+wildcard	"P3V0"
+default_colour       colour_3
 
-wildcard	 "$430"
-default_colour	colour_7	
+wildcard	"GND"
+default_colour       colour_6
 
-wildcard	 "$432"
-default_colour	colour_7	
-
-wildcard	 "LED2"
-default_colour	colour_7	
-
-wildcard	 "LED3"
-default_colour	colour_7	
-
-wildcard	 "LED1"
-default_colour	colour_7	
-
-wildcard	 "LED0"
-default_colour	colour_7	
-
-wildcard	 "MCU_SCL"
-default_colour	colour_7	
-
-wildcard	 "$376"
-default_colour	colour_7	
-
-wildcard	 "3VX_REG_INSEL"
-default_colour	colour_3	
-
-wildcard	 "NRF24L01_ANT"
-default_colour	colour_7	
-
-wildcard	 "P3V0"
-default_colour	colour_3	
-
-wildcard	 "GND"
-default_colour	colour_6	
+wildcard	"P5V0"
+default_colour       colour_3
 
 
 .colour_vias
-colour_by_layer_pair off
-default_layer_pair_colour colour_1	vis colour_1	vis
-
+colour_by_layer_pair	off
+default_layer_pair_colour	colour_1	vis	colour_1	vis
 
 .window
--460000 -1008464 7670000 5610000
+2062636 2384463 6326365 5541071
 
 .debug
 break	none
@@ -531,77 +546,77 @@ testpCentreSpace     0
 testpUsablePadsList
 
 .attribs
-GROUP	NET	yes
-net_class
-spacing_class
+GROUP	PIN_PAIR	no
 net_width
-net_min_width
-GROUP	PIN	no
-pin_routing
-pin_neck_width
-pin_exit_dirs
-ppp_pad_relief
-GROUP	NET_CLASS	no
-space_any_any
-space_trk_trk
-space_trk_via
-space_trk_internalvia
-GROUP	SPACING	no
-space_any_any
-space_trk_trk
-space_trk_via
-space_trk_internalvia
-GROUP	BOARD	no
-ppp_con_width
-ppp_clearance
-ppp_pad_relief
-ppp_via_relief
-GROUP	TEMPLATE	no
-ppp_con_width
-ppp_clearance
-ppp_pad_relief
-ppp_via_relief
-GROUP	COMPONENT	no
-ppp_pad_relief
-ppp_con_width
-ppp_clearance
-plc_areas
-GROUP	PART	no
-ppp_pad_relief
-ppp_con_width
-ppp_clearance
-Package
-GROUP	PART_PIN	no
-pin_exit_dirs
-ppp_pad_relief
-ppp_con_width
-ppp_clearance
-GROUP	AREA	no
-space_any_any
-space_trk_trk
-space_trk_via
-space_trk_internalvia
-GROUP	PIN_CLASS	no
-GROUP	LAYER	no
-lay_embed
-lay_thickness
-lay_ppp
-lay_mixed
-GROUP	MATERIAL	no
-GROUP	PAD_CODE	no
-pin_neck_width
-pad_backoff
-teargenrule
-drill_class
+net_opt_width
+GROUP	DIFFERENTIAL_PAIR	no
 GROUP	TEARDROP	no
 tear_length
 tear_width
 tear_angle
 tear_offset
-GROUP	DIFFERENTIAL_PAIR	no
-GROUP	PIN_PAIR	no
+GROUP	PAD_CODE	no
+pin_neck_width
+pad_backoff
+teargenrule
+drill_class
+GROUP	MATERIAL	no
+GROUP	LAYER	no
+lay_embed
+lay_thickness
+lay_ppp
+lay_mixed
+GROUP	PIN_CLASS	no
+GROUP	AREA	no
+space_any_any
+space_trk_trk
+space_trk_via
+space_trk_internalvia
+GROUP	PART_PIN	no
+pin_exit_dirs
+ppp_pad_relief
+ppp_con_width
+ppp_clearance
+GROUP	PART	no
+ppp_pad_relief
+ppp_con_width
+ppp_clearance
+Package
+GROUP	COMPONENT	no
+ppp_pad_relief
+ppp_con_width
+ppp_clearance
+plc_areas
+GROUP	TEMPLATE	no
+ppp_con_width
+ppp_clearance
+ppp_pad_relief
+ppp_via_relief
+GROUP	BOARD	no
+ppp_con_width
+ppp_clearance
+ppp_pad_relief
+ppp_via_relief
+GROUP	SPACING	no
+space_any_any
+space_trk_trk
+space_trk_via
+space_trk_internalvia
+GROUP	NET_CLASS	no
+space_any_any
+space_trk_trk
+space_trk_via
+space_trk_internalvia
+GROUP	PIN	no
+pin_routing
+pin_neck_width
+pin_exit_dirs
+ppp_pad_relief
+GROUP	NET	yes
+net_class
+spacing_class
 net_width
-net_opt_width
+net_min_width
 hidespacing	yes
 .attribs_end
 
@@ -846,37 +861,53 @@ use_split_power_planes no
 use_true_board_outline no
 
 .visibility
-Track_(unfixed)      	yes
-Track_(fixed)        	yes
-Track_(semifixed)    	yes
-Track_(oddwidth)     	yes
-Track_(plating_tail) 	yes
-Via_(unfixed)        	yes
-Via_(fixed)          	yes
-Via_(semifixed)      	yes
-Pad                  	yes
-Copper               	yes
-Testpoint            	yes
-Connection/layer     	yes
-Connection           	yes
-Terminal             	yes
-Placement            	yes
-Clearance            	yes
-Component_name       	yes
-Board_Outline        	yes
-Profile              	yes
-Placement_Area       	yes
-Template             	yes
-Text                 	yes
-Current_Area         	yes
-Non-Current_Area     	yes
-No_track_area        	yes
-No_via_area          	yes
-Error_item           	yes
-Error_letter         	yes
-Highlight            	yes
-Drill_holes          	yes
-Grid                 	yes
+Track_(unfixed)      yes
+Track_(fixed)        yes
+Track_(semifixed)    yes
+Track_(oddwidth)     yes
+Track_(plating_tail) yes
+Via_(unfixed)        yes
+Via_(fixed)          yes
+Via_(semifixed)      yes
+Pad                  yes
+Copper               yes
+Power_plane          yes
+Virtual_branch_point yes
+Testpoint            yes
+Connection/layer     yes
+Connection           yes
+Terminal             yes
+Placement            yes
+Clearance            yes
+Component_Group      yes
+Component_name       yes
+Power_dissipation    yes
+Thermal_box          yes
+Thermal              yes
+Board_Outline        yes
+Profile              yes
+Placement_Area       yes
+Template             yes
+Text                 yes
+Current_Area         yes
+Non-Current_Area     yes
+No_track_area        yes
+No_via_area          yes
+Error_item           yes
+Error_letter         yes
+Highlight            yes
+Lowlight             yes
+Drill_holes          yes
+Pin_Swap_Flags       yes
+Grid                 yes
+Comparison_Current   yes
+Comparison_Comparison yes
+Diff_pair_indicator  yes
+Trunking_twist_arrow yes
+Trunking_snap_axis   yes
+Trunking_marker      yes
+Trunking_marker_text yes
+Trunking_end_routing_area yes
 
 .trunking
 tru_qrt_large_auto   no
