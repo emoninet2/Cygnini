@@ -1,45 +1,45 @@
-attr	Template	"TEMPLATE5"
-	(	"ppp_is_plane"	"N"	)
-
-attr	Template	"TEMPLATE6"
-	(	"ppp_is_plane"	"N"	)
-
-attr	Template	"TEMPLATE3"
-	(	"ppp_is_plane"	"N"	)
-
-attr	Template	"TEMPLATE1"
-	(	"ppp_is_plane"	"N"	)
-
-attr	Template	"TOPGNDPLANE"
-	(	"ppp_is_plane"	"N"	)
-
-attr	Template	"P5V0PLANE"
-	(	"ppp_is_plane"	"N"	)
-
-attr	Template	"RAWPLANE"
-	(	"ppp_is_plane"	"N"	)
-
-attr	Template	"L4_GND"
-	(	"ppp_is_plane"	"N"	)
-
-attr	Template	"P3V0PLANE"
-	(	"ppp_is_plane"	"N"	)
-
-attr	Template	"NRF24L01p_ANT"
-	(	"ppp_is_plane"	"N"	)
-
-attr	Template	"L3_GND"
-	(	"ppp_is_plane"	"N"	)
-
-attr	Template	"TEMPLATE0"
-	(	"ppp_is_plane"	"N"	)
-
-attr	Template	"TEMPLATE2"
+attr	Template	"TEMPLATE7"
 	(	"ppp_is_plane"	"N"	)
 
 attr	Template	"TEMPLATE4"
 	(	"ppp_is_plane"	"N"	)
 
-attr	Template	"TEMPLATE7"
+attr	Template	"TEMPLATE2"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"TEMPLATE0"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"L3_GND"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"NRF24L01p_ANT"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"P3V0PLANE"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"L4_GND"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"RAWPLANE"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"P5V0PLANE"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"TOPGNDPLANE"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"TEMPLATE1"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"TEMPLATE3"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"TEMPLATE6"
+	(	"ppp_is_plane"	"N"	)
+
+attr	Template	"TEMPLATE5"
 	(	"ppp_is_plane"	"N"	)
 
