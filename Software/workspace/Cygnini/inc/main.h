@@ -94,70 +94,35 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define OSC32_IN_Pin GPIO_PIN_14
-#define OSC32_IN_GPIO_Port GPIOC
-#define OSC32_OUT_Pin GPIO_PIN_15
-#define OSC32_OUT_GPIO_Port GPIOC
-#define DISPLAY_A0_Pin GPIO_PIN_0
+//#define OSC32_IN_Pin GPIO_PIN_14
+//#define OSC32_IN_GPIO_Port GPIOC
+//#define OSC32_OUT_Pin GPIO_PIN_15
+//#define OSC32_OUT_GPIO_Port GPIOC
+
+
+#define DISPLAY_NRESET_Pin GPIO_PIN_5
+#define DISPLAY_NRESET_GPIO_Port GPIOC
+#define DISPLAY_NSEL_Pin GPIO_PIN_12
+#define DISPLAY_NSEL_GPIO_Port GPIOB
+#define DISPLAY_A0_Pin GPIO_PIN_6
 #define DISPLAY_A0_GPIO_Port GPIOC
-#define DISPLAY_BACKLIGHT_Pin GPIO_PIN_1
-#define DISPLAY_BACKLIGHT_GPIO_Port GPIOC
-#define DISPLAY_nSEL_Pin GPIO_PIN_2
-#define DISPLAY_nSEL_GPIO_Port GPIOC
-#define DISPLAY_nRESET_Pin GPIO_PIN_3
-#define DISPLAY_nRESET_GPIO_Port GPIOC
-#define SI4455_nSEL_Pin GPIO_PIN_0
-#define SI4455_nSEL_GPIO_Port GPIOA
-#define SPI_SCK_Pin GPIO_PIN_5
-#define SPI_SCK_GPIO_Port GPIOA
-#define SPI_MISO_Pin GPIO_PIN_6
-#define SPI_MISO_GPIO_Port GPIOA
-#define SPI_MOSI_Pin GPIO_PIN_7
-#define SPI_MOSI_GPIO_Port GPIOA
-#define SI4455_SND_Pin GPIO_PIN_4
-#define SI4455_SND_GPIO_Port GPIOC
-#define SI4455_nIRQ_Pin GPIO_PIN_5
-#define SI4455_nIRQ_GPIO_Port GPIOC
+#define DISPLAY_BACKLIGHT_Pin GPIO_PIN_8
+#define DISPLAY_BACKLIGHT_GPIO_Port GPIOA
+
 #define SI133_INT_Pin GPIO_PIN_0
 #define SI133_INT_GPIO_Port GPIOB
-#define DIP1_Pin GPIO_PIN_1
-#define DIP1_GPIO_Port GPIOB
-#define DIP2_Pin GPIO_PIN_2
-#define DIP2_GPIO_Port GPIOB
-#define CODEC_BCLK_Pin GPIO_PIN_10
-#define CODEC_BCLK_GPIO_Port GPIOB
-#define AK4556_nRESET_Pin GPIO_PIN_11
-#define AK4556_nRESET_GPIO_Port GPIOB
-#define CODEC_LRCK_Pin GPIO_PIN_12
-#define CODEC_LRCK_GPIO_Port GPIOB
-#define CODEC_MCLK_Pin GPIO_PIN_14
-#define CODEC_MCLK_GPIO_Port GPIOB
-#define CODEC_DAC_Pin GPIO_PIN_15
-#define CODEC_DAC_GPIO_Port GPIOB
-#define SI4455_GPIO0_Pin GPIO_PIN_6
-#define SI4455_GPIO0_GPIO_Port GPIOC
-#define SI4455_GPIO1_Pin GPIO_PIN_7
-#define SI4455_GPIO1_GPIO_Port GPIOC
-#define RED_LED_Pin GPIO_PIN_8
-#define RED_LED_GPIO_Port GPIOC
-#define GREEN_LED_Pin GPIO_PIN_9
-#define GREEN_LED_GPIO_Port GPIOC
+
 #define SCL_Pin GPIO_PIN_9
 #define SCL_GPIO_Port GPIOA
 #define SDA_Pin GPIO_PIN_10
 #define SDA_GPIO_Port GPIOA
+
 #define USB_D__Pin GPIO_PIN_11
 #define USB_D__GPIO_Port GPIOA
 #define USB_D_A12_Pin GPIO_PIN_12
 #define USB_D_A12_GPIO_Port GPIOA
-#define EXT_1_Pin GPIO_PIN_10
-#define EXT_1_GPIO_Port GPIOC
-#define EXT_2_Pin GPIO_PIN_11
-#define EXT_2_GPIO_Port GPIOC
-#define EXT_3_Pin GPIO_PIN_12
-#define EXT_3_GPIO_Port GPIOC
-#define CODEC_ADC_Pin GPIO_PIN_5
-#define CODEC_ADC_GPIO_Port GPIOB
+
+
 #define USART_TX_Pin GPIO_PIN_6
 #define USART_TX_GPIO_Port GPIOB
 #define USART_RX_Pin GPIO_PIN_7

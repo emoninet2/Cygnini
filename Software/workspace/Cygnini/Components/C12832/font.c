@@ -40,8 +40,8 @@
 
 /* MODIFIED BY ELAB ! */
 
-//#include "../fm_transmitter.h"
-#include <stdio.h>
+//#include "../ekg_fys4260/ekg_fys4260.h"
+#include "C12832Port.h"
 #include "font.h"
 
 

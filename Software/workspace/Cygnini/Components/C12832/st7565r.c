@@ -6,15 +6,16 @@
  *                      All rights reserved
  */
 
-#include <stdlib.h>
+
 #include "st7565r.h"
 
 /* Kernel */
 #include "cmsis_os.h"
 
 /* Application */
-#include "c12832_port.h"
-//#include "../microcontroller_board/microcontroller_board.h"
+//#include "../ekg_fys4260/ekg_fys4260.h"
+#include "C12832Port.h"
+
 
 #define HUNDRED_MILLISECONDS  	(10 / portTICK_PERIOD_MS)
 
@@ -24,7 +25,7 @@ void st7565r_write_command(uint8_t command) {
 
         DISPLAY_CHIP_SELECT_LOW;
         DISPLAY_A0_LOW;
-        hal_spi_write_read (&command, &tmp, 1);
+        c12832_hal_spi_write_read (&command, &tmp, 1);
         DISPLAY_CHIP_SELECT_HIGH;
 }
 
@@ -34,7 +35,7 @@ void st7565r_write_data(uint8_t data) {
 
         DISPLAY_CHIP_SELECT_LOW;
         DISPLAY_A0_HIGH;
-        hal_spi_write_read (&data, &tmp, 1);
+        c12832_hal_spi_write_read (&data, &tmp, 1);
         DISPLAY_A0_LOW;
         DISPLAY_CHIP_SELECT_HIGH;
 }
@@ -200,8 +201,6 @@ void st7565r_display_invert_disable(void)
 
 int st7565r_init(void) {
 	
-
-
         // Do a hard reset of the LCD display controller
         st7565r_hard_reset();
 

@@ -11,12 +11,14 @@
 #include <stdint.h>
 #include <string.h>
 
+/* Application */
+//#include "../ekg_fys4260/ekg_fys4260.h"
+
+#include "C12832Port.h"
+
 #include "graphic_lcd.h"
 #include "st7565r.h"
 #include "font.h"
-
-/* Application */
-//#include "../microcontroller_board/microcontroller_board.h"
 
 int graphic_lcd_clear_screen(void) {
 	
@@ -55,5 +57,14 @@ int graphic_lcd_initialize (void) {
 	
 	return st7565r_init ();
 	
+}
+
+int graphics_lcd_write_byte (int line, int offset, uint8_t data) {
+
+	st7565r_set_page_address(line);
+	st7565r_set_column_address(offset);
+	st7565r_write_data(data);
+
+	return EXIT_SUCCESS;
 }
 	

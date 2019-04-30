@@ -35,159 +35,310 @@ SOFTWARE.
 #include "usb_device.h"
 
 
-#include "c12832_port.h"
-#include "st7565r.h"
+#include "NRF24L01p.h"
+#include "C12832Port.h"
 #include "graphic_lcd.h"
 
-
-SPI_HandleTypeDef hspi1;
-
-/**
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_GPIO_Init(void)
-{
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
-  __HAL_RCC_GPIOD_CLK_ENABLE();
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, DISPLAY_A0_Pin|DISPLAY_BACKLIGHT_Pin|DISPLAY_nSEL_Pin|DISPLAY_nRESET_Pin
-                          |SI4455_SND_Pin|RED_LED_Pin|GREEN_LED_Pin|EXT_3_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(SI4455_nSEL_GPIO_Port, SI4455_nSEL_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(AK4556_nRESET_GPIO_Port, AK4556_nRESET_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin : PC13 */
-  GPIO_InitStruct.Pin = GPIO_PIN_13;
-  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PH0 PH1 PH3 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_3;
-  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : DISPLAY_A0_Pin DISPLAY_BACKLIGHT_Pin DISPLAY_nSEL_Pin DISPLAY_nRESET_Pin
-                           SI4455_SND_Pin RED_LED_Pin GREEN_LED_Pin EXT_3_Pin */
-  GPIO_InitStruct.Pin = DISPLAY_A0_Pin|DISPLAY_BACKLIGHT_Pin|DISPLAY_nSEL_Pin|DISPLAY_nRESET_Pin
-                          |SI4455_SND_Pin|RED_LED_Pin|GREEN_LED_Pin|EXT_3_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : SI4455_nSEL_Pin */
-  GPIO_InitStruct.Pin = SI4455_nSEL_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(SI4455_nSEL_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PA1 PA2 PA3 PA4
-                           PA8 PA15 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4
-                          |GPIO_PIN_8|GPIO_PIN_15;
-  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : SI4455_nIRQ_Pin SI4455_GPIO0_Pin SI4455_GPIO1_Pin EXT_1_Pin
-                           EXT_2_Pin */
-  GPIO_InitStruct.Pin = SI4455_nIRQ_Pin|SI4455_GPIO0_Pin|SI4455_GPIO1_Pin|EXT_1_Pin
-                          |EXT_2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : SI133_INT_Pin DIP1_Pin DIP2_Pin */
-  GPIO_InitStruct.Pin = SI133_INT_Pin|DIP1_Pin|DIP2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : AK4556_nRESET_Pin */
-  GPIO_InitStruct.Pin = AK4556_nRESET_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(AK4556_nRESET_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PB13 PB3 PB4 PB8
-                           PB9 */
-  GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_8
-                          |GPIO_PIN_9;
-  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PD2 */
-  GPIO_InitStruct.Pin = GPIO_PIN_2;
-  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
-
-}
-
-
-
-/**
-  * @brief SPI1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_SPI1_Init(void)
-{
-
-  /* USER CODE BEGIN SPI1_Init 0 */
-
-  /* USER CODE END SPI1_Init 0 */
-
-  /* USER CODE BEGIN SPI1_Init 1 */
-
-  /* USER CODE END SPI1_Init 1 */
-  /* SPI1 parameter configuration*/
-  hspi1.Instance = SPI1;
-  hspi1.Init.Mode = SPI_MODE_MASTER;
-  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
-  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
-  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
-  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-  hspi1.Init.CRCPolynomial = 7;
-  hspi1.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
-  hspi1.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
-  if (HAL_SPI_Init(&hspi1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN SPI1_Init 2 */
-
-  /* USER CODE END SPI1_Init 2 */
-
-}
-
-
 /* Private macro */
+
 /* Private variables */
 /* Private function prototypes */
 /* Private functions */
+void SystemClock_Config(void);
+void Error_Handler(void);
+
+
+#define TX_UNIT 0
+#define RX_UNIT 1
+
+
+
+void NRF24L01p_RadioReset(){
+
+
+    RadioConfig.DataReadyInterruptEnabled = 0;
+    RadioConfig.DataSentInterruptEnabled = 0;
+    RadioConfig.MaxRetryInterruptEnabled = 0;
+    RadioConfig.Crc = NRF24L01P_CONFIG_CRC_16BIT;
+    RadioConfig.AutoReTransmissionCount = 15;
+    RadioConfig.AutoReTransmitDelayX250us = 15;
+    RadioConfig.frequencyOffset = 2;
+    RadioConfig.datarate = NRF24L01P_RF_SETUP_RF_DR_2MBPS;
+    RadioConfig.RfPowerDb = NRF24L01P_RF_SETUP_RF_PWR_0DBM;
+    RadioConfig.PllLock = 0;
+    RadioConfig.ContWaveEnabled = 0;
+    RadioConfig.FeatureDynamicPayloadEnabled = 1;
+    RadioConfig.FeaturePayloadWithAckEnabled = 1;
+    RadioConfig.FeatureDynamicPayloadWithNoAckEnabled = 1;
+    RadioConfig.RfPowerDb = NRF24L01P_RF_SETUP_RF_PWR_MINUS_18DBM;
+
+#if (TX_UNIT == 1)
+
+    RxPipeConfig[0].address = 0x11223344EE;
+    RxPipeConfig[1].address = 0x9A4524CE01;
+    RxPipeConfig[2].address = 0x9A4524CE02;
+    RxPipeConfig[3].address = 0x9A4524CE03;
+    RxPipeConfig[4].address = 0x9A4524CE04;
+    RxPipeConfig[5].address = 0x9A4524CE05;
+
+#endif
+
+#if (RX_UNIT == 1)
+
+    RxPipeConfig[0].address = 0x11223344EE;
+    RxPipeConfig[1].address = 0x9A4524CE01;
+    RxPipeConfig[2].address = 0x9A4524CE02;
+    RxPipeConfig[3].address = 0x9A4524CE03;
+    RxPipeConfig[4].address = 0x9A4524CE09;
+    RxPipeConfig[5].address = 0x9A4524CE05;
+
+#endif
+
+    int i;
+    for(i=0;i<6;i++){
+        RxPipeConfig[i].PipeEnabled = 1;
+        RxPipeConfig[i].autoAckEnabled = 1;
+        RxPipeConfig[i].dynamicPayloadEnabled = 1;
+    }
+
+    //Radio.Initialize(&RadioConfig, RxPipeConfig);
+
+    NRF24L01p_Initialize();
+}
+
+
+int TX_MODULE(void){
+
+
+	printf("TX NODE\r\n");
+	graphic_lcd_write(0, 0, "TX NODE");
+	NRF24L01p_RadioReset();
+
+
+    char myMesg[32];
+    NRF24L01p_Payload_t payload;
+
+    payload.UseAck = 1;
+    payload.TxAddress = 0x9A4524CE01;
+    payload.length = strlen(myMesg);
+    //payload.retransmitCount = 15;
+
+
+    int i = 0;
+    int errorCnt = 0;
+
+    unsigned int timestamp = NRF24L01p_port_ClockMs();
+    unsigned int total_bytes = 0;;
+
+	//NRF24L01p_write_RadioMode(NRF24L01P_MODE_STANDBY);
+	//NRF24L01p_write_RadioMode(NRF24L01P_MODE_RX);
+
+    int fail = 0;
+    int success = 0;
+    while(1){
+
+    	printf("\r\n\r\n");
+		printf("CONFIG : %x\r\n", NRF24L01p_read_register(0x00));
+		printf("EN_AA : %x\r\n", NRF24L01p_read_register(0x01));
+		printf("RF_SETUP : %x\r\n", NRF24L01p_read_register(0x06));
+		printf("STATUS : %x\r\n", NRF24L01p_read_register(0x07));
+		printf("FIFO : %x\r\n",NRF24L01p_read_register(0x17));
+		printf("DYNPD : %x\r\n", NRF24L01p_read_register(0x1c));
+		printf("FEATURE : %x\r\n", NRF24L01p_read_register(0x1d));
+
+
+
+    	HAL_Delay(1000);
+
+        payload.UseAck = 1;
+        payload.TxAddress = 0x9A4524CE01;
+        NRF24L01p_write_txPipeAddress(payload.TxAddress);
+        //payload.length = strlen(myMesg);
+        //payload.retransmitCount = 15;
+
+        sprintf((char*)payload.Data, "PING PONG DING DONG DING-> %d", i++);
+
+        payload.length = strlen((char*)payload.Data);
+        int paylen = payload.length;
+        //printf("will send : %s\r\n", payload.data);
+        //graphic_lcd_write(3, 0, "NOW SENDING");
+        int err = NRF24L01p_TransmitPayload(&payload);
+        //graphic_lcd_write(3, 0, "SENT BUT");
+        //printf("error : %d\r\n", err);
+
+
+
+        if(err == NRF24L01P_ERROR) {
+            printf("TRANSMISSION FAILED\r\n");
+            fail++;
+        }else{
+        	printf("TRANSMISSION SUCCESS\r\n");
+        	success++;
+
+        }
+
+        char dispData[30];
+        sprintf(dispData,"success: %d", success);
+		graphic_lcd_write(1, 0, dispData);
+        sprintf(dispData,"fail: %d", fail);
+		graphic_lcd_write(2, 0, dispData);
+
+        /*
+        if(i%1000 == 0){
+            //printf("\r\n");
+            printf("sent 10000 packets. failed : %d\r\n", errorCnt);
+            printf("total bytes successfully sent : %d\r\n", total_bytes);
+            unsigned elapsed_time = NRF24L01p_port_ClockMs() - timestamp;
+            //printf("elapsed time : %d mS\r\n", elapsed_time);
+            float data_rate = (((float)total_bytes*8/elapsed_time)*1000)/1024;
+            printf("data rate = %f kbps\r\n", data_rate);
+
+
+            errorCnt = 0;
+            total_bytes = 0;;
+            timestamp = NRF24L01p_port_ClockMs();
+
+            return 0;
+        }
+		*/
+
+
+
+
+
+        NRF24L01p_flush_rx();
+        NRF24L01p_flush_tx();
+
+
+
+
+    }
+
+    return 0;
+
+
+}
+
+
+
+int RX_MODULE(void) {
+
+    printf("RX NODE\r\n");
+    graphic_lcd_write(0, 0, "RX NODE");
+    NRF24L01p_RadioReset();
+
+    printf("DYNPD : %x\r\n", NRF24L01p_read_register(0x1c));
+    printf("FEATURE : %x\r\n", NRF24L01p_read_register(0x1d));
+    printf("FIFO : %x\r\n",NRF24L01p_read_register(0x17));
+    printf("RF_SETUP : %x\r\n", NRF24L01p_read_register(0x06));
+
+    NRF24L01p_Payload_t payload;
+
+    payload.UseAck = 1;
+    payload.TxAddress = 0x9A4524CE01;
+    //payload.retransmitCount = 15;
+    payload.pipe = NRF24L01P_PIPE_P1;
+
+    int i=0;
+    sprintf((char*)payload.Data, "PONG -> %d", i++);
+    payload.length = strlen((char*)payload.Data);
+    NRF24L01p_writeAckPayload(&payload);
+    //NRF24L01p_flush_tx();
+
+
+	NRF24L01p_write_RadioMode(NRF24L01P_MODE_STANDBY);
+	NRF24L01p_write_RadioMode(NRF24L01P_MODE_RX);
+
+	NRF24L01p_writeAckPayload(&payload);
+
+
+	int receivedData = 0;
+    while(1){
+        //Radio.port_DelayMs(1000);
+
+    	HAL_Delay(200);
+
+    	printf("\r\n\r\n");
+		printf("CONFIG : %x\r\n", NRF24L01p_read_register(0x00));
+		printf("EN_AA : %x\r\n", NRF24L01p_read_register(0x01));
+		printf("RF_SETUP : %x\r\n", NRF24L01p_read_register(0x06));
+		printf("STATUS : %x\r\n", NRF24L01p_read_register(0x07));
+		printf("FIFO : %x\r\n",NRF24L01p_read_register(0x17));
+		printf("DYNPD : %x\r\n", NRF24L01p_read_register(0x1c));
+		printf("FEATURE : %x\r\n", NRF24L01p_read_register(0x1d));
+
+
+		char dispData[30];
+		sprintf(dispData,"received: %d", receivedData);
+		graphic_lcd_write(1, 0, dispData);
+
+
+        if(NRF24L01p_readable()){
+        	receivedData++;
+
+        	DISPLAY_BACKLIGHT_ON;
+            NRF24L01p_Payload_t payload;
+
+            NRF24L01p_clear_DataReadyFlag();
+            NRF24L01p_readPayload(&payload);
+            //payload.data[payload.length] = '\0';
+            printf("DATA[%d] : ", payload.length);
+            int i;
+            //putc('c', stdout);
+            for(i=0;i<payload.length;i++){
+                putc(payload.Data[i], stdout);
+            }
+            printf("\r\n");
+            //printf("DATA P%d %d: %s\r\n", payload.pipe, payload.length, payload.data);
+            NRF24L01p_flush_rx();
+
+
+            //sprintf((char*)payload.data, "PONG -> %d", i++);
+            //payload.length = strlen((char*)payload.data);
+            //Radio.writeAckPayload(&payload);
+
+        }
+        //printf("status : %x\r\n", Radio.get_status());
+        //printf("config : %x\r\n", Radio.read_register(0));
+        //printf("%c[2K", 27);
+    }
+
+
+    return 0;
+}
+
+
+
+void initLEDs(){
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+	GPIO_InitStruct.Pin = GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7 ;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+	GPIO_InitStruct.Pin = GPIO_PIN_8 | GPIO_PIN_9;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+}
+
+
+void initButtons(){
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+	GPIO_InitStruct.Pin = GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1 | GPIO_PIN_0 ;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+
+}
+
+
+
 
 /**
 **===========================================================================
@@ -199,44 +350,66 @@ static void MX_SPI1_Init(void)
 int main(void)
 {
 
-	c12832_assign_SPI(&hspi1);
-
-
 	HAL_Init();
-
 	SystemClock_Config();
 
-	MX_GPIO_Init();
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+	//__HAL_RCC_GPIOH_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	__HAL_RCC_GPIOD_CLK_ENABLE();
 
-	MX_SPI1_Init();
+	c12832_hal_spi_init();
+	c12832_hal_gpio_init();
 
 
-	graphic_lcd_initialize();
+	initLEDs();
+	initButtons();
+
+	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
+	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_SET);
+	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_SET);
+
+
+
+	HAL_GPIO_WritePin(DISPLAY_BACKLIGHT_GPIO_Port, DISPLAY_BACKLIGHT_Pin, GPIO_PIN_RESET);
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+	GPIO_InitStruct.Pin = DISPLAY_BACKLIGHT_Pin;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(DISPLAY_BACKLIGHT_GPIO_Port, &GPIO_InitStruct);
+
+	DISPLAY_BACKLIGHT_OFF;
+
+	HAL_Delay(2000);
+
+	graphic_lcd_initialize ();
 	graphic_lcd_clear_screen ();
 	DISPLAY_BACKLIGHT_ON;
-
-	graphic_lcd_write(0, 0, "Habibur Rahman");
-	graphic_lcd_write(1, 0, "habiburr@uio.no");
-	graphic_lcd_write(2, 0, "Dept. of Physics");
-	graphic_lcd_write(3, 0, "University of Oslo");
+	graphic_lcd_write(0, 0, "HELLO");
+	HAL_Delay(1000);
 
 
+	#if (TX_UNIT == 1)
+			TX_MODULE();
+	#endif
 
-
-
-
+	#if (RX_UNIT == 1)
+			RX_MODULE();
+	#endif
 
 	/* Infinite loop */
 	while (1)
 	{
-		printf("hello world %d\r\n");
-		HAL_Delay(200);
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_RESET);
 
-		HAL_Delay(200);
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
+
 	}
+
+
 }
+
 
 
 
@@ -257,18 +430,20 @@ void SystemClock_Config(void)
   __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
   /**Initializes the CPU, AHB and APB busses clocks
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSE|RCC_OSCILLATORTYPE_MSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSE|RCC_OSCILLATORTYPE_MSI | RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = 0x10;
   RCC_OscInitStruct.LSEState = RCC_LSE_ON;
   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
   RCC_OscInitStruct.MSICalibrationValue = 0;
   RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_7;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
-  RCC_OscInitStruct.PLL.PLLM = 1;
-  RCC_OscInitStruct.PLL.PLLN = 36;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLM = 16;
+  RCC_OscInitStruct.PLL.PLLN = 360;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV6;
-  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV4;
+  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -279,28 +454,15 @@ void SystemClock_Config(void)
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
   {
     Error_Handler();
   }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC|RCC_PERIPHCLK_USART1
-                              |RCC_PERIPHCLK_SAI1|RCC_PERIPHCLK_I2C1
-                              |RCC_PERIPHCLK_USB;
-  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
-  PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
-  PeriphClkInit.Sai1ClockSelection = RCC_SAI1CLKSOURCE_PLLSAI1;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC;
   PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
-  PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL;
-  PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_MSI;
-  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
-  PeriphClkInit.PLLSAI1.PLLSAI1N = 26;
-  PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV17;
-  PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
-  PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
-  PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_SAI1CLK;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
@@ -321,20 +483,12 @@ void SystemClock_Config(void)
 
 /**
   * @brief  This function is executed in case of error occurrence.
-  * @param  None
   * @retval None
   */
 void Error_Handler(void)
 {
-  /* USER CODE BEGIN Error_Handler */
+  /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-  while(1)
-  {
-		HAL_Delay(200);
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);
 
-		HAL_Delay(200);
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET);
-  }
-  /* USER CODE END Error_Handler */
+  /* USER CODE END Error_Handler_Debug */
 }
