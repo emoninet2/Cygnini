@@ -39,6 +39,7 @@ Si7006_error_t Si7006_check_hardware(Si7006_t *unit);
 Si7006_error_t Si7006_delay(Si7006_t *unit, unsigned int ms);
 
 float Si7006_temperature(Si7006_t *unit);
+float Si7006_relativeHumidity(Si7006_t *unit);
 Si7006_error_t Si7006_read_firmware_revision(Si7006_t *unit);
 
 

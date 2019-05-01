@@ -473,7 +473,7 @@ void testLedAndButtones(){
 
 
 Si7006_error_t Si7006_port_init(void){
-	graphic_lcd_write(3, 0, "FUCK OFF CUNT");
+
 }
 Si7006_error_t Si7006_port_i2c_init(void){
 
@@ -592,10 +592,6 @@ int main(void)
 	Si7006_read_firmware_revision(&sensor);
 
 
-
-
-
-
 	while(1){
 		float temperature = Si7006_temperature(&sensor);
 
@@ -604,8 +600,19 @@ int main(void)
 
 		char tempString[30];
 
-		sprintf(tempString, "temp: %d.%d 'C", tempInteger,tempDecimel );
-		graphic_lcd_write(2, 0,tempString);
+		sprintf(tempString, "Temp: %d.%d deg C", tempInteger,tempDecimel );
+		graphic_lcd_write(0, 0,tempString);
+
+
+		float relativeHumidity = Si7006_relativeHumidity(&sensor);
+		tempInteger = (int)relativeHumidity;
+		tempDecimel = ((float)relativeHumidity - (int)relativeHumidity)*100;
+
+		sprintf(tempString, "Humidity: %d.%d %%", tempInteger,tempDecimel );
+		graphic_lcd_write(1, 0,tempString);
+
+
+
 
 		HAL_Delay(500);
 	}
