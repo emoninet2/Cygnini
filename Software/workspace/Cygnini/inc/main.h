@@ -117,6 +117,7 @@ void Error_Handler(void);
 #define SDA_Pin GPIO_PIN_10
 #define SDA_GPIO_Port GPIOA
 
+
 #define USB_D__Pin GPIO_PIN_11
 #define USB_D__GPIO_Port GPIOA
 #define USB_D_A12_Pin GPIO_PIN_12

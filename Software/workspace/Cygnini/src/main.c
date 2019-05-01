@@ -38,7 +38,7 @@ SOFTWARE.
 #include "NRF24L01p.h"
 #include "C12832Port.h"
 #include "graphic_lcd.h"
-
+#include "Si7006.h"
 /* Private macro */
 
 /* Private variables */
@@ -50,6 +50,84 @@ void Error_Handler(void);
 
 #define TX_UNIT 0
 #define RX_UNIT 1
+
+//SMBUS_HandleTypeDef hsmbus1;
+I2C_HandleTypeDef hi2c1;
+
+
+
+
+/**
+  * @brief I2C1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_I2C1_SMBUS_Init(void)
+{
+
+  /* USER CODE BEGIN I2C1_Init 0 */
+
+  /* USER CODE END I2C1_Init 0 */
+
+  /* USER CODE BEGIN I2C1_Init 1 */
+
+  /* USER CODE END I2C1_Init 1 */
+
+
+	hi2c1.Instance = I2C1;
+	hi2c1.Mode = HAL_I2C_MODE_MASTER;
+	hi2c1.Init.Timing = 0xA0120227;
+
+	//hi2c1.Init.AnalogFilter = SMBUS_ANALOGFILTER_ENABLE;
+	hi2c1.Init.OwnAddress1 = 0;
+	hi2c1.Init.AddressingMode = SMBUS_ADDRESSINGMODE_7BIT;
+	hi2c1.Init.DualAddressMode = SMBUS_DUALADDRESS_DISABLE;
+	hi2c1.Init.OwnAddress2 = 0;
+	hi2c1.Init.OwnAddress2Masks = SMBUS_OA2_NOMASK;
+	hi2c1.Init.GeneralCallMode = SMBUS_GENERALCALL_DISABLE;
+	hi2c1.Init.NoStretchMode = SMBUS_NOSTRETCH_DISABLE;
+	//hi2c1.Init.PacketErrorCheckMode = SMBUS_PEC_DISABLE;
+	//hi2c1.Init.PeripheralMode = SMBUS_PERIPHERAL_MODE_SMBUS_SLAVE;
+	//hi2c1.Init.SMBusTimeout = 0x0000836E;
+	if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+	{
+	Error_Handler();
+	}
+
+	HAL_I2C_MspInit(&hi2c1);
+
+
+
+
+/*
+  hsmbus1.Instance = I2C1;
+  hsmbus1.Init.Timing = 0x10808DD3;
+  hsmbus1.Init.AnalogFilter = SMBUS_ANALOGFILTER_ENABLE;
+  hsmbus1.Init.OwnAddress1 = 2;
+  hsmbus1.Init.AddressingMode = SMBUS_ADDRESSINGMODE_7BIT;
+  hsmbus1.Init.DualAddressMode = SMBUS_DUALADDRESS_DISABLE;
+  hsmbus1.Init.OwnAddress2 = 0;
+  hsmbus1.Init.OwnAddress2Masks = SMBUS_OA2_NOMASK;
+  hsmbus1.Init.GeneralCallMode = SMBUS_GENERALCALL_DISABLE;
+  hsmbus1.Init.NoStretchMode = SMBUS_NOSTRETCH_DISABLE;
+  hsmbus1.Init.PacketErrorCheckMode = SMBUS_PEC_DISABLE;
+  hsmbus1.Init.PeripheralMode = SMBUS_PERIPHERAL_MODE_SMBUS_SLAVE;
+  hsmbus1.Init.SMBusTimeout = 0x0000836E;
+  if (HAL_SMBUS_Init(&hsmbus1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  HAL_SMBUS_MspInit(&hsmbus1);
+*/
+
+  /* USER CODE BEGIN I2C1_Init 2 */
+
+  /* USER CODE END I2C1_Init 2 */
+
+}
+
+
 
 
 
@@ -339,6 +417,89 @@ void initButtons(){
 
 
 
+void testLedAndButtones(){
+
+
+	for(;;) {
+			printf("hello world\r\n");
+			vTaskDelay ((100 / portTICK_PERIOD_MS));
+
+			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1){
+				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+
+				HAL_GPIO_WritePin (GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
+				HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_SET);
+
+			}
+			else{
+				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
+
+				HAL_GPIO_WritePin (GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);
+			}
+
+
+			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == 1){
+				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+			}
+			else{
+				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+			}
+
+
+			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2) == 1){
+				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);
+			}
+			else{
+				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_SET);
+			}
+
+
+			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3) == 1){
+				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
+			}
+			else{
+				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_SET);
+			}
+
+	    }
+
+
+}
+
+
+
+
+
+
+Si7006_error_t Si7006_port_init(void){
+	graphic_lcd_write(3, 0, "FUCK OFF CUNT");
+}
+Si7006_error_t Si7006_port_i2c_init(void){
+
+}
+Si7006_error_t Si7006_port_i2c_transmit(uint8_t *data, unsigned int size){
+
+	HAL_StatusTypeDef ret = HAL_I2C_Master_Transmit(&hi2c1,(0x40<<1) ,data,size, 1000);
+	if(ret == HAL_OK) return SI7006_SUCCESS;
+	else return SI7006_ERROR;
+}
+Si7006_error_t Si7006_port_i2c_receive(uint8_t *data, unsigned int size){
+	HAL_StatusTypeDef ret = HAL_I2C_Master_Receive(&hi2c1,(0x40<<1) ,data,size, 1000);
+	if(ret == HAL_OK) return SI7006_SUCCESS;
+	else return SI7006_ERROR;
+}
+Si7006_error_t Si7006_port_check_hardware(){
+	HAL_StatusTypeDef ret = HAL_I2C_IsDeviceReady(&hi2c1,(0x40<<1), 1000, 1000);
+	if(ret == HAL_OK) return SI7006_SUCCESS;
+	else return SI7006_ERROR;
+}
+Si7006_error_t Si7006_port_delay(unsigned int ms){
+
+	HAL_Delay(ms);
+}
+
+
 
 /**
 **===========================================================================
@@ -363,8 +524,16 @@ int main(void)
 	c12832_hal_gpio_init();
 
 
+	MX_I2C1_SMBUS_Init();
+
+
+
 	initLEDs();
 	initButtons();
+
+
+	//testLedAndButtones();
+
 
 	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
 	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
@@ -392,6 +561,59 @@ int main(void)
 	HAL_Delay(1000);
 
 
+	uint8_t Si7006DevAddr = 0x40<<1;
+	uint8_t Si1133DevAddr = 0x55<<1;
+
+
+	Si7006_t sensor;
+	sensor.init = Si7006_port_init;
+	sensor.i2c_init = Si7006_port_i2c_init;
+	sensor.i2c_transmit = Si7006_port_i2c_transmit;
+	sensor.i2c_receive = Si7006_port_i2c_receive;
+	sensor.check_hardware = Si7006_port_check_hardware;
+	sensor.delay = Si7006_port_delay;
+
+
+
+	if(sensor.check_hardware() == SI7006_ERROR){
+		graphic_lcd_write(0, 0, "Si7006 NOT READY");
+	}else{
+		graphic_lcd_write(0, 0, "Si7006 READY");
+	}
+
+
+	int x = HAL_I2C_IsDeviceReady(&hi2c1,Si1133DevAddr, 1000, 1000);
+	if(x == HAL_OK) graphic_lcd_write(1, 0, "Si1133 READY");
+	else graphic_lcd_write(1, 0, "Si1133 NOT READY");
+
+
+
+	sensor.init();
+	Si7006_read_firmware_revision(&sensor);
+
+
+
+
+
+
+	while(1){
+		float temperature = Si7006_temperature(&sensor);
+
+		int tempInteger = (int)temperature;
+		int tempDecimel = ((float)temperature - (int)temperature)*100;
+
+		char tempString[30];
+
+		sprintf(tempString, "temp: %d.%d 'C", tempInteger,tempDecimel );
+		graphic_lcd_write(2, 0,tempString);
+
+		HAL_Delay(500);
+	}
+
+
+
+
+
 	#if (TX_UNIT == 1)
 			TX_MODULE();
 	#endif
@@ -412,13 +634,89 @@ int main(void)
 
 
 
+/**
+  * @brief System Clock Configuration
+  * @retval None
+  */
+void SystemClock_Config(void)
+{
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+
+  /**Configure LSE Drive Capability
+  */
+  HAL_PWR_EnableBkUpAccess();
+  __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
+  /**Initializes the CPU, AHB and APB busses clocks
+  */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSE|RCC_OSCILLATORTYPE_MSI;
+  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+  RCC_OscInitStruct.MSIState = RCC_MSI_ON;
+  RCC_OscInitStruct.MSICalibrationValue = 0;
+  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_7;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
+  RCC_OscInitStruct.PLL.PLLM = 1;
+  RCC_OscInitStruct.PLL.PLLN = 36;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
+  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV6;
+  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /**Initializes the CPU, AHB and APB busses clocks
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC|RCC_PERIPHCLK_USART1
+                              |RCC_PERIPHCLK_SAI1|RCC_PERIPHCLK_I2C1
+                              |RCC_PERIPHCLK_USB;
+  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
+  PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
+  PeriphClkInit.Sai1ClockSelection = RCC_SAI1CLKSOURCE_PLLSAI1;
+  PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+  PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL;
+  PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_MSI;
+  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
+  PeriphClkInit.PLLSAI1.PLLSAI1N = 26;
+  PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV17;
+  PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
+  PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
+  PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_SAI1CLK;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /**Configure the main internal regulator output voltage
+  */
+  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /**Enable MSI Auto calibration
+  */
+  HAL_RCCEx_EnableMSIPLLMode();
+
+
+}
 
 
 /**
   * @brief System Clock Configuration
   * @retval None
   */
-void SystemClock_Config(void)
+void SystemClock_Config2(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};

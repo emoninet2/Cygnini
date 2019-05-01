@@ -147,6 +147,36 @@ void HAL_SMBUS_MspInit(SMBUS_HandleTypeDef* hsmbus)
 
 }
 
+
+void HAL_I2C_MspInit(I2C_HandleTypeDef *hi2c){
+	 GPIO_InitTypeDef GPIO_InitStruct = {0};
+	  if(hi2c->Instance==I2C1)
+	  {
+	  /* USER CODE BEGIN I2C1_MspInit 0 */
+
+	  /* USER CODE END I2C1_MspInit 0 */
+
+	    __HAL_RCC_GPIOA_CLK_ENABLE();
+	    /**I2C1 GPIO Configuration
+	    PA9     ------> I2C1_SCL
+	    PA10     ------> I2C1_SDA
+	    */
+	    GPIO_InitStruct.Pin = SCL_Pin|SDA_Pin;
+	    GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+	    GPIO_InitStruct.Pull = GPIO_PULLUP;
+	    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+	    GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
+	    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+	    /* Peripheral clock enable */
+	    __HAL_RCC_I2C1_CLK_ENABLE();
+	  /* USER CODE BEGIN I2C1_MspInit 1 */
+
+	  /* USER CODE END I2C1_MspInit 1 */
+	  }
+}
+
+
 /**
 * @brief SMBUS MSP De-Initialization
 * This function freeze the hardware resources used in this example
