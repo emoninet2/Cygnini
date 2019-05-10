@@ -76,7 +76,9 @@ int _write(int32_t file, uint8_t *ptr, int32_t len)
 	int i=0;
 	for(i=0 ; i<len ; i++)
 	ITM_SendChar((*ptr++));
+
 	return len;
+
 }
 
 caddr_t _sbrk(int32_t incr)
