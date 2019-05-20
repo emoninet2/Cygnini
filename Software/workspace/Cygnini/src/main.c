@@ -28,6 +28,9 @@ SOFTWARE.
 */
 
 /* Includes */
+
+#include <string.h>
+
 #include "main.h"
 #include "stm32l4xx.h"
 #include "stm32l4xx_hal.h"
@@ -41,6 +44,10 @@ SOFTWARE.
 #include "Si7006.h"
 
 
+
+#define TX_NODE 0
+#define RX_NODE 1
+
 /* Private macro */
 
 /* Private variables */
@@ -50,16 +57,19 @@ void SystemClock_Config(void);
 void Error_Handler(void);
 
 
-#define TX_UNIT 0
-#define RX_UNIT 1
-
 
 //SMBUS_HandleTypeDef hsmbus1;
 I2C_HandleTypeDef hi2c1;
 UART_HandleTypeDef huart1;
 
+TaskHandle_t xRadioHandle = NULL;
+TaskHandle_t xGLCDHandle = NULL;
+TaskHandle_t xNotificationHandle = NULL;
+TaskHandle_t xPCHandle = NULL;
+TaskHandle_t xButtonsHandle = NULL;
 
-
+TaskHandle_t xRxNodeHandle = NULL;
+TaskHandle_t xTxNodeHandle = NULL;
 /**
   * @brief I2C1 Initialization Function
   * @param None
@@ -335,6 +345,7 @@ void RadioReset(){
 
 static void custom_print(char *str){
 	HAL_UART_Transmit(&huart1, (uint8_t *)str, strlen(str),0xFFFF);
+
 }
 
 
@@ -345,93 +356,9 @@ uint8_t TxData[32];
 
 
 
+uint8_t radioRxData[32];
 
-int main(void)
-{
-
-	HAL_Init();
-	SystemClock_Config();
-
-	__HAL_RCC_GPIOC_CLK_ENABLE();
-	//__HAL_RCC_GPIOH_CLK_ENABLE();
-	__HAL_RCC_GPIOA_CLK_ENABLE();
-	__HAL_RCC_GPIOB_CLK_ENABLE();
-	__HAL_RCC_GPIOD_CLK_ENABLE();
-
-	c12832_hal_spi_init();
-	c12832_hal_gpio_init();
-
-
-	MX_I2C1_SMBUS_Init();
-	MX_USART1_UART_Init();
-
-
-	initLEDs();
-	initButtons();
-
-
-	//testLedAndButtones();
-
-
-	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
-	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
-	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_SET);
-	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_SET);
-	HAL_GPIO_WritePin (GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
-	HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_SET);
-
-
-	HAL_GPIO_WritePin(DISPLAY_BACKLIGHT_GPIO_Port, DISPLAY_BACKLIGHT_Pin, GPIO_PIN_RESET);
-	GPIO_InitTypeDef GPIO_InitStruct = {0};
-	GPIO_InitStruct.Pin = DISPLAY_BACKLIGHT_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(DISPLAY_BACKLIGHT_GPIO_Port, &GPIO_InitStruct);
-
-	DISPLAY_BACKLIGHT_OFF;
-
-	HAL_Delay(2000);
-
-	graphic_lcd_initialize ();
-	graphic_lcd_clear_screen ();
-	DISPLAY_BACKLIGHT_ON;
-	graphic_lcd_write(0, 0, "TX NODE");
-	HAL_Delay(1000);
-
-
-
-	uint8_t Si7006DevAddr = 0x40<<1;
-	uint8_t Si1133DevAddr = 0x55<<1;
-
-
-	Si7006_t sensor;
-	sensor.init = Si7006_port_init;
-	sensor.i2c_init = Si7006_port_i2c_init;
-	sensor.i2c_transmit = Si7006_port_i2c_transmit;
-	sensor.i2c_receive = Si7006_port_i2c_receive;
-	sensor.check_hardware = Si7006_port_check_hardware;
-	sensor.delay = Si7006_port_delay;
-
-
-
-	if(sensor.check_hardware() == SI7006_ERROR){
-		graphic_lcd_write(0, 0, "Si7006 NOT READY");
-	}else{
-		graphic_lcd_write(0, 0, "Si7006 READY");
-	}
-
-
-	int x = HAL_I2C_IsDeviceReady(&hi2c1,Si1133DevAddr, 1000, 1000);
-	if(x == HAL_OK) graphic_lcd_write(1, 0, "Si1133 READY");
-	else graphic_lcd_write(1, 0, "Si1133 NOT READY");
-
-
-
-	HAL_Delay(3000);
-	graphic_lcd_clear_screen ();
-
-
+void xRadio( void *pvParameters ){
 	RadioReset();
 
 	char myMesg[32];
@@ -450,30 +377,8 @@ int main(void)
 	int fail = 0;
 
 
-	//testLedAndButtones();
-
-
 
 	while(1){
-		custom_print("what the hell \r\n");
-		float temperature = Si7006_temperature(&sensor);
-
-		int tempInteger = (int)temperature;
-		int tempDecimel = ((float)temperature - (int)temperature)*100;
-
-		char tempString[30];
-
-		sprintf(tempString, "Temp: %d.%d deg C", tempInteger,tempDecimel );
-		graphic_lcd_write(0, 0,tempString);
-
-
-		//float relativeHumidity = Si7006_relativeHumidity(&sensor);
-		//tempInteger = (int)relativeHumidity;
-		//tempDecimel = ((float)relativeHumidity - (int)relativeHumidity)*100;
-
-		//sprintf(tempString, "Humidity: %d.%d %%", tempInteger,tempDecimel );
-		//graphic_lcd_write(1, 0,tempString);
-
 
 
 		sprintf(TxData, "message %d", count++);
@@ -508,25 +413,650 @@ int main(void)
 		HAL_Delay(200);
 
 		if(NRF24L01p_readable()){
+			xTaskNotify ( xNotificationHandle, (1<<0), eSetBits);
+			xTaskNotify ( xGLCDHandle, (1<<0), eSetBits);
 
-			custom_print("received data\r\n");
+		}
+	}
+}
+
+
+void xNotification( void *pvParameters ){
+	uint32_t ulNotifiedValue;
+	while(1){
+
+		if(xTaskNotifyWait (0 , 0xFFFFFFFF, &ulNotifiedValue, portMAX_DELAY) == pdTRUE){
+						//DigitalPin_ClearValue(&led1);
+			HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_SET);
+						vTaskDelay(200);
+			HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);
+
+						//DigitalPin_SetValue(&led1);
+		}
+
+		vTaskDelay(100);
+
+	}
+}
+
+void pc_putc(char c){
+	HAL_UART_Transmit(&huart1, &c, 1,0xFFFF);
+
+}
+
+char pc_getc(){
+	char c;
+	HAL_UART_Receive(&huart1, &c, 1, 0);
+	return c;
+}
+
+
+char cmdMsg[50];
+
+
+void xPC( void *pvParameters ){
+	char cmd[50];
+	int CmdSize = 32;
+	custom_print("initialization\r\n");
+
+	RadioReset();
+
+	char myMesg[32];
+
+	Rxpayload.UseAck = 1;
+
+
+	Rxpayload.address = 0x11223344EE;
+	Rxpayload.data = (uint8_t*)myMesg;
+	Rxpayload.length = strlen(myMesg);
+	Rxpayload.retransmitCount = 15;
+
+
+	//////
+	/////
+	custom_print ("\e[1;32mWlecome Everyone.\r\n\e[0m");
+	custom_print ("\e[1;34mCygning Demo\r\n\e[0m");
+    custom_print ("\e[1;35mFYS4260\r\n\e[0m");
+
+    char command[50];
+    char commandPtr = 0;
+
+	while(1){
+
+		//custom_print("hello world\b\b\b\r\n");
+		//custom_print ("\e[1;30mThis is a gray text.\r\n\e[0m");
+		//custom_print ("\e[1;31mThis is a red text.\r\n\e[0m");
+		custom_print("\r\n\e[1;32mCygnini>>\e[0m");
+	    //custom_print ("\e[1;36mThis is a cyan text.\r\n\e[0m");
+	    //custom_print ("\e[1;37mThis is a white text.\r\n\e[0m");
+
+
+	    int i = 0;
+		char c;
+		while(1){
+			//c = pc_getc();
+			HAL_StatusTypeDef rxerr = HAL_UART_Receive(&huart1, &c, 1, 0);
+
+			if(rxerr == HAL_OK){
+				//printf("%#2x",c);
+				if(c == '\r'){
+				   cmd[i] = 0;
+				   if(i>0) break;
+
+				   command[commandPtr] = 0;
+
+
+				}
+				//else if(c == 0x08 || c==0x7f){//backspace || del
+				//	i--;
+				//	cmd[i] = 0;
+				//	pc_putc(0x7f);
+				//}
+				else{
+					if(i<CmdSize){
+						pc_putc(c);
+						cmd[i] = c;
+						i++;
+
+						command[commandPtr] = c;
+						commandPtr++;
+
+					}
+
+				}
+			}
+
+
+
+
+			if(NRF24L01p_readable()){
+				xTaskNotify ( xNotificationHandle, (1<<0), eSetBits);
+				//custom_print("message received\r\n");
+
+				Rxpayload.data = RxData;
+
+				NRF24L01p_clear_data_ready_flag();
+				NRF24L01p_readPayload(&Rxpayload);
+				Rxpayload.data[Rxpayload.length] = '\0';
+
+				graphic_lcd_write(1, 0, "RECEIVED DATA");
+				graphic_lcd_write(2, 0, Rxpayload.data);
+
+				custom_print("\r\n\r\n");
+				custom_print(Rxpayload.data);
+				custom_print("\r\n\r\n");
+
+				//xTaskNotify ( xGLCDHandle, (1<<0), eSetBits);
+				NRF24L01p_flush_rx();
+
+
+				custom_print("\r\n\e[1;32mCygnini>>\e[0m");
+
+
+				for(int m=0;m<commandPtr;m++){
+					pc_putc(command[m]);
+				}
+
+
+			}
+
+
+
+		}
+
+		commandPtr = 0;
+
+
+		for(int j=0;j<=i;j++){
+			cmdMsg[j] = cmd[j];
+		}
+
+
+		//custom_print(cmdMsg);
+		//custom_print("\r\n");
+
+
+		sprintf(TxData, cmdMsg);
+		//TxPayload.data = tempString;
+		TxPayload.data = TxData;
+		TxPayload.UseAck = 1;
+		TxPayload.length = strlen(cmdMsg);
+		//TxPayload.length = strlen(tempString);
+		TxPayload.address = 0x11223344EE;
+
+		NRF24L01p_writePayload(&TxPayload);
+
+		NRF24L01p_ErrorStatus_t ret = NRF24L01p_TransmitPayload(&TxPayload);
+
+		if(ret == NRF24L01P_SUCCESS){
+
+		}
+		else{
+			custom_print("\t\t\r\n\e[1;31mTransmission Failed\e[0m");
+		}
+
+
+
+		NRF24L01p_flush_tx();
+		//NRF24L01p_flush_rx();
+
+		HAL_Delay(200);
+
+
+
+
+		//xTaskNotify ( xGLCDHandle, (1<<0), eSetBits);
+		vTaskDelay(100);
+	}
+}
+
+
+
+void xGLCD( void *pvParameters ){
+	uint32_t ulNotifiedValue;
+
+	int dataCount = 0;
+	char msg[30];
+	while(1){
+
+		if(xTaskNotifyWait (0 , 0xFFFFFFFF, &ulNotifiedValue, portMAX_DELAY) == pdTRUE){
+			dataCount++;
+			sprintf(msg, "total messages: %d", dataCount);
+			graphic_lcd_clear_screen ();
+			graphic_lcd_write(1, 0, msg);
+			graphic_lcd_write(3, 0, cmdMsg);
+						//DigitalPin_SetValue(&led1);
+		}
+
+		vTaskDelay(100);
+
+	}
+}
+
+void xButtons (void *pvParameters) {
+
+	initButtons();
+	printf("this is button loop\r\n");
+	while(1){
+		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 0){
+			custom_print("you pressed button D\r\n");
+
+		}
+		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == 0){
+			custom_print("you pressed button C\r\n");
+
+		}
+		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2) == 0){
+			custom_print("you pressed button B\r\n");
+
+		}
+		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3) == 0){
+			custom_print("you pressed button A\r\n");
+
+		}
+
+		vTaskDelay(200);
+
+	}
+}
+
+
+void LED_Control(uint8_t id, uint8_t val){
+	switch(id){
+
+	//HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
+	//HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+	//HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_SET);
+	//HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_SET);
+	//HAL_GPIO_WritePin (GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
+	//HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_SET);
+
+
+	case '0': {
+		if(val == '0') HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+		else HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
+		break;}
+	case '1': {
+		if(val == '0') HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+		else HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+		break;}
+	case '2': {
+		if(val == '0') HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);
+		else HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_SET);
+		break;}
+	case '3': {
+		if(val == '0') HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
+		else HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_SET);
+		break;}
+
+	default: break;
+	}
+}
+
+
+void xRxNode( void *pvParameters ){
+
+
+
+
+	graphic_lcd_write(0, 0, "RX NODE");
+	vTaskDelay(1000);
+	graphic_lcd_clear_screen();
+
+	RadioReset();
+
+	char myMesg[32];
+
+	Rxpayload.UseAck = 1;
+
+
+	Rxpayload.address = 0x11223344EE;
+	Rxpayload.data = (uint8_t*)myMesg;
+	Rxpayload.length = strlen(myMesg);
+	Rxpayload.retransmitCount = 15;
+
+
+	Si7006_t sensor;
+	sensor.init = Si7006_port_init;
+	sensor.i2c_init = Si7006_port_i2c_init;
+	sensor.i2c_transmit = Si7006_port_i2c_transmit;
+	sensor.i2c_receive = Si7006_port_i2c_receive;
+	sensor.check_hardware = Si7006_port_check_hardware;
+	sensor.delay = Si7006_port_delay;
+
+
+	graphic_lcd_write(0, 0, "PRESS ANY BUTTON");
+	graphic_lcd_write(3, 0, "A     B     C     D");
+
+
+	while(1){
+
+		int xCount = 0;
+
+		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3) == 0){
+
+			float temperature = Si7006_temperature(&sensor);
+
+			int tempInteger = (int)temperature;
+			int tempDecimel = ((float)temperature - (int)temperature)*100;
+
+			char tempString[30];
+			char tempString2[30];
+			sprintf(tempString, "Temp: %d.%d deg C", tempInteger,tempDecimel );
+			sprintf(tempString2, "%d.%d deg C", tempInteger,tempDecimel );
+			graphic_lcd_clear_screen();
+			graphic_lcd_write(0, 0, "temperature:");
+			graphic_lcd_write(1, 0,tempString2);
+
+
+			sprintf(TxData, tempString);
+			//TxPayload.data = tempString;
+			TxPayload.data = TxData;
+			TxPayload.UseAck = 1;
+			TxPayload.length = strlen(tempString);
+			//TxPayload.length = strlen(tempString);
+			TxPayload.address = 0x11223344EE;
+
+			NRF24L01p_writePayload(&TxPayload);
+			NRF24L01p_ErrorStatus_t ret = NRF24L01p_TransmitPayload(&TxPayload);
+
+			if(ret == NRF24L01P_ERROR){
+				graphic_lcd_write(3, 0, "Transmission Error");
+			}
+
+
+
+
+		}
+		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2) == 0){
+
+			float relativeHumidity = Si7006_relativeHumidity(&sensor);
+			int tempInteger = (int)relativeHumidity;
+			int tempDecimel = ((float)relativeHumidity - (int)relativeHumidity)*100;
+
+			char tempString[30];
+			char tempString2[30];
+			sprintf(tempString, "Humidity: %d.%d percent", tempInteger,tempDecimel );
+			sprintf(tempString2, "%d.%d percent", tempInteger,tempDecimel );
+			graphic_lcd_clear_screen();
+			graphic_lcd_write(0, 0, "relative humidity:");
+			graphic_lcd_write(1, 0,tempString2);
+
+
+			sprintf(TxData, tempString);
+			//TxPayload.data = tempString;
+			TxPayload.data = TxData;
+			TxPayload.UseAck = 1;
+			TxPayload.length = strlen(tempString);
+			//TxPayload.length = strlen(tempString);
+			TxPayload.address = 0x11223344EE;
+
+			NRF24L01p_writePayload(&TxPayload);
+			NRF24L01p_ErrorStatus_t ret = NRF24L01p_TransmitPayload(&TxPayload);
+
+			if(ret == NRF24L01P_ERROR){
+				graphic_lcd_write(3, 0, "Transmission Error");
+			}
+
+
+		}
+		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == 0){
+			sprintf(TxData, "button pressed: C");
+			//TxPayload.data = tempString;
+			TxPayload.data = TxData;
+			TxPayload.UseAck = 1;
+			TxPayload.length = strlen(TxData);
+			//TxPayload.length = strlen(tempString);
+			TxPayload.address = 0x11223344EE;
+
+			NRF24L01p_writePayload(&TxPayload);
+			NRF24L01p_ErrorStatus_t ret = NRF24L01p_TransmitPayload(&TxPayload);
+
+			graphic_lcd_clear_screen();
+			graphic_lcd_write(0, 0, "pressed button: C");
+
+			if(ret == NRF24L01P_ERROR){
+				graphic_lcd_write(3, 0, "Transmission Error");
+			}
+
+
+
+
+
+
+		}
+		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 0){
+			//custom_print("you pressed button A\r\n");
+			sprintf(TxData, "button pressed: D");
+			//TxPayload.data = tempString;
+			TxPayload.data = TxData;
+			TxPayload.UseAck = 1;
+			TxPayload.length = strlen(TxData);
+			//TxPayload.length = strlen(tempString);
+			TxPayload.address = 0x11223344EE;
+
+			NRF24L01p_writePayload(&TxPayload);
+			NRF24L01p_ErrorStatus_t ret = NRF24L01p_TransmitPayload(&TxPayload);
+
+
+
+			graphic_lcd_clear_screen();
+			graphic_lcd_write(0, 0, "pressed button: D");
+
+			if(ret == NRF24L01P_ERROR){
+				graphic_lcd_write(3, 0, "Transmission Error");
+			}
+
 
 		}
 
 
+		if(NRF24L01p_readable()){
+				xTaskNotify ( xNotificationHandle, (1<<0), eSetBits);
+				//xTaskNotify ( xNotificationHandle, (1<<0), eSetBits);
+
+
+				//Payload_t payload;
+				Rxpayload.data = RxData;
+
+				NRF24L01p_clear_data_ready_flag();
+				NRF24L01p_readPayload(&Rxpayload);
+				Rxpayload.data[Rxpayload.length] = '\0';
+				//printf("received data\r\n");
+				//graphic_lcd_write(1, 0, "RECEIVED DATA");
+				//graphic_lcd_write(2, 0, Rxpayload.data);
+				graphic_lcd_clear_screen();
+				//graphic_lcd_write(3, 0, Rxpayload.data);
+				//if(Rxpayload.data[0] == 'Q'){
+
+					if(Rxpayload.data[0] == 'L'){//LED control
+						uint8_t LedId = Rxpayload.data[1];
+						uint8_t LedVal = Rxpayload.data[2];
+
+						LED_Control(LedId,LedVal);
+					}
+					else if(Rxpayload.data[0] == 'G'){//GLCD control
+						if(Rxpayload.data[1] == 'C'){//clear lcd
+							//if(Rxpayload.data[3] == 'S')
+							//	graphic_lcd_clear_screen();
+							//else if(Rxpayload.data[3] == 'L'){
+							//	if(Rxpayload.data[4] == '0')graphics_lcd_clear_line(0);
+							//	else if(Rxpayload.data[4] == '1')graphics_lcd_clear_line(1);
+							//	else if(Rxpayload.data[4] == '2')graphics_lcd_clear_line(2);
+							//	else if(Rxpayload.data[4] == '3')graphics_lcd_clear_line(3);
+							//}
+						}
+						if(Rxpayload.data[1] == 'P'){//print
+							int line = Rxpayload.data[2];
+							//int printSize = Rxpayload.data[4];
+
+							//if(printSize >28) printSize = 28;
+
+							char printMsg[32]; //28 + 1 extra for end char
+
+							for(int k = 0;k<28;k++){
+								printMsg[k] = Rxpayload.data[3+k];
+							}
+
+							graphics_lcd_clear_line(line);
+							graphic_lcd_write(line, 0, printMsg);
+						}
+						else if(Rxpayload.data[1] == 'C'){//clear lcd
+							graphic_lcd_clear_screen();
+						}
+						else if(Rxpayload.data[1] == 'B'){//lcd backlight
+							if(Rxpayload.data[2] == '0'){//clear lcd
+								DISPLAY_BACKLIGHT_OFF;
+							}
+							else if(Rxpayload.data[2] == '1'){//clear lcd
+								DISPLAY_BACKLIGHT_ON;
+							}
+						}
+
+					}
+
+
+
+				//}
+				else{
+
+				}
+
+
+				NRF24L01p_flush_rx();
+
+			}
+
+		vTaskDelay(100);
+
+	}
+
+}
+
+void xTxNode( void *pvParameters ){
+
+
+	while(1){
+
+	}
+
+}
+
+int main(void)
+{
+
+	HAL_Init();
+	SystemClock_Config();
+
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+	//__HAL_RCC_GPIOH_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	__HAL_RCC_GPIOD_CLK_ENABLE();
+
+	c12832_hal_spi_init();
+	c12832_hal_gpio_init();
+
+
+	MX_I2C1_SMBUS_Init();
+	MX_USART1_UART_Init();
+
+
+	initLEDs();
+	initButtons();
+
+
+	//testLedAndButtones();
+
+
+	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin (GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);
+
+
+	HAL_GPIO_WritePin(DISPLAY_BACKLIGHT_GPIO_Port, DISPLAY_BACKLIGHT_Pin, GPIO_PIN_RESET);
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+	GPIO_InitStruct.Pin = DISPLAY_BACKLIGHT_Pin;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(DISPLAY_BACKLIGHT_GPIO_Port, &GPIO_InitStruct);
+
+	DISPLAY_BACKLIGHT_OFF;
+
+	//HAL_Delay(2000);
+
+	graphic_lcd_initialize ();
+	graphic_lcd_clear_screen ();
+	DISPLAY_BACKLIGHT_ON;
+
+	//HAL_Delay(1000);
+
+
+
+	uint8_t Si7006DevAddr = 0x40<<1;
+	uint8_t Si1133DevAddr = 0x55<<1;
+
+
+	Si7006_t sensor;
+	sensor.init = Si7006_port_init;
+	sensor.i2c_init = Si7006_port_i2c_init;
+	sensor.i2c_transmit = Si7006_port_i2c_transmit;
+	sensor.i2c_receive = Si7006_port_i2c_receive;
+	sensor.check_hardware = Si7006_port_check_hardware;
+	sensor.delay = Si7006_port_delay;
+
+
+
+	if(sensor.check_hardware() == SI7006_ERROR){
+		graphic_lcd_write(0, 0, "Si7006 NOT READY");
+	}else{
+		graphic_lcd_write(0, 0, "Si7006 READY");
 	}
 
 
+	int x = HAL_I2C_IsDeviceReady(&hi2c1,Si1133DevAddr, 1000, 1000);
+	if(x == HAL_OK) graphic_lcd_write(1, 0, "Si1133 READY");
+	else graphic_lcd_write(1, 0, "Si1133 NOT READY");
 
 
 
+	HAL_Delay(3000);
+	graphic_lcd_clear_screen ();
 
 
 
+#if(TX_NODE == 1)
 
+	//testLedAndButtones();
+	//xTaskCreate(xRadio,(signed portCHAR *) "t1", 500, NULL, tskIDLE_PRIORITY, &xRadioHandle );
+	xTaskCreate(xGLCD,(signed portCHAR *) "t3", 500, NULL, tskIDLE_PRIORITY, &xGLCDHandle );
+	xTaskCreate(xNotification,(signed portCHAR *) "t4", 200, NULL, tskIDLE_PRIORITY, &xNotificationHandle );
+	xTaskCreate(xPC,(signed portCHAR *) "t5", 1000, NULL, tskIDLE_PRIORITY, &xPCHandle );
+	xTaskCreate(xButtons,(signed portCHAR *) "t6", 500, NULL, tskIDLE_PRIORITY, &xButtonsHandle );
+	//xTaskCreate(xTxNode,(signed portCHAR *) "t7", 1000, NULL, tskIDLE_PRIORITY, &xTxNodeHandle );
 
+	vTaskStartScheduler();
 
+	return 0;
+#endif
 
+#if(RX_NODE == 1)
+
+	//testLedAndButtones();
+	//xTaskCreate(xRadio,(signed portCHAR *) "t1", 500, NULL, tskIDLE_PRIORITY, &xRadioHandle );
+	//xTaskCreate(xGLCD,(signed portCHAR *) "t3", 500, NULL, tskIDLE_PRIORITY, &xGLCDHandle );
+	xTaskCreate(xNotification,(signed portCHAR *) "t4", 200, NULL, tskIDLE_PRIORITY, &xNotificationHandle );
+	//xTaskCreate(xPC,(signed portCHAR *) "t5", 1000, NULL, tskIDLE_PRIORITY, &xPCHandle );
+	xTaskCreate(xButtons,(signed portCHAR *) "t6", 500, NULL, tskIDLE_PRIORITY, &xButtonsHandle );
+	xTaskCreate(xRxNode,(signed portCHAR *) "t7", 1000, NULL, tskIDLE_PRIORITY, &xRxNodeHandle );
+	vTaskStartScheduler();
+
+	return 0;
+#endif
 
 	/* Infinite loop */
 	while (1)
@@ -583,107 +1113,6 @@ int main(void)
 
 
 
-}
-
-
-
-
-
-
-int main2(void)
-{
-
-	HAL_Init();
-	SystemClock_Config();
-
-	__HAL_RCC_GPIOC_CLK_ENABLE();
-	//__HAL_RCC_GPIOH_CLK_ENABLE();
-	__HAL_RCC_GPIOA_CLK_ENABLE();
-	__HAL_RCC_GPIOB_CLK_ENABLE();
-	__HAL_RCC_GPIOD_CLK_ENABLE();
-
-	c12832_hal_spi_init();
-	c12832_hal_gpio_init();
-
-
-	MX_I2C1_SMBUS_Init();
-
-
-
-	initLEDs();
-	initButtons();
-
-
-	//testLedAndButtones();
-
-
-	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
-	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
-	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_SET);
-	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_SET);
-	HAL_GPIO_WritePin (GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
-	HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_SET);
-
-
-	HAL_GPIO_WritePin(DISPLAY_BACKLIGHT_GPIO_Port, DISPLAY_BACKLIGHT_Pin, GPIO_PIN_RESET);
-	GPIO_InitTypeDef GPIO_InitStruct = {0};
-	GPIO_InitStruct.Pin = DISPLAY_BACKLIGHT_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(DISPLAY_BACKLIGHT_GPIO_Port, &GPIO_InitStruct);
-
-	DISPLAY_BACKLIGHT_OFF;
-
-	HAL_Delay(2000);
-
-	graphic_lcd_initialize ();
-	graphic_lcd_clear_screen ();
-	DISPLAY_BACKLIGHT_ON;
-	graphic_lcd_write(0, 0, "HELLO");
-	HAL_Delay(1000);
-
-
-	uint8_t Si7006DevAddr = 0x40<<1;
-	uint8_t Si1133DevAddr = 0x55<<1;
-
-
-	Si7006_t sensor;
-	sensor.init = Si7006_port_init;
-	sensor.i2c_init = Si7006_port_i2c_init;
-	sensor.i2c_transmit = Si7006_port_i2c_transmit;
-	sensor.i2c_receive = Si7006_port_i2c_receive;
-	sensor.check_hardware = Si7006_port_check_hardware;
-	sensor.delay = Si7006_port_delay;
-
-
-
-	if(sensor.check_hardware() == SI7006_ERROR){
-		graphic_lcd_write(0, 0, "Si7006 NOT READY");
-	}else{
-		graphic_lcd_write(0, 0, "Si7006 READY");
-	}
-
-
-	int x = HAL_I2C_IsDeviceReady(&hi2c1,Si1133DevAddr, 1000, 1000);
-	if(x == HAL_OK) graphic_lcd_write(1, 0, "Si1133 READY");
-	else graphic_lcd_write(1, 0, "Si1133 NOT READY");
-
-
-
-	sensor.init();
-	Si7006_read_firmware_revision(&sensor);
-
-//	NRF24L01p_write_contWave(1);
-
-
-
-	/* Infinite loop */
-	while (1)
-	{
-
-
-	}
 }
 
 

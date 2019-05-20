@@ -68,3 +68,11 @@ int graphics_lcd_write_byte (int line, int offset, uint8_t data) {
 	return EXIT_SUCCESS;
 }
 	
+
+int graphics_lcd_clear_line(int line) {
+
+
+
+	return EXIT_SUCCESS;
+}
+

@@ -119,8 +119,8 @@ void NRF24L01p_RadioMode(NRF24L01p_RadioState_t mode){
 
 
 bool NRF24L01p_readable(){
-    //return (NRF24L01p_get_data_ready_flag() || !NRF24L01p_get_fifo_flag_rx_empty())&& (NRF24L01p_get_rx_payload_pipe() != 7)  ;
-	return (!NRF24L01p_get_fifo_flag_rx_empty()) ;
+    return (NRF24L01p_get_data_ready_flag() || !NRF24L01p_get_fifo_flag_rx_empty())&& (NRF24L01p_get_rx_payload_pipe() != 7)  ;
+	//return (!NRF24L01p_get_fifo_flag_rx_empty()) ;
 
 }
 bool NRF24L01p_writable(){
