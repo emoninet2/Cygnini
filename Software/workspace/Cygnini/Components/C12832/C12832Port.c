@@ -11,6 +11,7 @@
 SPI_HandleTypeDef hspi2;
 
 
+
 void c12832_hal_spi_init(){
 
 	GPIO_InitTypeDef GPIO_InitStruct = {0};

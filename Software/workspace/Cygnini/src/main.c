@@ -27,7 +27,8 @@ SOFTWARE.
 ******************************************************************************
 */
 
-/* Includes */
+
+/* Includes ------------------------------------------------------------------*/
 
 #include <string.h>
 
@@ -37,29 +38,39 @@ SOFTWARE.
 #include "cmsis_os.h"
 #include "usb_device.h"
 
-
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
 #include "NRF24L01p.h"
 #include "C12832Port.h"
 #include "graphic_lcd.h"
 #include "Si7006.h"
 
 
+/* USER CODE END Includes */
 
-#define TX_NODE 0
-#define RX_NODE 1
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
 
-/* Private macro */
+/* USER CODE END PTD */
 
-/* Private variables */
-/* Private function prototypes */
-/* Private functions */
-void SystemClock_Config(void);
-void Error_Handler(void);
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+#define TX_NODE 1
+#define RX_NODE 0
+/* USER CODE END PD */
 
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
 
+/* USER CODE END PM */
 
-//SMBUS_HandleTypeDef hsmbus1;
+/* Private variables ---------------------------------------------------------*/
+/* USER CODE BEGIN PV */
 I2C_HandleTypeDef hi2c1;
+
+SPI_HandleTypeDef hspi2;
+SPI_HandleTypeDef hspi3;
+
 UART_HandleTypeDef huart1;
 
 TaskHandle_t xRadioHandle = NULL;
@@ -70,202 +81,218 @@ TaskHandle_t xButtonsHandle = NULL;
 
 TaskHandle_t xRxNodeHandle = NULL;
 TaskHandle_t xTxNodeHandle = NULL;
+
+Si7006_t Si7006;
+
+NRF24L01p_Payload_t Rxpayload;
+NRF24L01p_Payload_t TxPayload;
+uint8_t RxData[32];
+uint8_t TxData[32];
+uint8_t radioRxData[32];
+NRF24L01p_RadioConfig_t NRF24L01p_RadioConfig;
+NRF24L01p_RxPipeConfig_t RxPipeConfig[6];
+char cmdMsg[50];
+
+
+uint8_t Si7006DevAddr = 0x40<<1;
+uint8_t Si1133DevAddr = 0x55<<1;
+
+/* USER CODE END PV */
+
+
+/* Private function prototypes -----------------------------------------------*/
+/* USER CODE BEGIN PFP */
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
+static void MX_I2C1_Init(void);
+static void MX_SPI2_Init(void);
+static void MX_SPI3_Init(void);
+static void MX_USART1_UART_Init(void);
+void SystemClock_Config(void);
+
+
+void xRadio( void *pvParameters );
+void xNotification( void *pvParameters );
+void xPC( void *pvParameters );
+void xGLCD( void *pvParameters );
+void xButtons (void *pvParameters);
+void xRxNode( void *pvParameters );
+void xTxNode( void *pvParameters );
+
+
+
+
+
+Si7006_error_t Si7006_port_init(void);
+Si7006_error_t Si7006_port_i2c_init(void);
+Si7006_error_t Si7006_port_i2c_transmit(uint8_t *data, unsigned int size);
+Si7006_error_t Si7006_port_i2c_receive(uint8_t *data, unsigned int size);
+Si7006_error_t Si7006_port_check_hardware();
+Si7006_error_t Si7006_port_delay(unsigned int ms);
+
+void LED_Control(uint8_t id, uint8_t val);
+void RadioReset();
+
+
+static void pc_putc(char c);
+static char pc_getc();
+static void custom_print(char *str);
+void Error_Handler(void);
+
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+
+
+
+/* USER CODE END 0 */
+
+
+
+
 /**
-  * @brief I2C1 Initialization Function
-  * @param None
-  * @retval None
+  * @brief  The application entry point.
+  * @retval int
   */
-static void MX_I2C1_SMBUS_Init(void)
+int main(void)
 {
 
-  /* USER CODE BEGIN I2C1_Init 0 */
+	HAL_Init();
+	SystemClock_Config();
 
-  /* USER CODE END I2C1_Init 0 */
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+	//__HAL_RCC_GPIOH_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	__HAL_RCC_GPIOD_CLK_ENABLE();
 
-  /* USER CODE BEGIN I2C1_Init 1 */
+	c12832_hal_spi_init();
+	c12832_hal_gpio_init();
 
-  /* USER CODE END I2C1_Init 1 */
+
+	MX_GPIO_Init();
+	MX_DMA_Init();
+	MX_I2C1_Init();
+	MX_SPI2_Init();
+	MX_SPI3_Init();
+	MX_USART1_UART_Init();
 
 
-	hi2c1.Instance = I2C1;
-	hi2c1.Mode = HAL_I2C_MODE_MASTER;
-	hi2c1.Init.Timing = 0xA0120227;
+	//initLEDs();
+	//initButtons();
 
-	//hi2c1.Init.AnalogFilter = SMBUS_ANALOGFILTER_ENABLE;
-	hi2c1.Init.OwnAddress1 = 0;
-	hi2c1.Init.AddressingMode = SMBUS_ADDRESSINGMODE_7BIT;
-	hi2c1.Init.DualAddressMode = SMBUS_DUALADDRESS_DISABLE;
-	hi2c1.Init.OwnAddress2 = 0;
-	hi2c1.Init.OwnAddress2Masks = SMBUS_OA2_NOMASK;
-	hi2c1.Init.GeneralCallMode = SMBUS_GENERALCALL_DISABLE;
-	hi2c1.Init.NoStretchMode = SMBUS_NOSTRETCH_DISABLE;
-	//hi2c1.Init.PacketErrorCheckMode = SMBUS_PEC_DISABLE;
-	//hi2c1.Init.PeripheralMode = SMBUS_PERIPHERAL_MODE_SMBUS_SLAVE;
-	//hi2c1.Init.SMBusTimeout = 0x0000836E;
-	if (HAL_I2C_Init(&hi2c1) != HAL_OK)
-	{
-	Error_Handler();
+
+	//testLedAndButtones();
+
+
+	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin (GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);
+
+
+	HAL_GPIO_WritePin(DISPLAY_BACKLIGHT_GPIO_Port, DISPLAY_BACKLIGHT_Pin, GPIO_PIN_RESET);
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+	GPIO_InitStruct.Pin = DISPLAY_BACKLIGHT_Pin;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(DISPLAY_BACKLIGHT_GPIO_Port, &GPIO_InitStruct);
+
+	DISPLAY_BACKLIGHT_OFF;
+
+	//HAL_Delay(2000);
+
+	graphic_lcd_initialize ();
+	graphic_lcd_clear_screen ();
+	DISPLAY_BACKLIGHT_ON;
+
+	//HAL_Delay(1000);
+
+
+
+
+	Si7006_port_init();
+
+
+
+
+
+
+	if(Si7006.check_hardware() == SI7006_ERROR){
+		graphic_lcd_write(0, 0, "Si7006 NOT READY");
+	}else{
+		graphic_lcd_write(0, 0, "Si7006 READY");
 	}
 
-	HAL_I2C_MspInit(&hi2c1);
+
+	int x = HAL_I2C_IsDeviceReady(&hi2c1,Si1133DevAddr, 1000, 1000);
+	if(x == HAL_OK) graphic_lcd_write(1, 0, "Si1133 READY");
+	else graphic_lcd_write(1, 0, "Si1133 NOT READY");
 
 
 
-
-/*
-  hsmbus1.Instance = I2C1;
-  hsmbus1.Init.Timing = 0x10808DD3;
-  hsmbus1.Init.AnalogFilter = SMBUS_ANALOGFILTER_ENABLE;
-  hsmbus1.Init.OwnAddress1 = 2;
-  hsmbus1.Init.AddressingMode = SMBUS_ADDRESSINGMODE_7BIT;
-  hsmbus1.Init.DualAddressMode = SMBUS_DUALADDRESS_DISABLE;
-  hsmbus1.Init.OwnAddress2 = 0;
-  hsmbus1.Init.OwnAddress2Masks = SMBUS_OA2_NOMASK;
-  hsmbus1.Init.GeneralCallMode = SMBUS_GENERALCALL_DISABLE;
-  hsmbus1.Init.NoStretchMode = SMBUS_NOSTRETCH_DISABLE;
-  hsmbus1.Init.PacketErrorCheckMode = SMBUS_PEC_DISABLE;
-  hsmbus1.Init.PeripheralMode = SMBUS_PERIPHERAL_MODE_SMBUS_SLAVE;
-  hsmbus1.Init.SMBusTimeout = 0x0000836E;
-  if (HAL_SMBUS_Init(&hsmbus1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  HAL_SMBUS_MspInit(&hsmbus1);
-*/
-
-  /* USER CODE BEGIN I2C1_Init 2 */
-
-  /* USER CODE END I2C1_Init 2 */
-
-}
-
-/**
-  * @brief USART1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USART1_UART_Init(void)
-{
-
-  /* USER CODE BEGIN USART1_Init 0 */
-
-  /* USER CODE END USART1_Init 0 */
-
-  /* USER CODE BEGIN USART1_Init 1 */
-
-  /* USER CODE END USART1_Init 1 */
-  huart1.Instance = USART1;
-  huart1.Init.BaudRate = 9600;
-  huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits = UART_STOPBITS_1;
-  huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
-  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-  huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
-  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-  if (HAL_UART_Init(&huart1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  HAL_UART_MspInit(&huart1);
+	HAL_Delay(3000);
+	graphic_lcd_clear_screen ();
 
 
-  /* USER CODE BEGIN USART1_Init 2 */
 
-  /* USER CODE END USART1_Init 2 */
+#if(TX_NODE == 1)
 
-}
+	//testLedAndButtones();
+	//xTaskCreate(xRadio,(signed portCHAR *) "t1", 500, NULL, tskIDLE_PRIORITY, &xRadioHandle );
+	xTaskCreate(xGLCD,(signed portCHAR *) "t3", 500, NULL, tskIDLE_PRIORITY, &xGLCDHandle );
+	xTaskCreate(xNotification,(signed portCHAR *) "t4", 200, NULL, tskIDLE_PRIORITY, &xNotificationHandle );
+	xTaskCreate(xPC,(signed portCHAR *) "t5", 1000, NULL, tskIDLE_PRIORITY, &xPCHandle );
+	xTaskCreate(xButtons,(signed portCHAR *) "t6", 500, NULL, tskIDLE_PRIORITY, &xButtonsHandle );
+	//xTaskCreate(xTxNode,(signed portCHAR *) "t7", 1000, NULL, tskIDLE_PRIORITY, &xTxNodeHandle );
 
+	vTaskStartScheduler();
 
-void initLEDs(){
-	GPIO_InitTypeDef GPIO_InitStruct = {0};
-	GPIO_InitStruct.Pin = GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7 ;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+	return 0;
+#endif
 
-	GPIO_InitStruct.Pin = GPIO_PIN_8 | GPIO_PIN_9;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+#if(RX_NODE == 1)
 
-}
+	//testLedAndButtones();
+	//xTaskCreate(xRadio,(signed portCHAR *) "t1", 500, NULL, tskIDLE_PRIORITY, &xRadioHandle );
+	//xTaskCreate(xGLCD,(signed portCHAR *) "t3", 500, NULL, tskIDLE_PRIORITY, &xGLCDHandle );
+	xTaskCreate(xNotification,(signed portCHAR *) "t4", 200, NULL, tskIDLE_PRIORITY, &xNotificationHandle );
+	//xTaskCreate(xPC,(signed portCHAR *) "t5", 1000, NULL, tskIDLE_PRIORITY, &xPCHandle );
+	xTaskCreate(xButtons,(signed portCHAR *) "t6", 500, NULL, tskIDLE_PRIORITY, &xButtonsHandle );
+	xTaskCreate(xRxNode,(signed portCHAR *) "t7", 1000, NULL, tskIDLE_PRIORITY, &xRxNodeHandle );
+	vTaskStartScheduler();
 
+	return 0;
+#endif
 
-void initButtons(){
-	GPIO_InitTypeDef GPIO_InitStruct = {0};
-	GPIO_InitStruct.Pin = GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1 | GPIO_PIN_0 ;
-	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+	/* Infinite loop */
+	while (1)
+	{
+
+	}
+
 
 
 }
-
-
-
-void testLedAndButtones(){
-
-
-	for(;;) {
-			printf("hello world\r\n");
-			vTaskDelay ((100 / portTICK_PERIOD_MS));
-
-			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1){
-				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
-
-				HAL_GPIO_WritePin (GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
-				HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_SET);
-
-			}
-			else{
-				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
-
-				HAL_GPIO_WritePin (GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);
-				HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);
-			}
-
-
-			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == 1){
-				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-			}
-			else{
-				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
-			}
-
-
-			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2) == 1){
-				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);
-			}
-			else{
-				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_SET);
-			}
-
-
-			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3) == 1){
-				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
-			}
-			else{
-				HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_SET);
-			}
-
-	    }
-
-
-}
-
 
 
 
 
 
 Si7006_error_t Si7006_port_init(void){
+	Si7006.init = Si7006_port_init;
+	Si7006.i2c_init = Si7006_port_i2c_init;
+	Si7006.i2c_transmit = Si7006_port_i2c_transmit;
+	Si7006.i2c_receive = Si7006_port_i2c_receive;
+	Si7006.check_hardware = Si7006_port_check_hardware;
+	Si7006.delay = Si7006_port_delay;
+
+	return Si7006_port_check_hardware();
 
 }
 Si7006_error_t Si7006_port_i2c_init(void){
@@ -304,8 +331,6 @@ Si7006_error_t Si7006_port_delay(unsigned int ms){
 
 
 
-NRF24L01p_RadioConfig_t NRF24L01p_RadioConfig;
-NRF24L01p_RxPipeConfig_t RxPipeConfig[6];
 
 void RadioReset(){
 
@@ -343,20 +368,9 @@ void RadioReset(){
 	NRF24L01p_ResetConfigValues(&NRF24L01p_RadioConfig, RxPipeConfig);
 }
 
-static void custom_print(char *str){
-	HAL_UART_Transmit(&huart1, (uint8_t *)str, strlen(str),0xFFFF);
-
-}
-
-
-NRF24L01p_Payload_t Rxpayload;
-NRF24L01p_Payload_t TxPayload;
-uint8_t RxData[32];
-uint8_t TxData[32];
 
 
 
-uint8_t radioRxData[32];
 
 void xRadio( void *pvParameters ){
 	RadioReset();
@@ -420,7 +434,6 @@ void xRadio( void *pvParameters ){
 	}
 }
 
-
 void xNotification( void *pvParameters ){
 	uint32_t ulNotifiedValue;
 	while(1){
@@ -439,19 +452,7 @@ void xNotification( void *pvParameters ){
 	}
 }
 
-void pc_putc(char c){
-	HAL_UART_Transmit(&huart1, &c, 1,0xFFFF);
 
-}
-
-char pc_getc(){
-	char c;
-	HAL_UART_Receive(&huart1, &c, 1, 0);
-	return c;
-}
-
-
-char cmdMsg[50];
 
 
 void xPC( void *pvParameters ){
@@ -612,6 +613,7 @@ void xPC( void *pvParameters ){
 
 
 
+
 void xGLCD( void *pvParameters ){
 	uint32_t ulNotifiedValue;
 
@@ -635,7 +637,6 @@ void xGLCD( void *pvParameters ){
 
 void xButtons (void *pvParameters) {
 
-	initButtons();
 	printf("this is button loop\r\n");
 	while(1){
 		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 0){
@@ -664,14 +665,6 @@ void xButtons (void *pvParameters) {
 void LED_Control(uint8_t id, uint8_t val){
 	switch(id){
 
-	//HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
-	//HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
-	//HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_SET);
-	//HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_SET);
-	//HAL_GPIO_WritePin (GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
-	//HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_SET);
-
-
 	case '0': {
 		if(val == '0') HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
 		else HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
@@ -695,9 +688,6 @@ void LED_Control(uint8_t id, uint8_t val){
 
 
 void xRxNode( void *pvParameters ){
-
-
-
 
 	graphic_lcd_write(0, 0, "RX NODE");
 	vTaskDelay(1000);
@@ -942,178 +932,6 @@ void xTxNode( void *pvParameters ){
 
 }
 
-int main(void)
-{
-
-	HAL_Init();
-	SystemClock_Config();
-
-	__HAL_RCC_GPIOC_CLK_ENABLE();
-	//__HAL_RCC_GPIOH_CLK_ENABLE();
-	__HAL_RCC_GPIOA_CLK_ENABLE();
-	__HAL_RCC_GPIOB_CLK_ENABLE();
-	__HAL_RCC_GPIOD_CLK_ENABLE();
-
-	c12832_hal_spi_init();
-	c12832_hal_gpio_init();
-
-
-	MX_I2C1_SMBUS_Init();
-	MX_USART1_UART_Init();
-
-
-	initLEDs();
-	initButtons();
-
-
-	//testLedAndButtones();
-
-
-	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin (GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin (GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin (GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);
-
-
-	HAL_GPIO_WritePin(DISPLAY_BACKLIGHT_GPIO_Port, DISPLAY_BACKLIGHT_Pin, GPIO_PIN_RESET);
-	GPIO_InitTypeDef GPIO_InitStruct = {0};
-	GPIO_InitStruct.Pin = DISPLAY_BACKLIGHT_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(DISPLAY_BACKLIGHT_GPIO_Port, &GPIO_InitStruct);
-
-	DISPLAY_BACKLIGHT_OFF;
-
-	//HAL_Delay(2000);
-
-	graphic_lcd_initialize ();
-	graphic_lcd_clear_screen ();
-	DISPLAY_BACKLIGHT_ON;
-
-	//HAL_Delay(1000);
-
-
-
-	uint8_t Si7006DevAddr = 0x40<<1;
-	uint8_t Si1133DevAddr = 0x55<<1;
-
-
-	Si7006_t sensor;
-	sensor.init = Si7006_port_init;
-	sensor.i2c_init = Si7006_port_i2c_init;
-	sensor.i2c_transmit = Si7006_port_i2c_transmit;
-	sensor.i2c_receive = Si7006_port_i2c_receive;
-	sensor.check_hardware = Si7006_port_check_hardware;
-	sensor.delay = Si7006_port_delay;
-
-
-
-	if(sensor.check_hardware() == SI7006_ERROR){
-		graphic_lcd_write(0, 0, "Si7006 NOT READY");
-	}else{
-		graphic_lcd_write(0, 0, "Si7006 READY");
-	}
-
-
-	int x = HAL_I2C_IsDeviceReady(&hi2c1,Si1133DevAddr, 1000, 1000);
-	if(x == HAL_OK) graphic_lcd_write(1, 0, "Si1133 READY");
-	else graphic_lcd_write(1, 0, "Si1133 NOT READY");
-
-
-
-	HAL_Delay(3000);
-	graphic_lcd_clear_screen ();
-
-
-
-#if(TX_NODE == 1)
-
-	//testLedAndButtones();
-	//xTaskCreate(xRadio,(signed portCHAR *) "t1", 500, NULL, tskIDLE_PRIORITY, &xRadioHandle );
-	xTaskCreate(xGLCD,(signed portCHAR *) "t3", 500, NULL, tskIDLE_PRIORITY, &xGLCDHandle );
-	xTaskCreate(xNotification,(signed portCHAR *) "t4", 200, NULL, tskIDLE_PRIORITY, &xNotificationHandle );
-	xTaskCreate(xPC,(signed portCHAR *) "t5", 1000, NULL, tskIDLE_PRIORITY, &xPCHandle );
-	xTaskCreate(xButtons,(signed portCHAR *) "t6", 500, NULL, tskIDLE_PRIORITY, &xButtonsHandle );
-	//xTaskCreate(xTxNode,(signed portCHAR *) "t7", 1000, NULL, tskIDLE_PRIORITY, &xTxNodeHandle );
-
-	vTaskStartScheduler();
-
-	return 0;
-#endif
-
-#if(RX_NODE == 1)
-
-	//testLedAndButtones();
-	//xTaskCreate(xRadio,(signed portCHAR *) "t1", 500, NULL, tskIDLE_PRIORITY, &xRadioHandle );
-	//xTaskCreate(xGLCD,(signed portCHAR *) "t3", 500, NULL, tskIDLE_PRIORITY, &xGLCDHandle );
-	xTaskCreate(xNotification,(signed portCHAR *) "t4", 200, NULL, tskIDLE_PRIORITY, &xNotificationHandle );
-	//xTaskCreate(xPC,(signed portCHAR *) "t5", 1000, NULL, tskIDLE_PRIORITY, &xPCHandle );
-	xTaskCreate(xButtons,(signed portCHAR *) "t6", 500, NULL, tskIDLE_PRIORITY, &xButtonsHandle );
-	xTaskCreate(xRxNode,(signed portCHAR *) "t7", 1000, NULL, tskIDLE_PRIORITY, &xRxNodeHandle );
-	vTaskStartScheduler();
-
-	return 0;
-#endif
-
-	/* Infinite loop */
-	while (1)
-	{
-
-
-
-
-		if(NRF24L01p_readable()){
-
-				//xTaskNotify ( xNotificationHandle, (1<<0), eSetBits);
-
-
-				//Payload_t payload;
-				Rxpayload.data = RxData;
-
-				NRF24L01p_clear_data_ready_flag();
-				NRF24L01p_readPayload(&Rxpayload);
-				Rxpayload.data[Rxpayload.length] = '\0';
-				//printf("received data\r\n");
-				graphic_lcd_write(1, 0, "RECEIVED DATA");
-				graphic_lcd_write(3, 0, Rxpayload.data);
-				NRF24L01p_flush_rx();
-
-			}
-
-
-		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1){
-			graphic_lcd_write(0, 0, "1");
-
-		}
-		else{
-			graphic_lcd_write(0, 0, "0");
-			sprintf(TxData, "love you");
-			//TxPayload.data = tempString;
-			TxPayload.data = TxData;
-			TxPayload.UseAck = 1;
-			TxPayload.length = strlen(TxData);
-			//TxPayload.length = strlen(tempString);
-			TxPayload.address = 0x11223344EE;
-
-			NRF24L01p_writePayload(&TxPayload);
-			NRF24L01p_TransmitPayload(&TxPayload);
-		}
-
-	}
-
-
-
-
-
-
-
-
-
-
-}
 
 
 
@@ -1198,69 +1016,261 @@ void SystemClock_Config(void)
 
 
 /**
-  * @brief System Clock Configuration
+  * @brief I2C1 Initialization Function
+  * @param None
   * @retval None
   */
-void SystemClock_Config2(void)
+static void MX_I2C1_Init(void)
 {
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
-  /**Configure LSE Drive Capability
-  */
-  HAL_PWR_EnableBkUpAccess();
-  __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
-  /**Initializes the CPU, AHB and APB busses clocks
-  */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSE|RCC_OSCILLATORTYPE_MSI | RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = 0x10;
-  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
-  RCC_OscInitStruct.MSIState = RCC_MSI_ON;
-  RCC_OscInitStruct.MSICalibrationValue = 0;
-  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_7;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = 16;
-  RCC_OscInitStruct.PLL.PLLN = 360;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
-  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV6;
-  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /**Initializes the CPU, AHB and APB busses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  /* USER CODE BEGIN I2C1_Init 0 */
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+  /* USER CODE END I2C1_Init 0 */
+
+  /* USER CODE BEGIN I2C1_Init 1 */
+
+  /* USER CODE END I2C1_Init 1 */
+  hi2c1.Instance = I2C1;
+  hi2c1.Init.Timing = 0x00702991;
+  hi2c1.Init.OwnAddress1 = 0;
+  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c1.Init.OwnAddress2 = 0;
+  hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
   {
     Error_Handler();
   }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC;
-  PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /**Configure the main internal regulator output voltage
+  /** Configure Analogue filter
   */
-  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
+  if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
   {
     Error_Handler();
   }
-  /**Enable MSI Auto calibration
+  /** Configure Digital filter
   */
-  HAL_RCCEx_EnableMSIPLLMode();
+  if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN I2C1_Init 2 */
+
+  /* USER CODE END I2C1_Init 2 */
+
 }
 
+/**
+  * @brief SPI2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SPI2_Init(void)
+{
+
+  /* USER CODE BEGIN SPI2_Init 0 */
+
+  /* USER CODE END SPI2_Init 0 */
+
+  /* USER CODE BEGIN SPI2_Init 1 */
+
+  /* USER CODE END SPI2_Init 1 */
+  /* SPI2 parameter configuration*/
+  hspi2.Instance = SPI2;
+  hspi2.Init.Mode = SPI_MODE_MASTER;
+  hspi2.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi2.Init.NSS = SPI_NSS_SOFT;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi2.Init.CRCPolynomial = 7;
+  hspi2.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
+  hspi2.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  if (HAL_SPI_Init(&hspi2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI2_Init 2 */
+
+  /* USER CODE END SPI2_Init 2 */
+
+}
+
+/**
+  * @brief SPI3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SPI3_Init(void)
+{
+
+  /* USER CODE BEGIN SPI3_Init 0 */
+
+  /* USER CODE END SPI3_Init 0 */
+
+  /* USER CODE BEGIN SPI3_Init 1 */
+
+  /* USER CODE END SPI3_Init 1 */
+  /* SPI3 parameter configuration*/
+  hspi3.Instance = SPI3;
+  hspi3.Init.Mode = SPI_MODE_MASTER;
+  hspi3.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi3.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi3.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi3.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi3.Init.NSS = SPI_NSS_SOFT;
+  hspi3.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi3.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi3.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi3.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi3.Init.CRCPolynomial = 7;
+  hspi3.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
+  hspi3.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  if (HAL_SPI_Init(&hspi3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI3_Init 2 */
+
+  /* USER CODE END SPI3_Init 2 */
+
+}
+
+/**
+  * @brief USART1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART1_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART1_Init 0 */
+
+  /* USER CODE END USART1_Init 0 */
+
+  /* USER CODE BEGIN USART1_Init 1 */
+
+  /* USER CODE END USART1_Init 1 */
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 9600;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART1_Init 2 */
+
+  /* USER CODE END USART1_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  * Configure DMA for memory to memory transfers
+  */
+static void MX_DMA_Init(void)
+{
+
+
+}
+
+/**
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_GPIO_Init(void)
+{
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7
+                          |GPIO_PIN_8, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : PA0 PA1 PA2 PA3 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PA4 PA5 PA6 PA7
+                           PA8 */
+  GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7
+                          |GPIO_PIN_8;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PC5 PC6 PC8 PC9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_8|GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PB0 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB12 PB8 PB9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_8|GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PC7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+}
+
+
+
+
+static void pc_putc(char c){
+	HAL_UART_Transmit(&huart1, &c, 1,0xFFFF);
+
+}
+
+static char pc_getc(){
+	char c;
+	HAL_UART_Receive(&huart1, &c, 1, 0);
+	return c;
+}
+
+static void custom_print(char *str){
+	HAL_UART_Transmit(&huart1, (uint8_t *)str, strlen(str),0xFFFF);
+
+}
 
 
 

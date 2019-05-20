@@ -68,15 +68,11 @@ Si7006_error_t Si7006_read_firmware_revision(Si7006_t *unit){
 	printf("gonna read firmware revision now\r\n");
 
 
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
 
 
