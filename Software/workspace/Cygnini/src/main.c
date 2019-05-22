@@ -241,6 +241,14 @@ int main(void)
 
 
 
+
+	graphic_lcd_write(0, 0, "FUCK OFF PLEASE");
+	graphic_lcd_write(1, 0, "FUCK OFF PLEASE");
+	graphic_lcd_write(2, 0, "FUCK OFF PLEASE");
+	graphic_lcd_write(3, 0, "FUCK OFF PLEASE");
+	graphics_lcd_clear_line(2);
+	HAL_Delay(10000);
+
 #if(TX_NODE == 1)
 
 	//testLedAndButtones();

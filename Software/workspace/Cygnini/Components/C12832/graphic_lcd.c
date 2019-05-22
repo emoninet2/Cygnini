@@ -71,6 +71,17 @@ int graphics_lcd_write_byte (int line, int offset, uint8_t data) {
 
 int graphics_lcd_clear_line(int line) {
 
+	int i, j;
+
+	//for (i=0; i<LINE_COUNT; i++) {
+	st7565r_set_page_address(line);
+	st7565r_set_column_address(0);
+	st7565r_set_display_start_line_address(0);
+	for (j=0; j<LINE_PIXEL_LENGHT + FONT_SIZE; j++){
+		st7565r_write_data(0);
+		}
+	//}
+
 
 
 	return EXIT_SUCCESS;
