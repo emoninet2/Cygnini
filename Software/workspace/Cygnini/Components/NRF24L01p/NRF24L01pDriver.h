@@ -63,6 +63,7 @@
     void NRF24L01p_rx_mode();
     void NRF24L01p_tx_mode();
     void NRF24L01p_set_CRC(NRF24L01p_crc_t opt);
+    NRF24L01p_crc_t NRF24L01p_get_CRC(void);
     void NRF24L01p_enable_dataReady_interrupt(bool sel);
     void NRF24L01p_enable_dataSent_interrupt(bool sel);
     void NRF24L01p_enable_maxRetry_interrupt(bool sel);
@@ -137,7 +138,7 @@
     int NRF24L01p_read_rx_payload_width();
     void NRF24L01p_write_ack_payload(NRF24L01p_pipe_t pipe, uint8_t *datain, int pay_len);
     void NRF24L01p_write_tx_payload_noack(uint8_t *datain, int pay_len);
-    int NRF24L01p_get_status();
+    uint8_t NRF24L01p_get_status();
 
 
 #endif /* NRF24L01PDRIVER_H */

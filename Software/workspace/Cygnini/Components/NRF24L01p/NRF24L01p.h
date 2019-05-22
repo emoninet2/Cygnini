@@ -57,10 +57,20 @@
     typedef struct{
     	NRF24L01p_PipeAddr_t address;
         NRF24L01p_pipe_t pipe;
-        bool UseAck;
+        //bool UseAck;
         uint8_t *data;
         unsigned int length;
         uint8_t retransmitCount;
+
+
+        bool UseAck;//*< used in TX mode to send the payload with ack if set to high and without ack if set to low*/
+        NRF24L01p_PipeAddr_t TxAddress;//*< this is the 5-byte hardware address of the radio to send data to*/
+		NRF24L01p_pipe_t TxAckPipe;//*< used when an ack payload has to be written in RX mode. when a payload is received , the ack payload is automatically sent*/
+		bool GotAck;//*< this value is set high if the transmitter receives and ack.*/
+		NRF24L01p_pipe_t RxPipe; //*< the pipe in which the data the data has been received and read from*/
+
+
+
     }NRF24L01p_Payload_t;
 
     typedef enum{
@@ -90,6 +100,8 @@
     NRF24L01p_ErrorStatus_t NRF24L01p_TransmitPayload(NRF24L01p_Payload_t *payload);
     NRF24L01p_ErrorStatus_t NRF24L01p_ReceivePayload(NRF24L01p_Payload_t *payload);
 
+    NRF24L01p_ErrorStatus_t NRF24L01p_TransmitPayloadInterruptHandled(NRF24L01p_Payload_t *payload);
+	NRF24L01p_ErrorStatus_t NRF24L01p_ReceivePayloadInterruptHandled(NRF24L01p_Payload_t *payload);
 
 
 #endif /* NRF24L01P_H */

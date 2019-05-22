@@ -133,7 +133,7 @@ void NRF24L01p_write_tx_payload_noack(uint8_t *datain, int pay_len){
     //port_SPI_Transcieve(datain,pay_len);
     NRF24L01p_port_write_Pin_CSN(1);
 }
-int NRF24L01p_get_status(){
+uint8_t NRF24L01p_get_status(){
     NRF24L01p_port_write_Pin_CSN(0);
     uint8_t temp = (_NRF24L01P_SPI_CMD_NOP );
     NRF24L01p_port_SPI_Transcieve(&temp, &temp, 1);
@@ -143,33 +143,28 @@ int NRF24L01p_get_status(){
 }
 
 
+
+
+
 void NRF24L01p_power_up(){
-    uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_CONFIG);
-    temp |= _NRF24L01P_CONFIG_PWR_UP;
-    NRF24L01p_write_register(_NRF24L01P_REG_CONFIG,temp);
+	NRF24L01p_write_register(_NRF24L01P_REG_CONFIG,NRF24L01p_read_register(_NRF24L01P_REG_CONFIG) | _NRF24L01P_CONFIG_PWR_UP);
 }
 void NRF24L01p_power_down(){
-    uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_CONFIG);
-    temp &= ~_NRF24L01P_CONFIG_PWR_UP;
-    NRF24L01p_write_register(_NRF24L01P_REG_CONFIG,temp);
+	NRF24L01p_write_register(_NRF24L01P_REG_CONFIG,NRF24L01p_read_register(_NRF24L01P_REG_CONFIG) & ~_NRF24L01P_CONFIG_PWR_UP);
 }
 void NRF24L01p_rx_mode(){
-    uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_CONFIG);
-    temp |= _NRF24L01P_CONFIG_PRIM_RX;
-    NRF24L01p_write_register(_NRF24L01P_REG_CONFIG,temp);
+	NRF24L01p_write_register(_NRF24L01P_REG_CONFIG,NRF24L01p_read_register(_NRF24L01P_REG_CONFIG) | _NRF24L01P_CONFIG_PRIM_RX);
 }
 void NRF24L01p_tx_mode(){
-    uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_CONFIG);
-    temp &= ~_NRF24L01P_CONFIG_PRIM_RX;
-    NRF24L01p_write_register(_NRF24L01P_REG_CONFIG,temp);
+	NRF24L01p_write_register(_NRF24L01P_REG_CONFIG,NRF24L01p_read_register(_NRF24L01P_REG_CONFIG) & ~_NRF24L01P_CONFIG_PRIM_RX);
 }
 void NRF24L01p_set_CRC(NRF24L01p_crc_t opt){
-    uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_CONFIG);
-    temp &= ~(_NRF24L01P_CONFIG_CRC_MASK);
-    temp |= opt;
-    NRF24L01p_write_register(_NRF24L01P_REG_CONFIG,temp);
+	NRF24L01p_write_register(_NRF24L01P_REG_CONFIG, (NRF24L01p_read_register(_NRF24L01P_REG_CONFIG) & ~ _NRF24L01P_CONFIG_CRC_MASK) | opt);
 }
 
+NRF24L01p_crc_t NRF24L01p_get_CRC(void){
+	return (NRF24L01p_crc_t) (NRF24L01p_read_register(_NRF24L01P_REG_CONFIG) &  _NRF24L01P_CONFIG_CRC_MASK);
+}
 
 void NRF24L01p_enable_dataReady_interrupt(bool sel){
 	  if(sel) NRF24L01p_write_register(_NRF24L01P_REG_CONFIG,NRF24L01p_read_register(_NRF24L01P_REG_CONFIG) | _NRF24L01P_CONFIG_MASK_RX_DR);
@@ -276,23 +271,14 @@ NRF24L01p_RFpower_t NRF24L01p_get_RF_Power(){
     return (NRF24L01p_RFpower_t) temp;
 }
 void NRF24L01p_enable_pll_lock(bool sel){
-
+	if(sel) NRF24L01p_write_register(_NRF24L01P_REG_RF_SETUP,NRF24L01p_read_register(_NRF24L01P_REG_RF_SETUP) | _NRF24L01P_RF_SETUP_PLL_LOCK);
+	else NRF24L01p_write_register(_NRF24L01P_REG_RF_SETUP,NRF24L01p_read_register(_NRF24L01P_REG_RF_SETUP) & ~_NRF24L01P_RF_SETUP_PLL_LOCK);
 }
 
 void NRF24L01p_enable_cont_wave(bool sel){
-    if(sel){
-        uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_RF_SETUP);
-        temp |= _NRF24L01P_RF_CONT_WAVE;
-        NRF24L01p_write_register(_NRF24L01P_REG_RF_SETUP,temp);
-    }
-    else{
-        uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_RF_SETUP);
-        temp &= ~_NRF24L01P_RF_CONT_WAVE;
-        NRF24L01p_write_register(_NRF24L01P_REG_RF_SETUP,temp);
-    }
-
+	if(sel) NRF24L01p_write_register(_NRF24L01P_REG_RF_SETUP,NRF24L01p_read_register(_NRF24L01P_REG_RF_SETUP) | _NRF24L01P_RF_CONT_WAVE);
+	else NRF24L01p_write_register(_NRF24L01P_REG_RF_SETUP,NRF24L01p_read_register(_NRF24L01P_REG_RF_SETUP) & ~_NRF24L01P_RF_CONT_WAVE);
 }
-
 
 bool NRF24L01p_get_tx_fifo_full_flag(){
     if(NRF24L01p_get_status()&_NRF24L01P_STATUS_TX_FULL) return 1;
@@ -425,62 +411,31 @@ bool NRF24L01p_get_fifo_flag_tx_reuse(){
 }
 
 void NRF24L01p_enable_dynamic_payload_pipe(NRF24L01p_pipe_t pipe, bool sel){
-    if(sel){
-          uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_DYNPD);
-        temp |= (1<<pipe);
-        NRF24L01p_write_register(_NRF24L01P_REG_DYNPD,temp);
-    }else{
-        uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_DYNPD);
-        temp &= ~(1<<pipe);
-        NRF24L01p_write_register(_NRF24L01P_REG_DYNPD,temp);
-    }
+    if(sel) NRF24L01p_write_register(_NRF24L01P_REG_DYNPD,NRF24L01p_read_register(_NRF24L01P_REG_DYNPD) | (1<<pipe));
+    else NRF24L01p_write_register(_NRF24L01P_REG_DYNPD,NRF24L01p_read_register(_NRF24L01P_REG_DYNPD) & ~(1<<pipe));
 
 }
 
 
 
 void NRF24L01p_enable_dynamic_payload(bool sel){
-    if(sel){
-        uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_FEATURE);
-        temp |= _NRF24L01_FEATURE_EN_DPL;
-        NRF24L01p_write_register(_NRF24L01P_REG_FEATURE,temp);
-    }
-    else{
-        uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_FEATURE);
-        temp &= ~_NRF24L01_FEATURE_EN_DPL;
-        NRF24L01p_write_register(_NRF24L01P_REG_FEATURE,temp);
-    }
+    if(sel) NRF24L01p_write_register(_NRF24L01P_REG_FEATURE,NRF24L01p_read_register(_NRF24L01P_REG_FEATURE) | (_NRF24L01_FEATURE_EN_DPL));
+    else NRF24L01p_write_register(_NRF24L01P_REG_FEATURE,NRF24L01p_read_register(_NRF24L01P_REG_FEATURE) & ~_NRF24L01_FEATURE_EN_DPL);
 
 }
 
 
 
 void NRF24L01p_enable_payload_with_ack(bool sel){
-    if(sel){
-        uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_FEATURE);
-        temp |= _NRF24L01_FEATURE_EN_ACK_PAY;
-        NRF24L01p_write_register(_NRF24L01P_REG_FEATURE,temp);
-    }
-    else{
-        uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_FEATURE);
-        temp &= ~_NRF24L01_FEATURE_EN_ACK_PAY;
-        NRF24L01p_write_register(_NRF24L01P_REG_FEATURE,temp);
-    }
+	if(sel) NRF24L01p_write_register(_NRF24L01P_REG_FEATURE,NRF24L01p_read_register(_NRF24L01P_REG_FEATURE) | (_NRF24L01_FEATURE_EN_ACK_PAY));
+	    else NRF24L01p_write_register(_NRF24L01P_REG_FEATURE,NRF24L01p_read_register(_NRF24L01P_REG_FEATURE) & ~_NRF24L01_FEATURE_EN_ACK_PAY);
 
 }
 
 
 
 void NRF24L01p_enable_dynamic_payload_with_no_ack(bool sel){
-    if(sel){
-        uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_FEATURE);
-        temp |= _NRF24L01_FEATURE_EN_DYN_ACK;
-        NRF24L01p_write_register(_NRF24L01P_REG_FEATURE,temp);
-    }
-    else{
-        uint8_t temp = NRF24L01p_read_register(_NRF24L01P_REG_FEATURE);
-        temp &= ~_NRF24L01_FEATURE_EN_DYN_ACK;
-        NRF24L01p_write_register(_NRF24L01P_REG_FEATURE,temp);
-    }
+	if(sel) NRF24L01p_write_register(_NRF24L01P_REG_FEATURE,NRF24L01p_read_register(_NRF24L01P_REG_FEATURE) | (_NRF24L01_FEATURE_EN_DYN_ACK));
+	    else NRF24L01p_write_register(_NRF24L01P_REG_FEATURE,NRF24L01p_read_register(_NRF24L01P_REG_FEATURE) & ~_NRF24L01_FEATURE_EN_DYN_ACK);
 
 }
