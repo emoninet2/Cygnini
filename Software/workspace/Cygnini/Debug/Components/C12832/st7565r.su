@@ -1,0 +1,14 @@
+st7565r.c:22:6:st7565r_write_command	24	static
+st7565r.c:32:6:st7565r_write_data	24	static
+st7565r.c:50:6:st7565r_soft_reset	8	static
+st7565r.c:62:6:st7565r_hard_reset	8	static
+st7565r.c:79:6:st7565r_set_page_address	16	static
+st7565r.c:91:6:st7565r_set_column_address	16	static
+st7565r.c:104:6:st7565r_set_display_start_line_address	16	static
+st7565r.c:116:6:st7565r_display_on	8	static
+st7565r.c:126:6:st7565r_display_off	8	static
+st7565r.c:141:6:st7565r_set_all_pixels	16	static
+st7565r.c:167:9:st7565r_set_contrast	16	static
+st7565r.c:186:6:st7565r_display_invert_enable	8	static
+st7565r.c:197:6:st7565r_display_invert_disable	8	static
+st7565r.c:202:5:st7565r_init	8	static

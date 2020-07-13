@@ -26,8 +26,6 @@ typedef struct{
 }Si7006_t;
 
 
-
-
 Si7006_error_t Si7006_init(Si7006_t *unit);
 Si7006_error_t Si7006_i2c_init(Si7006_t *unit);
 Si7006_error_t Si7006_i2c_transmit(Si7006_t *unit, uint8_t *data, unsigned int size);

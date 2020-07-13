@@ -1,0 +1,7 @@
+core_cm4.h:2064:26:ITM_SendChar	16	static,ignoring_inline_asm
+board.c:39:5:initialize_board	16	static
+board.c:63:6:RadioReset	24	static
+board.c:101:13:custom_print	16	static
+board.c:106:6:xPC	184	static
+board.c:265:5:__io_putchar	16	static
+board.c:273:5:__io_getchar	4	static

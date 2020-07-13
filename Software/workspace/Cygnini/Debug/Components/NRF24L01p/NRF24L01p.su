@@ -1,0 +1,13 @@
+NRF24L01p.c:22:6:NRF24L01p_ResetConfigValues	32	static
+NRF24L01p.c:81:6:NRF24L01p_RadioMode	16	static
+NRF24L01p.c:124:6:NRF24L01p_readable	8	static
+NRF24L01p.c:129:6:NRF24L01p_writable	8	static
+NRF24L01p.c:133:6:NRF24L01p_readableOnPipe	16	static
+NRF24L01p.c:138:25:NRF24L01p_writePayload	32	static
+NRF24L01p.c:156:25:NRF24L01p_writeAckPayload	16	static
+NRF24L01p.c:160:25:NRF24L01p_readPayload	24	static
+NRF24L01p.c:185:25:NRF24L01p_TransmitPayload	32	static
+NRF24L01p.c:271:25:NRF24L01p_ReceivePayload	24	static
+NRF24L01p.c:283:25:NRF24L01p_TransmitPayloadInterruptHandled	32	static
+NRF24L01p.c:375:25:NRF24L01p_ReceivePayloadInterruptHandled	24	static
+NRF24L01p.c:387:6:NRF24L01p_InterruptHandler	16	static

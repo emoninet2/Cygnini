@@ -1,0 +1,5 @@
+graphic_lcd.c:23:5:graphic_lcd_clear_screen	16	static
+graphic_lcd.c:38:5:graphic_lcd_write	32	static
+graphic_lcd.c:56:5:graphic_lcd_initialize	8	static
+graphic_lcd.c:62:5:graphics_lcd_write_byte	24	static
+graphic_lcd.c:72:5:graphics_lcd_clear_line	24	static

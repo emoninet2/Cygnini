@@ -1,0 +1,6 @@
+Si7006Port.c:21:16:Si7006_port_i2c_init	4	static
+Si7006Port.c:24:16:Si7006_port_i2c_transmit	32	static
+Si7006Port.c:30:16:Si7006_port_i2c_receive	32	static
+Si7006Port.c:35:16:Si7006_port_check_hardware	16	static
+Si7006Port.c:40:16:Si7006_port_delay	16	static
+Si7006Port.c:46:16:Si7006_port_init	8	static

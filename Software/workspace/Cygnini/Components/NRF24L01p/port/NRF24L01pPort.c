@@ -1,15 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * NRF24L01pPort.c
+ *
+ *  Created on: Jul 12, 2020
+ *      Author: hr193
  */
 
-/*
- * File:   NRF24L01pPort.h
- * Author: emon1
- *
- * Created on January 29, 2017, 8:03 AM
- */
 
 
 #include "NRF24L01pPort.h"

@@ -1,0 +1,16 @@
+core_cm4.h:2064:26:ITM_SendChar	16	static,ignoring_inline_asm
+cygnini.c:64:5:cygnini	16	static
+cygnini.c:95:13:pc_putc	16	static
+cygnini.c:100:13:pc_getc	16	static
+cygnini.c:106:13:custom_print	16	static
+cygnini.c:117:5:__io_putchar	16	static
+cygnini.c:125:5:__io_getchar	4	static
+cygnini.c:131:5:initialize_board	16	static
+cygnini.c:158:6:RadioReset	24	static
+cygnini.c:196:6:LED_Control	16	static
+cygnini.c:229:6:ButtonsTask	184	static
+cygnini.c:364:6:LEDsTask	16	static
+cygnini.c:384:6:RadioTask	72	static
+cygnini.c:457:6:SensorsTask	16	static
+cygnini.c:478:6:LCDTask	56	static
+cygnini.c:506:6:NotificationsTask	24	static

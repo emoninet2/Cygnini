@@ -1,0 +1,9 @@
+Si7006.c:14:16:Si7006_init	16	static
+Si7006.c:17:16:Si7006_i2c_init	16	static
+Si7006.c:20:16:Si7006_i2c_transmit	24	static
+Si7006.c:23:16:Si7006_i2c_receive	24	static
+Si7006.c:26:16:Si7006_check_hardware	16	static
+Si7006.c:29:16:Si7006_delay	16	static
+Si7006.c:35:7:Si7006_temperature	32	static
+Si7006.c:48:7:Si7006_relativeHumidity	40	static
+Si7006.c:66:16:Si7006_read_firmware_revision	16	static

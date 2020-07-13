@@ -1,12 +1,13 @@
 /*
-* NRF24L01pPort.h
-*
-*  Created on: Apr 23, 2019
-*      Author: emon1
-*/
+ * NRF24L01pPort.h
+ *
+ *  Created on: Jul 12, 2020
+ *      Author: hr193
+ */
 
 #ifndef NRF24L01P_PORT_NRF24L01PPORT_H_
 #define NRF24L01P_PORT_NRF24L01PPORT_H_
+
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -136,8 +137,6 @@ void NRF24L01p_debug(const char *format, ...);
  * @param ...
  */
 void NRF24L01p_debug_if(bool condition, const char *format, ...);
-
-
 
 
 #endif /* NRF24L01P_PORT_NRF24L01PPORT_H_ */
