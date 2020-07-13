@@ -104,7 +104,7 @@ void NRF24L01p_port_SPI_initialize(){
 	/*##-1- Configure the SPI peripheral #######################################*/
 	/* Set the SPI parameters */
 	nrf24l01p_SpiHandle.Instance               = NRF24L01P_SPIx;
-	nrf24l01p_SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
+	nrf24l01p_SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
 	nrf24l01p_SpiHandle.Init.Direction         = SPI_DIRECTION_2LINES;
 	nrf24l01p_SpiHandle.Init.CLKPhase          = SPI_PHASE_1EDGE;
 	nrf24l01p_SpiHandle.Init.CLKPolarity       = SPI_POLARITY_LOW;

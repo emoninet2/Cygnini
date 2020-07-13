@@ -15,9 +15,6 @@ extern I2C_HandleTypeDef  hi2c1;
 extern Si7006_t Si7006;
 
 
-
-
-
 Si7006_error_t Si7006_port_i2c_init(void){
 
 }

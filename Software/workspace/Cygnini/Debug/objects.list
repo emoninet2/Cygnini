@@ -6,6 +6,7 @@
 "Components/NRF24L01p/NRF24L01p.o"
 "Components/NRF24L01p/NRF24L01pDriver.o"
 "Components/NRF24L01p/port/NRF24L01pPort.o"
+"Components/Si1133/Si1133.o"
 "Components/Si7006/Si7006.o"
 "Components/Si7006/Si7006Port.o"
 "Core/Src/freertos.o"

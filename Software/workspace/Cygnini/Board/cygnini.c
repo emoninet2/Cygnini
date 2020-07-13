@@ -56,10 +56,6 @@ TaskHandle_t SensorsHandle = NULL;
 TaskHandle_t LCDHandle = NULL;
 TaskHandle_t NotificationsHandle = NULL;
 
-#define TX_NODE 0
-#define RX_NODE 1
-
-
 
 int cygnini(){
 
@@ -77,7 +73,6 @@ int cygnini(){
 #endif
 
 	xTaskCreate(LEDsTask,(signed portCHAR *) "t4", 1024, NULL, tskIDLE_PRIORITY, &LEDsHandle );
-
 	xTaskCreate(SensorsTask,(signed portCHAR *) "t4", 1024, NULL, tskIDLE_PRIORITY, &SensorsHandle );
 	xTaskCreate(LCDTask,(signed portCHAR *) "t4", 1024, NULL, tskIDLE_PRIORITY, &LCDHandle );
 	xTaskCreate(NotificationsTask,(signed portCHAR *) "t4", 1024, NULL, tskIDLE_PRIORITY, &NotificationsHandle );
@@ -85,16 +80,11 @@ int cygnini(){
 	vTaskStartScheduler();
 
 	while(1);
-
-
-
-	while(1);
 }
 
 
 static void pc_putc(char c){
 	HAL_UART_Transmit(&huart1, &c, 1,0xFFFF);
-
 }
 
 static char pc_getc(){

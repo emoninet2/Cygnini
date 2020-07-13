@@ -20,6 +20,7 @@ RM := rm -rf
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include Components/Si7006/subdir.mk
+-include Components/Si1133/subdir.mk
 -include Components/NRF24L01p/port/subdir.mk
 -include Components/NRF24L01p/subdir.mk
 -include Components/C12832/subdir.mk
@@ -45,6 +46,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 Cygnini.list \
 
+OBJCOPY_HEX += \
+Cygnini.hex \
+
 OBJCOPY_BIN += \
 Cygnini.bin \
 
@@ -68,6 +72,11 @@ Cygnini.list: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+Cygnini.hex: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "Cygnini.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 Cygnini.bin: $(EXECUTABLES)
 	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "Cygnini.bin"
 	@echo 'Finished building: $@'
@@ -78,7 +87,7 @@ clean:
 	-$(RM) *
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 .PHONY: all clean dependents
 .SECONDARY:
